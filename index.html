@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KSP SMP DIVERSIFIKASI 2026 (Panduan BSKAP 2025)</title>
+  <title>KSP SMP DIVERSIFIKASI & SPAB 2026 (Panduan BSKAP 2025)</title>
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f6f8; color: #333; }
     .container { max-width: 1000px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin: 0 auto; }
@@ -65,8 +65,8 @@
     
     <!-- HEADER APLIKASI -->
     <div class="header-title no-print">
-      <h2>KSP SMP DIVERSIFIKASI 2026</h2>
-      <p>Aplikasi Penyusunan Kurikulum Satuan Pendidikan — Selaras Panduan BSKAP Edisi Revisi 2025 & Diversifikasi Garut</p>
+      <h2>KSP SMP DIVERSIFIKASI & SPAB 2026</h2>
+      <p>Aplikasi Penyusunan KSP — Integrasi Panduan BSKAP 2025, Diversifikasi Garut, & Pendidikan Kebencanaan (SPAB)</p>
       <p style="font-size: 13px; color: #0d6efd;">Pengembang Aplikasi: Ida Faridlah, M.Ag. (Pengawas SMP Kab. Garut)</p>
     </div>
 
@@ -85,7 +85,7 @@
     <!-- TAB NAVIGASI MODUL -->
     <div class="tab-nav no-print">
       <button class="tab-btn active" onclick="bukaModul('modul1', this)">1. Administrasi & Cover</button>
-      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Karakteristik Satuan Pendidikan</button>
+      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Karakteristik & Kebencanaan</button>
       <button class="tab-btn" onclick="bukaModul('modul3', this)">3. Visi, Misi & Tujuan</button>
       <button class="tab-btn" onclick="bukaModul('modul4', this)">4. Pengorganisasian Pembelajaran</button>
       <button class="tab-btn" onclick="bukaModul('modul5', this)">5. Perencanaan & Evaluasi</button>
@@ -151,9 +151,9 @@
       </table>
     </div>
 
-    <!-- MODUL 2: KARAKTERISTIK -->
+    <!-- MODUL 2: KARAKTERISTIK & KEBENCANAAN -->
     <div id="modul2" class="tab-content no-print">
-      <h3>Modul 2: Analisis Karakteristik Satuan Pendidikan</h3>
+      <h3>Modul 2: Analisis Karakteristik Satuan Pendidikan & Risiko Bencana</h3>
       
       <div class="form-group">
         <label>2.1 Karakteristik Peserta Didik (Minat, Bakat, Kebutuhan & Latar Belakang):</label>
@@ -172,12 +172,17 @@
 
       <div class="form-group">
         <label>2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
-        <div class="help-text">Kontekstualisasi dengan potensi wilayah Garut (pertanian, peternakan domba, kerajinan kulit, seni budaya, dll).</div>
-        <textarea id="potensiDaerah" rows="4" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
+        <textarea id="potensiDaerah" rows="3" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>2.5 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+        <label>2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
+        <div class="help-text">Kontekstualisasi kerawanan bencana wilayah Garut (gempa bumi, tanah longsor, banjir musiman, vulkanik) serta kelengkapan ketersediaan peta evakuasi dan rambu keselamatan.</div>
+        <textarea id="analisisBencana" rows="4" placeholder="Sekolah berada di kawasan rawan bencana [pilih: longsor/gempa bumi/banjir]. Sekolah telah menyediakan jalur evakuasi, titik kumpul aman, dan membentuk Tim Siaga Bencana Sekolah (TSBS)..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
         <textarea id="raporPendidikan" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
@@ -188,21 +193,21 @@
       
       <div class="form-group">
         <label>Visi Sekolah:</label>
-        <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
+        <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
       </div>
 
       <div class="form-group">
         <label>Misi Sekolah:</label>
-        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan potensi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan pendidikan kesiapsiagaan bencana & kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
         <label>Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
-        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Melaksanakan projek kokurikuler kontekstual kearifan lokal..." oninput="olahDataSimpan()"></textarea>
+        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Mewujudkan Satuan Pendidikan Aman Bencana (SPAB)..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
-    <!-- MODUL 4: PENGORGANISASIAN PEMBELAJARAN (REVISI KOKURIKULER 2025) -->
+    <!-- MODUL 4: PENGORGANISASIAN PEMBELAJARAN (REVISI KOKURIKULER & SPAB) -->
     <div id="modul4" class="tab-content no-print">
       <h3>Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum</h3>
       
@@ -216,8 +221,9 @@
       </div>
 
       <div class="form-group">
-        <label>4.2 Pengorganisasian Intrakurikuler & Muatan Lokal:</label>
-        <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta strategi deep learning..." oninput="olahDataSimpan()"></textarea>
+        <label>4.2 Pengorganisasian Intrakurikuler (Terintegrasi Pendidikan Kebencanaan):</label>
+        <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) pada mapel IPA, IPS, dan PJOK.</div>
+        <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
@@ -245,20 +251,21 @@
       </table>
 
       <div class="form-group">
-        <label>4.4 Pengorganisasian Kokurikuler:</label>
-        <div class="help-text">Gambarkan sistem pelaksanaan kokurikuler (sistem blok/mingguan), tema Projek Profil Pelajar Pancasila (P5), serta kegiatan projek kontekstual berbasis potensi Garut.</div>
-        <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler diisi dengan Projek Penguatan Profil Pelajar Pancasila (P5) dan projek diversifikasi kearifan lokal. Tema Kelas VII: Kearifan Lokal, Kelas VIII: Gaya Hidup Berkelanjutan, Kelas IX: Kewirausahaan..." oninput="olahDataSimpan()"></textarea>
+        <label>4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana):</label>
+        <div class="help-text">Gambarkan sistem pelaksanaan kokurikuler, tema Projek Profil Pelajar Pancasila (P5), serta projek kebencanaan (Gaya Hidup Berkelanjutan / Kesiapsiagaan Bencana).</div>
+        <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan. Tema Kelas VII: Gaya Hidup Berkelanjutan (Tanggap Bencana/Mitigasi), Kelas VIII: Kearifan Lokal, Kelas IX: Kewirausahaan..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>4.5 Ekstrakurikuler & Program Pembiasaan Khusus:</label>
-        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler wajib (Pramuka), ekstrakurikuler pilihan, serta program pembiasaan karakter..." oninput="olahDataSimpan()"></textarea>
+        <label>4.5 Ekstrakurikuler, Pembiasaan & Simulasi Evakuasi (Drill Bencana):</label>
+        <div class="help-text">Cantumkan jadwal rutin simulasi evakuasi bencana (1-2 kali per semester) serta peran Pramuka/PMR dalam SPAB.</div>
+        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler Wajib Pramuka dan PMR Madya (Kesiapsiagaan Tanggap Darurat), serta kegiatan Simulasi Evakuasi Bencana berkala setiap semester..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
     <!-- MODUL 5: PERENCANAAN & EVALUASI -->
     <div id="modul5" class="tab-content no-print">
-      <h3>Modul 5: Perencanaan Pembelajaran, Asesmen, & Evaluasi</h3>
+      <h3>Modul 5: Perencanaan Pembelajaran, Evaluasi, & POS SPAB</h3>
       
       <div class="form-group">
         <label>5.1 Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</label>
@@ -266,12 +273,17 @@
       </div>
 
       <div class="form-group">
-        <label>5.2 Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</label>
-        <textarea id="kriteriaKenaikan" rows="4" placeholder="1. Menyelesaikan seluruh program pembelajaran...&#10;2. Memiliki nilai sikap minimal Baik...&#10;3. Kehadiran minimal 85%..." oninput="olahDataSimpan()"></textarea>
+        <label>5.2 Prosedur Operasional Standar (POS) Kesiapsiagaan & Tim Siaga Bencana Sekolah (TSBS):</label>
+        <textarea id="posSPAB" rows="3" placeholder="SOP Tanggap Darurat Bencana, pemeliharaan rambu evakuasi, dan tugas Tim Siaga Bencana Sekolah..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>5.3 Pendampingan, Evaluasi Jangka Pendek/Panjang & Kombel:</label>
+        <label>5.3 Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</label>
+        <textarea id="kriteriaKenaikan" rows="3" placeholder="1. Menyelesaikan seluruh program pembelajaran...&#10;2. Memiliki nilai sikap minimal Baik..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>5.4 Pendampingan, Evaluasi Jangka Pendek/Panjang & Kombel:</label>
         <textarea id="evaluasiKombel" rows="3" placeholder="Mekanisme refleksi tahunan, evaluasi 3-5 tahunan, supervisi pembelajaran, dan kegiatan Kombel..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
@@ -279,7 +291,7 @@
     <!-- MODUL 6: CETAK DOKUMEN UTUH -->
     <div id="modul6" class="tab-content no-print">
       <h3>Modul 6: Pratinjau & Ekspor Dokumen Utuh KSP</h3>
-      <p>Seluruh dokumen KSP telah tersusun secara otomatis mengikuti sistematika <strong>Panduan BSKAP Revisi 2025</strong>.</p>
+      <p>Seluruh dokumen KSP telah tersusun secara otomatis mengikuti sistematika <strong>Panduan BSKAP Revisi 2025 & Implementasi SPAB</strong>.</p>
       <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan PDF Dokumen KSP Lengkap</button>
     </div>
 
@@ -290,7 +302,7 @@
       <div class="cover-container">
         <div>
           <div class="cover-title">KURIKULUM SATUAN PENDIDIKAN<br>(KSP)</div>
-          <div class="cover-subtitle">SESUAI PANDUAN PENGEMBANGAN KSP & KOKURIKULER REVISI TAHUN 2025<br>BERBASIS HOLISTIK & DIVERSIFIKASI KURIKULUM</div>
+          <div class="cover-subtitle">SESUAI PANDUAN PENGEMBANGAN KSP & KOKURIKULER REVISI TAHUN 2025<br>BERBASIS DIVERSIFIKASI & SATUAN PENDIDIKAN AMAN BENCANA (SPAB)</div>
         </div>
         <div>
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Tut_Wuri_Handayani.png" class="cover-logo" alt="Logo Tut Wuri Handayani">
@@ -351,7 +363,10 @@
       <p><strong>D. Kemitraan & Potensi Kearifan Lokal Garut (Diversifikasi):</strong></p>
       <p id="prevPotensiDaerah" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>E. Evaluasi Diri Rapor Pendidikan:</strong></p>
+      <p><strong>E. Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB):</strong></p>
+      <p id="prevAnalisisBencana" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>F. Evaluasi Diri Rapor Pendidikan:</strong></p>
       <p id="prevRapor" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <!-- BAB II -->
@@ -369,7 +384,7 @@
       <h4>BAB III: PENGORGANISASIAN PEMBELAJARAN</h4>
       <p><strong>A. Pendekatan Pembelajaran:</strong> <span id="prevPendekatan">Mata Pelajaran (Reguler)</span></p>
       
-      <p><strong>B. Pengorganisasian Intrakurikuler & Minggu Efektif:</strong></p>
+      <p><strong>B. Pengorganisasian Intrakurikuler (Terintegrasi Kebencanaan):</strong></p>
       <p id="prevIntrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
       <p><strong>Rincian Waktu Belajar Efektif:</strong> <span id="prevMingguEfektif">[Rincian Minggu Efektif]</span></p>
 
@@ -394,18 +409,21 @@
       <p><strong>D. Pengorganisasian Kokurikuler:</strong></p>
       <p id="prevKokurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>E. Ekstrakurikuler & Pembiasaan:</strong></p>
+      <p><strong>E. Ekstrakurikuler, Pembiasaan & Simulasi Evakuasi (Drill):</strong></p>
       <p id="prevEkstrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <!-- BAB IV -->
-      <h4>BAB IV: PERENCANAAN PEMBELAJARAN & EVALUASI</h4>
+      <h4>BAB IV: PERENCANAAN PEMBELAJARAN, EVALUASI & POS SPAB</h4>
       <p><strong>A. Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</strong></p>
       <p id="prevPerencanaanPM" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>B. Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</strong></p>
+      <p><strong>B. Prosedur Operasional Standar (POS) Kesiapsiagaan Bencana (SPAB):</strong></p>
+      <p id="prevPosSPAB" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>C. Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</strong></p>
       <p id="prevKriteriaKenaikan" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>C. Pendampingan, Evaluasi, & Komunitas Belajar (Kombel):</strong></p>
+      <p><strong>D. Pendampingan, Evaluasi, & Komunitas Belajar (Kombel):</strong></p>
       <p id="prevEvaluasiKombel" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <hr style="border: 0.5px dashed #ccc; margin-top: 30px;">
@@ -416,8 +434,9 @@
       <p><strong>2. Berkas Pendukung Utama:</strong></p>
       <ul>
         <li>Alur Tujuan Pembelajaran (ATP) Kontekstual</li>
-        <li>Contoh Modul Ajar / RPP (*Deep Learning*)</li>
+        <li>Contoh Modul Ajar / RPP (*Deep Learning*) Integrasi Kebencanaan</li>
         <li>Contoh Modul Kokurikuler / Projek Penguatan Profil Pelajar Pancasila</li>
+        <li>Peta Jalur Evakuasi & SOP Kesiapsiagaan Bencana Sekolah (SPAB)</li>
         <li>Kalender Pendidikan Satuan Pendidikan Tahun Ajaran 2026/2027</li>
       </ul>
     </div>
@@ -495,6 +514,7 @@
       document.getElementById('prevPTK').innerText = document.getElementById('karakteristikPTK').value || "Belum ada data.";
       document.getElementById('prevSarpras').innerText = document.getElementById('karakteristikSarpras').value || "Belum ada data.";
       document.getElementById('prevPotensiDaerah').innerText = document.getElementById('potensiDaerah').value || "Belum ada data.";
+      document.getElementById('prevAnalisisBencana').innerText = document.getElementById('analisisBencana').value || "Belum ada data.";
       document.getElementById('prevRapor').innerText = document.getElementById('raporPendidikan').value || "Belum ada data.";
       
       document.getElementById('prevVisi').innerText = document.getElementById('visiSekolah').value || "[Visi Sekolah]";
@@ -508,6 +528,7 @@
       document.getElementById('prevEkstrakurikuler').innerText = document.getElementById('ekstrakurikuler').value || "Belum ada data.";
 
       document.getElementById('prevPerencanaanPM').innerText = document.getElementById('perencanaanPM').value || "Belum ada data.";
+      document.getElementById('prevPosSPAB').innerText = document.getElementById('posSPAB').value || "Belum ada data.";
       document.getElementById('prevKriteriaKenaikan').innerText = document.getElementById('kriteriaKenaikan').value || "Belum ada data.";
       document.getElementById('prevEvaluasiKombel').innerText = document.getElementById('evaluasiKombel').value || "Belum ada data.";
 
@@ -602,6 +623,7 @@
         ptk: document.getElementById('karakteristikPTK').value,
         sarpras: document.getElementById('karakteristikSarpras').value,
         potensiDaerah: document.getElementById('potensiDaerah').value,
+        analisisBencana: document.getElementById('analisisBencana').value,
         rapor: document.getElementById('raporPendidikan').value,
         visi: document.getElementById('visiSekolah').value,
         misi: document.getElementById('misiSekolah').value,
@@ -612,6 +634,7 @@
         kokurikuler: document.getElementById('kokurikuler').value,
         ekstrakurikuler: document.getElementById('ekstrakurikuler').value,
         perencanaanPM: document.getElementById('perencanaanPM').value,
+        posSPAB: document.getElementById('posSPAB').value,
         kriteriaKenaikan: document.getElementById('kriteriaKenaikan').value,
         evaluasiKombel: document.getElementById('evaluasiKombel').value,
         tim: timData,
@@ -640,6 +663,7 @@
       if (data.ptk) document.getElementById('karakteristikPTK').value = data.ptk;
       if (data.sarpras) document.getElementById('karakteristikSarpras').value = data.sarpras;
       if (data.potensiDaerah) document.getElementById('potensiDaerah').value = data.potensiDaerah;
+      if (data.analisisBencana) document.getElementById('analisisBencana').value = data.analisisBencana;
       if (data.rapor) document.getElementById('raporPendidikan').value = data.rapor;
 
       if (data.visi) document.getElementById('visiSekolah').value = data.visi;
@@ -653,6 +677,7 @@
       if (data.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = data.ekstrakurikuler;
 
       if (data.perencanaanPM) document.getElementById('perencanaanPM').value = data.perencanaanPM;
+      if (data.posSPAB) document.getElementById('posSPAB').value = data.posSPAB;
       if (data.kriteriaKenaikan) document.getElementById('kriteriaKenaikan').value = data.kriteriaKenaikan;
       if (data.evaluasiKombel) document.getElementById('evaluasiKombel').value = data.evaluasiKombel;
 

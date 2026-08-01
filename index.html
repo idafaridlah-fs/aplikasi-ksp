@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MKPS SMP GARUT - KSP COMPOSER 2026</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f6f8; color: #333; }
+    .container { max-width: 950px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin: 0 auto; }
+    
+    .header-title { text-align: center; border-bottom: 3px solid #0d6efd; padding-bottom: 10px; margin-bottom: 20px; }
+    .header-title h2 { margin: 0; color: #0d6efd; }
+    .header-title p { margin: 5px 0 0 0; font-size: 14px; color: #6c757d; font-weight: bold; }
+
+    /* NAVIGASI TAB MODUL */
+    .tab-nav { display: flex; gap: 4px; border-bottom: 2px solid #0d6efd; margin-bottom: 20px; flex-wrap: wrap; }
+    .tab-btn { background: #eef2f7; border: 1px solid #dee2e6; border-bottom: none; padding: 10px 14px; border-radius: 6px 6px 0 0; cursor: pointer; font-weight: bold; color: #495057; font-size: 13px; }
+    .tab-btn.active { background: #0d6efd; color: white; border-color: #0d6efd; }
+
+    /* KONTEN TIAP MODUL */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    h3 { color: #0d6efd; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 15px; }
+    h4 { color: #198754; margin-top: 15px; margin-bottom: 8px; }
+    
+    .form-group { margin-bottom: 15px; }
+    label { font-weight: bold; display: block; margin-bottom: 5px; font-size: 14px; color: #212529; }
+    .help-text { font-size: 12px; color: #6c757d; margin-bottom: 5px; }
+    
+    input, textarea, select { width: 100%; padding: 9px; box-sizing: border-box; border: 1px solid #ced4da; border-radius: 5px; font-family: inherit; font-size: 14px; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 15px; }
+    th, td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: left; font-size: 13px; }
+    th { background-color: #f8f9fa; font-weight: bold; }
+    
+    .btn { background-color: #0d6efd; color: white; border: none; padding: 9px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 13px; }
+    .btn-danger { background-color: #dc3545; }
+    .btn-success { background-color: #198754; font-size: 15px; padding: 12px 20px; }
+    .btn:hover { opacity: 0.9; }
+
+    .preview-box { margin-top: 30px; padding: 30px; background: #ffffff; border: 1px solid #ced4da; border-radius: 6px; line-height: 1.6; }
+    .status-tag { font-size: 12px; background: #d1e7dd; color: #0f5132; padding: 4px 10px; border-radius: 12px; display: none; }
+
+    /* CSS CETAK / PDF */
+    @media print {
+      body { background-color: white; padding: 0; }
+      .no-print { display: none !important; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .preview-box { border: none; padding: 0; }
+      .page-break { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER APLIKASI -->
+    <div class="header-title no-print">
+      <h2>KSP COMPOSER 2026</h2>
+      <p>Aplikasi Penyusunan Kurikulum Satuan Pendidikan - Holistik & Diversifikasi Kurikulum Garut</p>
+      <p style="font-size: 12px; color: #0d6efd;">Pengembang Aplikasi: Ida Faridlah, M.Ag. (Pengawas SMP Kab. Garut)</p>
+      <span id="statusTersimpan" class="status-tag">✓ Tersimpan Otomatis di Browser</span>
+    </div>
+    
+    <!-- TAB NAVIGASI MODUL BAHAN MASUK KSP -->
+    <div class="tab-nav no-print">
+      <button class="tab-btn active" onclick="bukaModul('modul1', this)">1. Administrasi & Pengesahan</button>
+      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Analisis Karakteristik</button>
+      <button class="tab-btn" onclick="bukaModul('modul3', this)">3. Visi, Misi & Tujuan</button>
+      <button class="tab-btn" onclick="bukaModul('modul4', this)">4. Diversifikasi & Pembelajaran</button>
+      <button class="tab-btn" onclick="bukaModul('modul5', this)">5. Evaluasi & Pendampingan</button>
+      <button class="tab-btn" onclick="bukaModul('modul6', this)">6. Cetak Dokumen Utuh</button>
+    </div>
+
+    <!-- MODUL 1: ADMINISTRASI & LEMBAR PENGESAHAN -->
+    <div id="modul1" class="tab-content active no-print">
+      <h3>Modul 1: Administrasi & Lembar Pengesahan Resmi</h3>
+      
+      <div class="form-group">
+        <label>Nama Satuan Pendidikan (Sekolah):</label>
+        <input type="text" id="namaSekolah" placeholder="SMP Negeri 3 Tarogong Kidul" oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>Alamat Sekolah & Kecamatan:</label>
+        <input type="text" id="alamatSekolah" placeholder="Jl. Pembangunan No. 123, Kec. Tarogong Kidul, Kab. Garut" oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>Nama Kepala Sekolah & Gelar:</label>
+        <input type="text" id="kepalaSekolah" placeholder="H. Moch. Dudung Zami'at, M.Pd." oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>NIP Kepala Sekolah:</label>
+        <input type="text" id="nipKepala" placeholder="197001011995031002" oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>Pengawas Pembina / Penelaah:</label>
+        <input type="text" id="namaPengawas" value="Dra. Hj. Ida Faridlah, M.Pd." oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>NIP Pengawas Pembina:</label>
+        <input type="text" id="nipPengawas" placeholder="196805121994032001" oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal Penetapan Dokumen KSP:</label>
+        <input type="text" id="tglPenetapan" placeholder="14 Juli 2026" oninput="olahDataSimpan()">
+      </div>
+
+      <hr>
+      <h4>Tim Penyusun Dokumen KSP</h4>
+      <button class="btn" onclick="tambahBarisTim()">+ Tambah Anggota Tim</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Lengkap & Gelar</th>
+            <th>Jabatan / Peran Tim</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="bodyTabelTim"></tbody>
+      </table>
+    </div>
+
+    <!-- MODUL 2: KARAKTERISTIK SATUAN PENDIDIKAN & DIVERSIFIKASI -->
+    <div id="modul2" class="tab-content no-print">
+      <h3>Modul 2: Karakteristik Satuan Pendidikan & Potensi Daerah Garut</h3>
+      
+      <div class="form-group">
+        <label>1.1 Karakteristik Murid (Minat, Bakat, Kebutuhan & Aspirasi):</label>
+        <textarea id="karakteristikMurid" rows="3" placeholder="Gambarkan minat, bakat, serta aspirasi murid..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>1.2 Karakteristik Pendidik & Tenaga Kependidikan:</label>
+        <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi guru, jumlah guru penggerak, kompetensi digital..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>1.3 Sarana, Prasarana & Lingkungan Sekolah:</label>
+        <textarea id="karakteristikSarpras" rows="3" placeholder="Fasilitas laboratorium, perpustakaan, jaringan internet, lingkungan fisik..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>1.4 Potensi Daerah, Bentang Alam & Kearifan Lokal Garut (Diversifikasi):</label>
+        <div class="help-text">Integrasikan potensi wilayah (misal: Dodol Garut, Batik Garut, Burayot, Domba Garut, Candi Cangkuang, Pertanian, Dsb).</div>
+        <textarea id="potensiDaerah" rows="4" placeholder="Potensi bentang alam, sejarah, seni budaya, serta ekonomi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>1.5 Profil Sekolah Berdasarkan Rapor Pendidikan:</label>
+        <textarea id="raporPendidikan" rows="3" placeholder="Capaian Literasi, Numerasi, Iklim Keamanan Sekolah, Kebhinekaan..." oninput="olahDataSimpan()"></textarea>
+      </div>
+    </div>
+
+    <!-- MODUL 3: VISI, MISI & TUJUAN -->
+    <div id="modul3" class="tab-content no-print">
+      <h3>Modul 3: Visi, Misi, & Tujuan Satuan Pendidikan</h3>
+      
+      <div class="form-group">
+        <label>Visi Sekolah:</label>
+        <input type="text" id="visiSekolah" placeholder="Terwujudnya Generasi Cerdas, Berkarakter Profil Pelajar Pancasila, Berbudaya Lokal Garut, dan Berwawasan Lingkungan" oninput="olahDataSimpan()">
+      </div>
+
+      <div class="form-group">
+        <label>Misi Sekolah:</label>
+        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning) berbasis konteks lokal...&#10;2. Mengembangkan potensi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
+        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi sebesar 15%...&#10;2. Terlaksananya proyek P5 berwawasan kearifan lokal..." oninput="olahDataSimpan()"></textarea>
+      </div>
+    </div>
+
+    <!-- MODUL 4: PENGORGANISASIAN PEMBELAJARAN & DIVERSIFIKASI -->
+    <div id="modul4" class="tab-content no-print">
+      <h3>Modul 4: Pengorganisasian Pembelajaran & Diversifikasi Kurikulum</h3>
+      
+      <div class="form-group">
+        <label>4.1 Pendekatan Pembelajaran:</label>
+        <select id="pendekatan" onchange="olahDataSimpan()">
+          <option>Mata Pelajaran (Reguler)</option>
+          <option>Tematik Integratif</option>
+          <option>Blok Waktu</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>4.2 Pengorganisasian Intrakurikuler Berbasis Konteks Lokal & Pembelajaran Mendalam:</label>
+        <textarea id="intrakurikuler" rows="4" placeholder="Pengintegrasian materi esensial dan kontekstual kearifan lokal Garut pada mata pelajaran..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>4.3 Pengorganisasian Kokurikuler (P5, Kebencanaan, Perubahan Iklim):</label>
+        <textarea id="p5" rows="4" placeholder="Tema P5 yang dipilih (Kearifan Lokal, Gaya Hidup Berkelanjutan), alokasi waktu blok/mingguan..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>4.4 Pengorganisasian Ekstrakurikuler & Program Khusus (AI/Koding/Kebencanaan):</label>
+        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler Wajib (Pramuka), Pilihan, serta Program Sekolah Model AI/Koding/Kebencanaan..." oninput="olahDataSimpan()"></textarea>
+      </div>
+    </div>
+
+    <!-- MODUL 5: PENDAMPINGAN, EVALUASI & KOMBEL -->
+    <div id="modul5" class="tab-content no-print">
+      <h3>Modul 5: Perencanaan Pembelajaran, Evaluasi & Kombel</h3>
+      
+      <div class="form-group">
+        <label>5.1 Perencanaan Pembelajaran Mendalam (Deep Learning):</label>
+        <textarea id="perencanaanPM" rows="3" placeholder="Strategi penyusunan ATP, Modul Ajar, dan asesmen berbasis konteks nyata..." oninput="olahDataSimpan()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>5.2 Pendampingan, Evaluasi & Pengembangan Profesional (Kombel):</label>
+        <textarea id="evaluasiKombel" rows="4" placeholder="Jadwal supervisi akademik, refleksi pembelajaran berkala, dan aktivitas Komunitas Belajar (Kombel) sekolah..." oninput="olahDataSimpan()"></textarea>
+      </div>
+    </div>
+
+    <!-- MODUL 6: CETAK DOKUMEN UTUH -->
+    <div id="modul6" class="tab-content no-print">
+      <h3>Modul 6: Pratinjau & Ekspor Dokumen Utuh KSP</h3>
+      <p>Seluruh dokumen dari BAB I hingga BAB IV beserta Lembar Pengesahan telah tersusun secara otomatis di bawah ini.</p>
+      <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan PDF Dokumen KSP Lengkap</button>
+    </div>
+
+    <!-- DOKUMEN HASIL RANGKUMAN UTUH KSP GARUT (PRINT OUT) -->
+    <div class="preview-box">
+      <h2 style="text-align: center; color: black; margin-bottom: 2px;">KURIKULUM SATUAN PENDIDIKAN (KSP)</h2>
+      <h3 style="text-align: center; color: black; margin-top: 0; font-size: 20px;" id="prevSekolah">[Nama Satuan Pendidikan]</h3>
+      <p style="text-align: center; margin-top: -5px; font-size: 13px;" id="prevAlamat">[Alamat Sekolah]</p>
+      <p style="text-align: center; font-weight: bold; font-size: 14px;">TAHUN AJARAN 2026/2027</p>
+      <hr style="border: 1.5px solid black; margin-bottom: 25px;">
+
+      <!-- LEMBAR PENGESAHAN DOKUMEN -->
+      <div style="border: 1px solid #333; padding: 20px; margin-bottom: 30px;">
+        <h3 style="text-align: center; color: black; margin-top: 0;">LEMBAR PENGESAHAN</h3>
+        <p style="text-align: justify; font-size: 13px;">
+          Setelah memperhatikan pertimbangan dari Komite Sekolah dan hasil verifikasi Tim Penelaah, Dokumen Kurikulum Satuan Pendidikan (KSP) <strong><span id="prevSekolahSah">[Nama Sekolah]</span></strong> Tahun Ajaran 2026/2027 berbasis Holistik & Diversifikasi Kurikulum ini secara resmi disahkan dan dinyatakan berlaku.
+        </p>
+        <p style="text-align: right; font-size: 13px;">Ditetapkan di: Garut<br>Tanggal: <strong id="prevTglPenetapan">[Tanggal Penetapan]</strong></p>
+        
+        <table style="width: 100%; border: none; margin-top: 30px; text-align: center;">
+          <tr style="border: none;">
+            <td style="border: none; width: 50%;">
+              Mengetahui / Menyetujui,<br>Pengawas Pembina SMP
+              <br><br><br><br><br>
+              <strong id="prevPengawas">Dra. Hj. Ida Faridlah, M.Pd.</strong><br>
+              NIP. <span id="prevNipPengawas">[NIP Pengawas]</span>
+            </td>
+            <td style="border: none; width: 50%;">
+              Kepala Sekolah
+              <br><br><br><br><br>
+              <strong id="prevKepala">[Nama Kepala Sekolah]</strong><br>
+              NIP. <span id="prevNipKepala">[NIP Kepala Sekolah]</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="page-break"></div>
+
+      <!-- BAB I -->
+      <h4>BAB I: ANALISIS KARAKTERISTIK SATUAN PENDIDIKAN</h4>
+      <p><strong>A. Karakteristik Peserta Didik:</strong></p>
+      <p id="prevMurid" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+      
+      <p><strong>B. Karakteristik Pendidik & Tenaga Kependidikan:</strong></p>
+      <p id="prevPTK" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>C. Sarana, Prasarana & Lingkungan Sekolah:</strong></p>
+      <p id="prevSarpras" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>D. Potensi Daerah, Bentang Alam & Kearifan Lokal Garut (Diversifikasi):</strong></p>
+      <p id="prevPotensiDaerah" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>E. Profil Sekolah Berdasarkan Rapor Pendidikan:</strong></p>
+      <p id="prevRapor" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <!-- BAB II -->
+      <h4>BAB II: VISI, MISI, DAN TUJUAN SATUAN PENDIDIKAN</h4>
+      <p><strong>A. Visi Sekolah:</strong></p>
+      <p id="prevVisi"><i>[Visi Sekolah]</i></p>
+      
+      <p><strong>B. Misi Sekolah:</strong></p>
+      <p id="prevMisi" style="white-space: pre-line;"><i>[Misi Sekolah]</i></p>
+
+      <p><strong>C. Tujuan Satuan Pendidikan:</strong></p>
+      <p id="prevTujuan" style="white-space: pre-line;"><i>[Tujuan Sekolah]</i></p>
+
+      <!-- BAB III -->
+      <h4>BAB III: PENGORGANISASIAN PEMBELAJARAN & DIVERSIFIKASI</h4>
+      <p><strong>A. Pendekatan Pembelajaran:</strong> <span id="prevPendekatan">Mata Pelajaran (Reguler)</span></p>
+      
+      <p><strong>B. Pengorganisasian Intrakurikuler (Konteks Lokal Garut & Pembelajaran Mendalam):</strong></p>
+      <p id="prevIntrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>C. Pengorganisasian Kokurikuler (P5, Kebencanaan, Perubahan Iklim):</strong></p>
+      <p id="prevP5" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>D. Pengorganisasian Ekstrakurikuler & Program Unggulan (AI/Koding):</strong></p>
+      <p id="prevEkstrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <!-- BAB IV -->
+      <h4>BAB IV: PERENCANAAN, PENDAMPINGAN, EVALUASI, DAN KOMBEL</h4>
+      <p><strong>A. Perencanaan Pembelajaran Mendalam (Deep Learning):</strong></p>
+      <p id="prevPerencanaanPM" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <p><strong>B. Pendampingan, Evaluasi, & Komunitas Belajar (Kombel):</strong></p>
+      <p id="prevEvaluasiKombel" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+
+      <hr style="border: 0.5px dashed #ccc; margin-top: 30px;">
+
+      <h4>LAMPIRAN-LAMPIRAN DOKUMEN KSP</h4>
+      <p><strong>1. Tim Penyusun Dokumen KSP:</strong></p>
+      <ol id="prevDaftarTim">
+        <li><i>Belum ada anggota tim ditambahkan.</i></li>
+      </ol>
+      <p><strong>2. Berkas Pendukung Lainnya:</strong></p>
+      <ul>
+        <li>Capaian Pembelajaran (CP) & Alur Tujuan Pembelajaran (ATP) Berbasis Konteks Lokal Garut</li>
+        <li>Contoh Modul Ajar / RPP Pembelajaran Mendalam (*Deep Learning*)</li>
+        <li>Contoh Modul Proyek Penguatan Profil Pelajar Pancasila (P5) Berwawasan Kearifan Lokal & Kebencanaan</li>
+        <li>Kalender Pendidikan Satuan Pendidikan Tahun Ajaran 2026/2027</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script>
+    window.onload = function() {
+      muatDataTersimpan();
+    };
+
+    function bukaModul(idModul, tombol) {
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(idModul).classList.add('active');
+      tombol.classList.add('active');
+    }
+
+    function olahDataSimpan() {
+      perbaruiPreview();
+      simpanKeLocalStorage();
+    }
+
+    function perbaruiPreview() {
+      document.getElementById('prevSekolah').innerText = document.getElementById('namaSekolah').value || "[Nama Satuan Pendidikan]";
+      document.getElementById('prevSekolahSah').innerText = document.getElementById('namaSekolah').value || "[Nama Sekolah]";
+      document.getElementById('prevAlamat').innerText = document.getElementById('alamatSekolah').value || "[Alamat Sekolah]";
+      
+      document.getElementById('prevKepala').innerText = document.getElementById('kepalaSekolah').value || "[Nama Kepala Sekolah]";
+      document.getElementById('prevNipKepala').innerText = document.getElementById('nipKepala').value || "[NIP Kepala Sekolah]";
+      document.getElementById('prevPengawas').innerText = document.getElementById('namaPengawas').value || "Dra. Hj. Ida Faridlah, M.Pd.";
+      document.getElementById('prevNipPengawas').innerText = document.getElementById('nipPengawas').value || "[NIP Pengawas]";
+      document.getElementById('prevTglPenetapan').innerText = document.getElementById('tglPenetapan').value || "[Tanggal Penetapan]";
+
+      document.getElementById('prevMurid').innerText = document.getElementById('karakteristikMurid').value || "Belum ada data.";
+      document.getElementById('prevPTK').innerText = document.getElementById('karakteristikPTK').value || "Belum ada data.";
+      document.getElementById('prevSarpras').innerText = document.getElementById('karakteristikSarpras').value || "Belum ada data.";
+      document.getElementById('prevPotensiDaerah').innerText = document.getElementById('potensiDaerah').value || "Belum ada data.";
+      document.getElementById('prevRapor').innerText = document.getElementById('raporPendidikan').value || "Belum ada data.";
+      
+      document.getElementById('prevVisi').innerText = document.getElementById('visiSekolah').value || "[Visi Sekolah]";
+      document.getElementById('prevMisi').innerText = document.getElementById('misiSekolah').value || "[Misi Sekolah]";
+      document.getElementById('prevTujuan').innerText = document.getElementById('tujuanSekolah').value || "[Tujuan Sekolah]";
+
+      document.getElementById('prevPendekatan').innerText = document.getElementById('pendekatan').value;
+      document.getElementById('prevIntrakurikuler').innerText = document.getElementById('intrakurikuler').value || "Belum ada data.";
+      document.getElementById('prevP5').innerText = document.getElementById('p5').value || "Belum ada data.";
+      document.getElementById('prevEkstrakurikuler').innerText = document.getElementById('ekstrakurikuler').value || "Belum ada data.";
+
+      document.getElementById('prevPerencanaanPM').innerText = document.getElementById('perencanaanPM').value || "Belum ada data.";
+      document.getElementById('prevEvaluasiKombel').innerText = document.getElementById('evaluasiKombel').value || "Belum ada data.";
+
+      const daftarInputNama = document.querySelectorAll('#bodyTabelTim tr input');
+      const daftarSelectPeran = document.querySelectorAll('#bodyTabelTim tr select');
+      const prevOl = document.getElementById('prevDaftarTim');
+
+      prevOl.innerHTML = ''; 
+
+      if (daftarInputNama.length === 0) {
+        prevOl.innerHTML = '<li><i>Belum ada anggota tim ditambahkan.</i></li>';
+        return;
+      }
+
+      daftarInputNama.forEach((input, index) => {
+        const nama = input.value || "(Nama belum diisi)";
+        const peran = daftarSelectPeran[index].value;
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${nama}</strong> — <i>${peran}</i>`;
+        prevOl.appendChild(li);
+      });
+    }
+
+    function tambahBarisTim(namaAwal = '', peranAwal = 'Penanggung Jawab') {
+      const tbody = document.getElementById('bodyTabelTim');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" value="${namaAwal}" placeholder="Nama & Gelar" oninput="olahDataSimpan()"></td>
+        <td>
+          <select onchange="olahDataSimpan()">
+            <option ${peranAwal === 'Penanggung Jawab' ? 'selected' : ''}>Penanggung Jawab</option>
+            <option ${peranAwal === 'Ketua Tim Penyusun' ? 'selected' : ''}>Ketua Tim Penyusun</option>
+            <option ${peranAwal === 'Anggota Tim' ? 'selected' : ''}>Anggota Tim</option>
+            <option ${peranAwal === 'Penelaah / Pengawas' ? 'selected' : ''}>Penelaah / Pengawas</option>
+          </select>
+        </td>
+        <td><button class="btn btn-danger" onclick="hapusBaris(this)">Hapus</button></td>
+      `;
+      tbody.appendChild(tr);
+      olahDataSimpan();
+    }
+
+    function hapusBaris(tombol) {
+      tombol.parentElement.parentElement.remove();
+      olahDataSimpan();
+    }
+
+    function simpanKeLocalStorage() {
+      const timData = [];
+      document.querySelectorAll('#bodyTabelTim tr').forEach(tr => {
+        timData.push({
+          nama: tr.querySelector('input').value,
+          peran: tr.querySelector('select').value
+        });
+      });
+
+      const dataAplikasi = {
+        sekolah: document.getElementById('namaSekolah').value,
+        alamat: document.getElementById('alamatSekolah').value,
+        kepala: document.getElementById('kepalaSekolah').value,
+        nipKepala: document.getElementById('nipKepala').value,
+        pengawas: document.getElementById('namaPengawas').value,
+        nipPengawas: document.getElementById('nipPengawas').value,
+        tglPenetapan: document.getElementById('tglPenetapan').value,
+        murid: document.getElementById('karakteristikMurid').value,
+        ptk: document.getElementById('karakteristikPTK').value,
+        sarpras: document.getElementById('karakteristikSarpras').value,
+        potensiDaerah: document.getElementById('potensiDaerah').value,
+        rapor: document.getElementById('raporPendidikan').value,
+        visi: document.getElementById('visiSekolah').value,
+        misi: document.getElementById('misiSekolah').value,
+        tujuan: document.getElementById('tujuanSekolah').value,
+        pendekatan: document.getElementById('pendekatan').value,
+        intrakurikuler: document.getElementById('intrakurikuler').value,
+        p5: document.getElementById('p5').value,
+        ekstrakurikuler: document.getElementById('ekstrakurikuler').value,
+        perencanaanPM: document.getElementById('perencanaanPM').value,
+        evaluasiKombel: document.getElementById('evaluasiKombel').value,
+        tim: timData
+      };
+
+      localStorage.setItem('ksp_garut_2026', JSON.stringify(dataAplikasi));
+      document.getElementById('statusTersimpan').style.display = 'inline';
+    }
+
+    function muatDataTersimpan() {
+      const dataSiswa = localStorage.getItem('ksp_garut_2026');
+      if (!dataSiswa) return;
+
+      const data = JSON.parse(dataSiswa);
+      if (data.sekolah) document.getElementById('namaSekolah').value = data.sekolah;
+      if (data.alamat) document.getElementById('alamatSekolah').value = data.alamat;
+      if (data.kepala) document.getElementById('kepalaSekolah').value = data.kepala;
+      if (data.nipKepala) document.getElementById('nipKepala').value = data.nipKepala;
+      if (data.pengawas) document.getElementById('namaPengawas').value = data.pengawas;
+      if (data.nipPengawas) document.getElementById('nipPengawas').value = data.nipPengawas;
+      if (data.tglPenetapan) document.getElementById('tglPenetapan').value = data.tglPenetapan;
+
+      if (data.murid) document.getElementById('karakteristikMurid').value = data.murid;
+      if (data.ptk) document.getElementById('karakteristikPTK').value = data.ptk;
+      if (data.sarpras) document.getElementById('karakteristikSarpras').value = data.sarpras;
+      if (data.potensiDaerah) document.getElementById('potensiDaerah').value = data.potensiDaerah;
+      if (data.rapor) document.getElementById('raporPendidikan').value = data.rapor;
+
+      if (data.visi) document.getElementById('visiSekolah').value = data.visi;
+      if (data.misi) document.getElementById('misiSekolah').value = data.misi;
+      if (data.tujuan) document.getElementById('tujuanSekolah').value = data.tujuan;
+
+      if (data.pendekatan) document.getElementById('pendekatan').value = data.pendekatan;
+      if (data.intrakurikuler) document.getElementById('intrakurikuler').value = data.intrakurikuler;
+      if (data.p5) document.getElementById('p5').value = data.p5;
+      if (data.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = data.ekstrakurikuler;
+
+      if (data.perencanaanPM) document.getElementById('perencanaanPM').value = data.perencanaanPM;
+      if (data.evaluasiKombel) document.getElementById('evaluasiKombel').value = data.evaluasiKombel;
+
+      if (data.tim && data.tim.length > 0) {
+        document.getElementById('bodyTabelTim').innerHTML = '';
+        data.tim.forEach(item => tambahBarisTim(item.nama, item.peran));
+      }
+      perbaruiPreview();
+    }
+  </script>
+
+</body>
+</html>

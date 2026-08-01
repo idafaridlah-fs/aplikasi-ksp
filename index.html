@@ -3,436 +3,571 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KSP SMP DIVERSIFIKASI & SPAB 2026 (Panduan BSKAP 2025)</title>
+  <title>KSP SMP DIVERSIFIKASI & SPAB 2026</title>
   <style>
     /* =========================================================
-   THEME STYLING - MODERN & ELEGAN (KSP COMPOSER PRO)
-   ========================================================= */
-:root {
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --primary: #0f172a;       /* Deep Slate Navy */
-  --primary-accent: #059669;/* Emerald Green Accent */
-  --text-main: #334155;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --focus-ring: rgba(5, 150, 105, 0.25);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-  --radius-md: 10px;
-  --radius-lg: 14px;
-}
+       THEME STYLING - MODERN & ELEGAN (KSP COMPOSER PRO)
+       ========================================================= */
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --primary: #0f172a;       /* Deep Slate Navy */
+      --primary-accent: #059669;/* Emerald Green Accent */
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --focus-ring: rgba(5, 150, 105, 0.25);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
 
-body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
 
-/* Header & Sticky Top Bar */
-header {
-  background: var(--primary);
-  color: #ffffff;
-  padding: 1rem 2rem;
-  box-shadow: var(--shadow-md);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    /* Header & Sticky Top Bar */
+    header {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 1.25rem 2rem;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-header h1 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin: 0;
-  color: #ffffff;
-}
+    .header-info h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin: 0;
+      color: #ffffff;
+    }
 
-/* Navigasi Tab Modul */
-.nav-tabs {
-  display: flex;
-  gap: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.08);
-  padding: 0.35rem;
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-}
+    .header-info p {
+      margin: 3px 0 0 0;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
 
-.nav-tab {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  color: #cbd5e1;
-  font-weight: 500;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  background: transparent;
-}
+    .header-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
 
-.nav-tab:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.12);
-}
+    /* Navigasi Tab Modul */
+    .nav-tabs {
+      display: flex;
+      gap: 0.4rem;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 0.35rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
 
-.nav-tab.active {
-  background-color: var(--primary-accent);
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
+    .nav-tab {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: transparent;
+      white-space: nowrap;
+    }
 
-/* Container & Layout Kartu (Cards) */
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
+    .nav-tab:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
 
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
-}
+    .nav-tab.active {
+      background-color: var(--primary-accent);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
 
-.card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1;
-}
+    /* Container & Layout Kartu (Cards) */
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
 
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 0.75rem;
-}
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
 
-/* Form Controls & Inputs */
-.form-group {
-  margin-bottom: 1.25rem;
-}
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 0.75rem;
+    }
 
-.form-label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #475569;
-  margin-bottom: 0.375rem;
-}
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
 
-input[type="text"],
-input[type="number"],
-select,
-textarea {
-  width: 100%;
-  padding: 0.625rem 0.875rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  background-color: #ffffff;
-  color: var(--text-main);
-  font-size: 0.9rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
-}
+    /* Form Controls & Inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary-accent);
-  box-shadow: 0 0 0 3px var(--focus-ring);
-}
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 0.375rem;
+    }
 
-/* Tombol (Buttons) */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+    .help-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.375rem;
+    }
 
-.btn-primary {
-  background-color: var(--primary-accent);
-  color: #ffffff;
-}
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background-color: #ffffff;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
 
-.btn-primary:hover {
-  background-color: #047857;
-  box-shadow: var(--shadow-md);
-}
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
 
-.btn-secondary {
-  background-color: #f1f5f9;
-  color: #334155;
-  border: 1px solid var(--border-color);
-}
+    /* Tabel Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
 
-.btn-secondary:hover {
-  background-color: #e2e8f0;
-}
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Tombol (Buttons) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #047857;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background-color: #334155;
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #1e293b;
+    }
+
+    .btn-danger {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .btn-success {
+      background-color: var(--primary-accent);
+      color: white;
+      font-size: 1rem;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .status-tag {
+      font-size: 0.8rem;
+      background: #d1fae5;
+      color: #065f46;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* PREVIEW & COVER BOX */
+    .preview-box {
+      margin-top: 30px;
+      padding: 35px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      line-height: 1.6;
+    }
+
+    .cover-container {
+      text-align: center;
+      border: 4px double var(--primary);
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      min-height: 750px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .cover-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cover-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .cover-logo {
+      margin: 25px auto;
+      max-width: 140px;
+    }
+
+    .cover-school {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary-accent);
+      margin-top: 15px;
+      text-transform: uppercase;
+    }
+
+    @media print {
+      body { background-color: white; padding: 0; }
+      header, .no-print { display: none !important; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; margin: 0; }
+      .preview-box { border: none; padding: 0; box-shadow: none; }
+      .page-break { page-break-before: always; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <!-- HEADER APLIKASI -->
-    <div class="header-title no-print">
-      <h2>KSP SMP DIVERSIFIKASI & SPAB 2026</h2>
-      <p>Aplikasi Penyusunan KSP — Integrasi Panduan BSKAP 2025, Diversifikasi Garut, & Pendidikan Kebencanaan (SPAB)</p>
-      <p style="font-size: 13px; color: #0d6efd;">Pengembang Aplikasi: Ida Faridlah, M.Ag. (Pengawas SMP Kab. Garut)</p>
+  <!-- HEADER STICKY ATAS -->
+  <header class="no-print">
+    <div class="header-info">
+      <h1>KSP SMP DIVERSIFIKASI & SPAB 2026</h1>
+      <p>Integrasi Panduan BSKAP 2025, Diversifikasi Garut, & Satuan Pendidikan Aman Bencana — <strong>Pengembang: Ida Faridlah, M.Ag.</strong></p>
     </div>
-
-    <!-- TOOLBAR DATA -->
-    <div class="data-toolbar no-print">
-      <div>
-        <span id="statusTersimpan" class="status-tag">✓ Tersimpan Otomatis di Browser</span>
+    
+    <div class="header-toolbar">
+      <!-- TAB NAVIGASI -->
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="bukaModul('modul1', this)">1. Administrasi & Cover</button>
+        <button class="nav-tab" onclick="bukaModul('modul2', this)">2. Karakteristik & SPAB</button>
+        <button class="nav-tab" onclick="bukaModul('modul3', this)">3. Visi, Misi & Tujuan</button>
+        <button class="nav-tab" onclick="bukaModul('modul4', this)">4. Pengorganisasian</button>
+        <button class="nav-tab" onclick="bukaModul('modul5', this)">5. Perencanaan & POS</button>
+        <button class="nav-tab" onclick="bukaModul('modul6', this)">6. Cetak Dokumen</button>
       </div>
-      <div>
-        <button class="btn btn-secondary" onclick="exportJSON()">📥 Export Data (JSON)</button>
-        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">📤 Import Data (JSON)</button>
+
+      <!-- UTILITY BUTTONS -->
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <span id="statusTersimpan" class="status-tag">✓ Tersimpan Otomatis</span>
+        <button class="btn btn-secondary" onclick="exportJSON()">📥 Export</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">📤 Import</button>
         <input type="file" id="importFile" style="display: none;" accept=".json" onchange="importJSON(this)">
       </div>
     </div>
-    
-    <!-- TAB NAVIGASI MODUL -->
-    <div class="tab-nav no-print">
-      <button class="tab-btn active" onclick="bukaModul('modul1', this)">1. Administrasi & Cover</button>
-      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Karakteristik & Kebencanaan</button>
-      <button class="tab-btn" onclick="bukaModul('modul3', this)">3. Visi, Misi & Tujuan</button>
-      <button class="tab-btn" onclick="bukaModul('modul4', this)">4. Pengorganisasian Pembelajaran</button>
-      <button class="tab-btn" onclick="bukaModul('modul5', this)">5. Perencanaan & Evaluasi</button>
-      <button class="tab-btn" onclick="bukaModul('modul6', this)">6. Cetak Dokumen Utuh</button>
-    </div>
+  </header>
 
-    <!-- MODUL 1: ADMINISTRASI & PENGESAHAN -->
+  <div class="container">
+
+    <!-- MODUL 1 -->
     <div id="modul1" class="tab-content active no-print">
-      <h3>Modul 1: Administrasi, Cover & Pengesahan Resmi</h3>
-      
-      <div class="form-group">
-        <label>Nama Satuan Pendidikan (Sekolah):</label>
-        <input type="text" id="namaSekolah" placeholder="SMP Negeri 3 Tarogong Kidul" oninput="olahDataSimpan()">
-      </div>
+      <div class="card">
+        <div class="card-title">
+          <span>Modul 1: Administrasi, Cover & Pengesahan Resmi</span>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Nama Satuan Pendidikan (Sekolah):</label>
+          <input type="text" id="namaSekolah" placeholder="SMP Negeri 3 Tarogong Kidul" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Alamat Sekolah & Kecamatan:</label>
-        <input type="text" id="alamatSekolah" placeholder="Jl. Pembangunan No. 123, Kec. Tarogong Kidul, Kab. Garut" oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">Alamat Sekolah & Kecamatan:</label>
+          <input type="text" id="alamatSekolah" placeholder="Jl. Pembangunan No. 123, Kec. Tarogong Kidul, Kab. Garut" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Nama Kepala Sekolah & Gelar:</label>
-        <input type="text" id="kepalaSekolah" placeholder="H. Moch. Dudung Zami'at, M.Pd." oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">Nama Kepala Sekolah & Gelar:</label>
+          <input type="text" id="kepalaSekolah" placeholder="H. Moch. Dudung Zami'at, M.Pd." oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>NIP Kepala Sekolah:</label>
-        <input type="text" id="nipKepala" placeholder="197001011995031002" oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">NIP Kepala Sekolah:</label>
+          <input type="text" id="nipKepala" placeholder="197001011995031002" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Pengawas Pembina / Penelaah:</label>
-        <input type="text" id="namaPengawas" value="Ida Faridlah, M.Ag." oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">Pengawas Pembina / Penelaah:</label>
+          <input type="text" id="namaPengawas" value="Ida Faridlah, M.Ag." oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>NIP Pengawas Pembina:</label>
-        <input type="text" id="nipPengawas" placeholder="197211141998022002" oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">NIP Pengawas Pembina:</label>
+          <input type="text" id="nipPengawas" placeholder="197211141998022002" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Tanggal Penetapan Dokumen KSP:</label>
-        <input type="text" id="tglPenetapan" placeholder="14 Juli 2026" oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">Tanggal Penetapan Dokumen KSP:</label>
+          <input type="text" id="tglPenetapan" placeholder="14 Juli 2026" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Kata Pengantar Kepala Sekolah:</label>
-        <textarea id="kataPengantar" rows="4" placeholder="Puji syukur kami panjatkan ke hadirat Allah SWT..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">Kata Pengantar Kepala Sekolah:</label>
+          <textarea id="kataPengantar" rows="4" placeholder="Puji syukur kami panjatkan ke hadirat Allah SWT..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <hr>
-      <h4>Tim Penyusun Dokumen KSP</h4>
-      <button class="btn" onclick="tambahBarisTim()">+ Tambah Anggota Tim</button>
-      <table>
-        <thead>
-          <tr>
-            <th>Nama Lengkap & Gelar</th>
-            <th>Jabatan / Peran Tim</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody id="bodyTabelTim"></tbody>
-      </table>
+        <hr style="border:0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+          <h4 style="margin:0; color: var(--primary);">Tim Penyusun Dokumen KSP</h4>
+          <button class="btn btn-primary" onclick="tambahBarisTim()">+ Tambah Anggota Tim</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Nama Lengkap & Gelar</th>
+              <th>Jabatan / Peran Tim</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="bodyTabelTim"></tbody>
+        </table>
+      </div>
     </div>
 
-    <!-- MODUL 2: KARAKTERISTIK & KEBENCANAAN -->
+    <!-- MODUL 2 -->
     <div id="modul2" class="tab-content no-print">
-      <h3>Modul 2: Analisis Karakteristik Satuan Pendidikan & Risiko Bencana</h3>
-      
-      <div class="form-group">
-        <label>2.1 Karakteristik Peserta Didik (Minat, Bakat, Kebutuhan & Latar Belakang):</label>
-        <textarea id="karakteristikMurid" rows="3" placeholder="Gambarkan minat, bakat, keberagaman latar belakang sosial budaya, serta aspirasi murid..." oninput="olahDataSimpan()"></textarea>
-      </div>
+      <div class="card">
+        <div class="card-title">Modul 2: Analisis Karakteristik Satuan Pendidikan & Risiko Bencana</div>
+        
+        <div class="form-group">
+          <label class="form-label">2.1 Karakteristik Peserta Didik (Minat, Bakat, Kebutuhan & Latar Belakang):</label>
+          <textarea id="karakteristikMurid" rows="3" placeholder="Gambarkan minat, bakat, keberagaman latar belakang sosial budaya, serta aspirasi murid..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>2.2 Karakteristik Pendidik & Tenaga Kependidikan (PTK):</label>
-        <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik, sertifikasi, Guru Penggerak, dan peta kompetensi pedagogik/digital..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">2.2 Karakteristik Pendidik & Tenaga Kependidikan (PTK):</label>
+          <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik, sertifikasi, Guru Penggerak, dan peta kompetensi pedagogik/digital..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>2.3 Pemanfaatan Sarana, Prasarana, & Lingkungan Sekolah:</label>
-        <textarea id="karakteristikSarpras" rows="3" placeholder="Optimalisasi fasilitas belajar, laboratorium, perpustakaan, dan ruang terbuka hijau..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Lingkungan Sekolah:</label>
+          <textarea id="karakteristikSarpras" rows="3" placeholder="Optimalisasi fasilitas belajar, laboratorium, perpustakaan, dan ruang terbuka hijau..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
-        <textarea id="potensiDaerah" rows="3" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
+          <textarea id="potensiDaerah" rows="3" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
-        <div class="help-text">Kontekstualisasi kerawanan bencana wilayah Garut (gempa bumi, tanah longsor, banjir musiman, vulkanik) serta kelengkapan ketersediaan peta evakuasi dan rambu keselamatan.</div>
-        <textarea id="analisisBencana" rows="4" placeholder="Sekolah berada di kawasan rawan bencana [pilih: longsor/gempa bumi/banjir]. Sekolah telah menyediakan jalur evakuasi, titik kumpul aman, dan membentuk Tim Siaga Bencana Sekolah (TSBS)..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
+          <div class="help-text">Kontekstualisasi kerawanan bencana wilayah Garut (gempa bumi, tanah longsor, banjir musiman, vulkanik) serta kelengkapan ketersediaan peta evakuasi dan rambu keselamatan.</div>
+          <textarea id="analisisBencana" rows="4" placeholder="Sekolah berada di kawasan rawan bencana [pilih: longsor/gempa bumi/banjir]. Sekolah telah menyediakan jalur evakuasi, titik kumpul aman, dan membentuk Tim Siaga Bencana Sekolah (TSBS)..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
-        <textarea id="raporPendidikan" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="olahDataSimpan()"></textarea>
+        <div class="form-group">
+          <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+          <textarea id="raporPendidikan" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="olahDataSimpan()"></textarea>
+        </div>
       </div>
     </div>
 
-    <!-- MODUL 3: VISI, MISI & TUJUAN -->
+    <!-- MODUL 3 -->
     <div id="modul3" class="tab-content no-print">
-      <h3>Modul 3: Visi, Misi, & Tujuan Satuan Pendidikan</h3>
-      
-      <div class="form-group">
-        <label>Visi Sekolah:</label>
-        <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
-      </div>
+      <div class="card">
+        <div class="card-title">Modul 3: Visi, Misi, & Tujuan Satuan Pendidikan</div>
+        
+        <div class="form-group">
+          <label class="form-label">Visi Sekolah:</label>
+          <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
+        </div>
 
-      <div class="form-group">
-        <label>Misi Sekolah:</label>
-        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan pendidikan kesiapsiagaan bencana & kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">Misi Sekolah:</label>
+          <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan pendidikan kesiapsiagaan bencana & kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
-        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Mewujudkan Satuan Pendidikan Aman Bencana (SPAB)..." oninput="olahDataSimpan()"></textarea>
+        <div class="form-group">
+          <label class="form-label">Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
+          <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Mewujudkan Satuan Pendidikan Aman Bencana (SPAB)..." oninput="olahDataSimpan()"></textarea>
+        </div>
       </div>
     </div>
 
-    <!-- MODUL 4: PENGORGANISASIAN PEMBELAJARAN (REVISI KOKURIKULER & SPAB) -->
+    <!-- MODUL 4 -->
     <div id="modul4" class="tab-content no-print">
-      <h3>Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum</h3>
-      
-      <div class="form-group">
-        <label>4.1 Pendekatan Pembelajaran:</label>
-        <select id="pendekatan" onchange="olahDataSimpan()">
-          <option>Mata Pelajaran (Reguler)</option>
-          <option>Tematik Integratif</option>
-          <option>Blok Waktu / Periodik</option>
-        </select>
-      </div>
+      <div class="card">
+        <div class="card-title">Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum</div>
+        
+        <div class="form-group">
+          <label class="form-label">4.1 Pendekatan Pembelajaran:</label>
+          <select id="pendekatan" onchange="olahDataSimpan()">
+            <option>Mata Pelajaran (Reguler)</option>
+            <option>Tematik Integratif</option>
+            <option>Blok Waktu / Periodik</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label>4.2 Pengorganisasian Intrakurikuler (Terintegrasi Pendidikan Kebencanaan):</label>
-        <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) pada mapel IPA, IPS, dan PJOK.</div>
-        <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">4.2 Pengorganisasian Intrakurikuler (Terintegrasi Pendidikan Kebencanaan):</label>
+          <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) pada mapel IPA, IPS, dan PJOK.</div>
+          <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>4.3 Rincian Minggu Efektif (Semester 1 & 2):</label>
-        <input type="text" id="mingguEfektif" placeholder="Semester 1: 18 Minggu Efektif | Semester 2: 16 Minggu Efektif" oninput="olahDataSimpan()">
-      </div>
+        <div class="form-group">
+          <label class="form-label">4.3 Rincian Minggu Efektif (Semester 1 & 2):</label>
+          <input type="text" id="mingguEfektif" placeholder="Semester 1: 18 Minggu Efektif | Semester 2: 16 Minggu Efektif" oninput="olahDataSimpan()">
+        </div>
 
-      <hr>
-      <h4>Tabel Alokasi Jam Pelajaran (JP) Per Minggu</h4>
-      <table>
-        <thead>
-          <tr>
-            <th rowspan="2">Mata Pelajaran</th>
-            <th colspan="2">Kelas VII</th>
-            <th colspan="2">Kelas VIII</th>
-            <th colspan="2">Kelas IX</th>
-          </tr>
-          <tr>
-            <th>Intra</th><th>Kokurikuler</th>
-            <th>Intra</th><th>Kokurikuler</th>
-            <th>Intra</th><th>Kokurikuler</th>
-          </tr>
-        </thead>
-        <tbody id="bodyTabelJP"></tbody>
-      </table>
+        <hr style="border:0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+        <h4 style="color: var(--primary);">Tabel Alokasi Jam Pelajaran (JP) Per Minggu</h4>
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">Mata Pelajaran</th>
+              <th colspan="2">Kelas VII</th>
+              <th colspan="2">Kelas VIII</th>
+              <th colspan="2">Kelas IX</th>
+            </tr>
+            <tr>
+              <th>Intra</th><th>Kokurikuler</th>
+              <th>Intra</th><th>Kokurikuler</th>
+              <th>Intra</th><th>Kokurikuler</th>
+            </tr>
+          </thead>
+          <tbody id="bodyTabelJP"></tbody>
+        </table>
 
-      <div class="form-group">
-        <label>4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana):</label>
-        <div class="help-text">Gambarkan sistem pelaksanaan kokurikuler, tema Projek Profil Pelajar Pancasila (P5), serta projek kebencanaan (Gaya Hidup Berkelanjutan / Kesiapsiagaan Bencana).</div>
-        <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan. Tema Kelas VII: Gaya Hidup Berkelanjutan (Tanggap Bencana/Mitigasi), Kelas VIII: Kearifan Lokal, Kelas IX: Kewirausahaan..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label class="form-label">4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana):</label>
+          <div class="help-text">Gambarkan sistem pelaksanaan kokurikuler, tema Projek Profil Pelajar Pancasila (P5), serta projek kebencanaan.</div>
+          <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan. Tema Kelas VII: Gaya Hidup Berkelanjutan (Tanggap Bencana/Mitigasi)..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>4.5 Ekstrakurikuler, Pembiasaan & Simulasi Evakuasi (Drill Bencana):</label>
-        <div class="help-text">Cantumkan jadwal rutin simulasi evakuasi bencana (1-2 kali per semester) serta peran Pramuka/PMR dalam SPAB.</div>
-        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler Wajib Pramuka dan PMR Madya (Kesiapsiagaan Tanggap Darurat), serta kegiatan Simulasi Evakuasi Bencana berkala setiap semester..." oninput="olahDataSimpan()"></textarea>
+        <div class="form-group">
+          <label class="form-label">4.5 Ekstrakurikuler, Pembiasaan & Simulasi Evakuasi (Drill Bencana):</label>
+          <div class="help-text">Cantumkan jadwal rutin simulasi evakuasi bencana (1-2 kali per semester) serta peran Pramuka/PMR dalam SPAB.</div>
+          <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler Wajib Pramuka dan PMR Madya (Kesiapsiagaan Tanggap Darurat), serta kegiatan Simulasi Evakuasi Bencana berkala..." oninput="olahDataSimpan()"></textarea>
+        </div>
       </div>
     </div>
 
-    <!-- MODUL 5: PERENCANAAN & EVALUASI -->
+    <!-- MODUL 5 -->
     <div id="modul5" class="tab-content no-print">
-      <h3>Modul 5: Perencanaan Pembelajaran, Evaluasi, & POS SPAB</h3>
-      
-      <div class="form-group">
-        <label>5.1 Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</label>
-        <textarea id="perencanaanPM" rows="3" placeholder="Penyusunan ATP, Modul Ajar, Asesmen Diagnostik, Formatif, dan Sumatif yang bermakna..." oninput="olahDataSimpan()"></textarea>
-      </div>
+      <div class="card">
+        <div class="card-title">Modul 5: Perencanaan Pembelajaran, Evaluasi, & POS SPAB</div>
+        
+        <div class="form-group">
+          <label class="form-label">5.1 Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</label>
+          <textarea id="perencanaanPM" rows="3" placeholder="Penyusunan ATP, Modul Ajar, Asesmen Diagnostik, Formatif, dan Sumatif yang bermakna..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>5.2 Prosedur Operasional Standar (POS) Kesiapsiagaan & Tim Siaga Bencana Sekolah (TSBS):</label>
-        <textarea id="posSPAB" rows="3" placeholder="SOP Tanggap Darurat Bencana, pemeliharaan rambu evakuasi, dan tugas Tim Siaga Bencana Sekolah..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">5.2 Prosedur Operasional Standar (POS) Kesiapsiagaan & Tim Siaga Bencana Sekolah (TSBS):</label>
+          <textarea id="posSPAB" rows="3" placeholder="SOP Tanggap Darurat Bencana, pemeliharaan rambu evakuasi, dan tugas Tim Siaga Bencana Sekolah..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>5.3 Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</label>
-        <textarea id="kriteriaKenaikan" rows="3" placeholder="1. Menyelesaikan seluruh program pembelajaran...&#10;2. Memiliki nilai sikap minimal Baik..." oninput="olahDataSimpan()"></textarea>
-      </div>
+        <div class="form-group">
+          <label class="form-label">5.3 Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</label>
+          <textarea id="kriteriaKenaikan" rows="3" placeholder="1. Menyelesaikan seluruh program pembelajaran...&#10;2. Memiliki nilai sikap minimal Baik..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>5.4 Pendampingan, Evaluasi Jangka Pendek/Panjang & Kombel:</label>
-        <textarea id="evaluasiKombel" rows="3" placeholder="Mekanisme refleksi tahunan, evaluasi 3-5 tahunan, supervisi pembelajaran, dan kegiatan Kombel..." oninput="olahDataSimpan()"></textarea>
+        <div class="form-group">
+          <label class="form-label">5.4 Pendampingan, Evaluasi Jangka Pendek/Panjang & Kombel:</label>
+          <textarea id="evaluasiKombel" rows="3" placeholder="Mekanisme refleksi tahunan, evaluasi 3-5 tahunan, supervisi pembelajaran, dan kegiatan Kombel..." oninput="olahDataSimpan()"></textarea>
+        </div>
       </div>
     </div>
 
-    <!-- MODUL 6: CETAK DOKUMEN UTUH -->
+    <!-- MODUL 6 -->
     <div id="modul6" class="tab-content no-print">
-      <h3>Modul 6: Pratinjau & Ekspor Dokumen Utuh KSP</h3>
-      <p>Seluruh dokumen KSP telah tersusun secara otomatis mengikuti sistematika <strong>Panduan BSKAP Revisi 2025 & Implementasi SPAB</strong>.</p>
-      <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan PDF Dokumen KSP Lengkap</button>
+      <div class="card" style="text-align: center;">
+        <div class="card-title" style="justify-content: center;">Modul 6: Pratinjau & Ekspor Dokumen Utuh KSP</div>
+        <p>Seluruh dokumen KSP telah tersusun secara otomatis mengikuti sistematika <strong>Panduan BSKAP Revisi 2025 & Implementasi SPAB</strong>.</p>
+        <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan PDF Dokumen KSP Lengkap</button>
+      </div>
     </div>
 
-    <!-- HASIL HASIL DOKUMEN CETAK KSP -->
+    <!-- HASIL PRATINJAU DOKUMEN CETAK -->
     <div class="preview-box">
-      
       <!-- COVER KSP -->
       <div class="cover-container">
         <div>
@@ -552,8 +687,7 @@ input:focus, select:focus, textarea:focus {
       <p><strong>A. Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</strong></p>
       <p id="prevPerencanaanPM" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>B. Prosedur Operasional Standar (POS) Kesiapsiagaan Bencana (SPAB):</strong></p>
-      <p id="prevPosSPAB" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+      <p><strong>B. Prosedur Operasional Standar (POS) Kesiapsiagaan Bencana (SPAB):</strong></p> <p id="prevPosSPAB" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <p><strong>C. Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</strong></p>
       <p id="prevKriteriaKenaikan" style="white-space: pre-line;"><i>Belum ada data.</i></p>
@@ -600,7 +734,7 @@ input:focus, select:focus, textarea:focus {
 
     function bukaModul(idModul, tombol) {
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
       
       document.getElementById(idModul).classList.add('active');
       tombol.classList.add('active');

@@ -4,23 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KSP SMP DIVERSIFIKASI & SPAB 2026</title>
+  <!-- Import Font PT Serif dari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
   <style>
     /* =========================================================
-       THEME STYLING - SOFT SAGE GREEN & WARM PASTEL
+       THEME STYLING - SAGE GREEN WITH DISTINCT MODULE COLORS
        ========================================================= */
     :root {
-      --bg-main: #f9f9f6;          /* Soft Cream White */
-      --bg-card: #ffffff;
+      --bg-main: #EFEFEA;          /* Light Muted Gray Background */
       --primary: #5c7865;          /* Warm Sage Green */
-      --primary-dark: #435b4b;     /* Deep Sage */
-      --accent: #d8e2dc;           /* Very Light Soft Sage */
-      --accent-active: #3e5a47;    /* Forest Sage for Active Tab */
-      --text-main: #2d3748;        /* Soft Charcoal Text */
-      --text-muted: #718096;
-      --border-color: #e2e8e0;     /* Subtle Sage Border */
-      --focus-ring: rgba(92, 120, 101, 0.25);
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.03);
-      --shadow-md: 0 4px 12px rgba(92, 120, 101, 0.08);
+      --primary-dark: #3b5042;     /* Deep Sage */
+      --text-main: #222523;        /* Dark Slate Text */
+      --text-muted: #58635b;
+      --border-color: #cdd7cf;     /* Subtle Sage Border */
+      --focus-ring: rgba(92, 120, 101, 0.3);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
       --radius-md: 10px;
       --radius-lg: 16px;
     }
@@ -28,18 +29,18 @@
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'PT Serif', Georgia, serif; /* MENGGUNAKAN PT SERIF */
       margin: 0;
       padding: 0;
       line-height: 1.6;
     }
 
-    /* Header & Sticky Top Bar - Soft Sage */
+    /* Header & Sticky Top Bar */
     header {
-      background: linear-gradient(135deg, #718f7a 0%, #587360 100%);
+      background: linear-gradient(135deg, #6c8a75 0%, #4a6652 100%);
       color: #ffffff;
       padding: 1.25rem 2rem;
-      box-shadow: 0 4px 15px rgba(88, 115, 96, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -49,17 +50,18 @@
     }
 
     .header-info h1 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: -0.01em;
       margin: 0;
       color: #ffffff;
+      font-family: 'PT Serif', Georgia, serif;
     }
 
     .header-info p {
       margin: 4px 0 0 0;
-      font-size: 0.85rem;
-      color: #e0eae3;
+      font-size: 0.95rem;
+      color: #e3ece5;
     }
 
     .header-toolbar {
@@ -70,43 +72,43 @@
       gap: 0.75rem;
     }
 
-    /* Navigasi Tab Modul Soft */
+    /* Navigasi Tab Modul */
     .nav-tabs {
       display: flex;
       gap: 0.4rem;
-      background-color: rgba(255, 255, 255, 0.18);
+      background-color: rgba(0, 0, 0, 0.15);
       padding: 0.35rem;
       border-radius: var(--radius-md);
       overflow-x: auto;
-      backdrop-filter: blur(4px);
     }
 
     .nav-tab {
       padding: 0.55rem 1rem;
       border-radius: 8px;
-      color: #f0f5f1;
+      color: #eaf1ed;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.2s ease;
       border: none;
       background: transparent;
       white-space: nowrap;
+      font-family: 'PT Serif', Georgia, serif;
     }
 
     .nav-tab:hover {
       color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.25);
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     .nav-tab.active {
       background-color: #ffffff;
       color: var(--primary-dark);
       font-weight: 700;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    /* Container & Layout Kartu (Cards) */
+    /* Container */
     .container {
       max-width: 1100px;
       margin: 2rem auto;
@@ -114,7 +116,6 @@
     }
 
     .card {
-      background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 2rem;
@@ -122,8 +123,16 @@
       box-shadow: var(--shadow-md);
     }
 
+    /* WARNA KHUSUS TIAP LATAR MODUL */
+    #modul1 .card { background-color: #FAF7F2; border-left: 6px solid #8C7A6B; } /* Modul 1: Cream Ivory */
+    #modul2 .card { background-color: #F1F5F2; border-left: 6px solid #5C7865; } /* Modul 2: Muted Sage */
+    #modul3 .card { background-color: #F2F6F9; border-left: 6px solid #5B7B94; } /* Modul 3: Soft Slate Blue */
+    #modul4 .card { background-color: #FBF6EF; border-left: 6px solid #A68B5B; } /* Modul 4: Warm Amber Sand */
+    #modul5 .card { background-color: #F6F4F8; border-left: 6px solid #7B6B8A; } /* Modul 5: Soft Plum Sage */
+    #modul6 .card { background-color: #EFF7F3; border-left: 6px solid #438A66; } /* Modul 6: Soft Emerald */
+
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-top: 0;
@@ -131,7 +140,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid #f0f4f1;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.08);
       padding-bottom: 0.75rem;
     }
 
@@ -145,16 +154,17 @@
 
     .form-label {
       display: block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #3b4d40;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #2c3830;
       margin-bottom: 0.375rem;
     }
 
     .help-text {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       margin-bottom: 0.375rem;
+      font-style: italic;
     }
 
     input[type="text"],
@@ -163,20 +173,19 @@
     textarea {
       width: 100%;
       padding: 0.65rem 0.875rem;
-      border: 1px solid #d4dfd7;
+      border: 1px solid #c0cdc3;
       border-radius: var(--radius-md);
-      background-color: #fcfdfe;
+      background-color: #ffffff;
       color: var(--text-main);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       transition: all 0.2s ease;
       box-sizing: border-box;
-      font-family: inherit;
+      font-family: 'PT Serif', Georgia, serif;
     }
 
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--primary);
-      background-color: #ffffff;
+      border-color: var(--primary-dark);
       box-shadow: 0 0 0 3.5px var(--focus-ring);
     }
 
@@ -186,18 +195,19 @@
       border-collapse: collapse;
       margin-top: 10px;
       margin-bottom: 15px;
+      background-color: #ffffff;
     }
 
     th, td {
       border: 1px solid var(--border-color);
       padding: 10px;
       text-align: left;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
     }
 
     th {
-      background-color: #f2f6f3;
-      font-weight: 600;
+      background-color: #e5ede7;
+      font-weight: 700;
       color: var(--primary-dark);
     }
 
@@ -208,12 +218,13 @@
       justify-content: center;
       gap: 0.5rem;
       padding: 0.55rem 1.1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
       border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
+      font-family: 'PT Serif', Georgia, serif;
     }
 
     .btn-primary {
@@ -223,38 +234,38 @@
 
     .btn-primary:hover {
       background-color: var(--primary-dark);
-      box-shadow: 0 4px 8px rgba(67, 91, 75, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .btn-secondary {
       background-color: rgba(255, 255, 255, 0.25);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.38);
+      background-color: rgba(255, 255, 255, 0.4);
     }
 
     .btn-danger {
-      background-color: #e57373;
+      background-color: #d9534f;
       color: white;
     }
 
     .btn-success {
       background-color: var(--primary);
       color: white;
-      font-size: 1rem;
+      font-size: 1.05rem;
       padding: 0.85rem 1.5rem;
     }
 
     .status-tag {
-      font-size: 0.8rem;
-      background: #e4eee7;
+      font-size: 0.85rem;
+      background: #e2ece5;
       color: var(--primary-dark);
       padding: 5px 14px;
       border-radius: 20px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* PREVIEW & COVER BOX */
@@ -310,7 +321,7 @@
     }
 
     @media print {
-      body { background-color: white; padding: 0; }
+      body { background-color: white; padding: 0; font-family: 'PT Serif', Georgia, serif; }
       header, .no-print { display: none !important; }
       .container { box-shadow: none; padding: 0; max-width: 100%; margin: 0; }
       .preview-box { border: none; padding: 0; box-shadow: none; }

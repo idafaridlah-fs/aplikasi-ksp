@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KSP SMP DIVERSIFIKASI 2026</title>
+  <title>KSP SMP DIVERSIFIKASI 2026 (Panduan BSKAP 2025)</title>
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f6f8; color: #333; }
     .container { max-width: 1000px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin: 0 auto; }
@@ -43,10 +43,11 @@
     .preview-box { margin-top: 30px; padding: 30px; background: #ffffff; border: 1px solid #ced4da; border-radius: 6px; line-height: 1.6; }
     .status-tag { font-size: 12px; background: #d1e7dd; color: #0f5132; padding: 4px 10px; border-radius: 12px; display: none; }
 
-    /* LAYOUT COVER KSP ELEGAN */
+    /* LAYOUT COVER KSP REVISI 2025 */
     .cover-container { text-align: center; border: 4px double #0d6efd; padding: 40px 20px; margin-bottom: 40px; min-height: 800px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
-    .cover-title { font-size: 26px; font-weight: bold; color: #0f2b5c; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-    .cover-logo { margin: 30px auto; max-width: 160px; }
+    .cover-title { font-size: 26px; font-weight: bold; color: #0f2b5c; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .cover-subtitle { font-size: 14px; color: #495057; font-weight: bold; margin-bottom: 20px; }
+    .cover-logo { margin: 30px auto; max-width: 150px; }
     .cover-school { font-size: 22px; font-weight: bold; color: #0d6efd; margin-top: 15px; text-transform: uppercase; }
 
     @media print {
@@ -65,11 +66,11 @@
     <!-- HEADER APLIKASI -->
     <div class="header-title no-print">
       <h2>KSP SMP DIVERSIFIKASI 2026</h2>
-      <p>Aplikasi Penyusunan Kurikulum Satuan Pendidikan - Holistik & Diversifikasi Kurikulum Garut</p>
+      <p>Aplikasi Penyusunan Kurikulum Satuan Pendidikan — Selaras Panduan BSKAP Edisi Revisi 2025 & Diversifikasi Garut</p>
       <p style="font-size: 13px; color: #0d6efd;">Pengembang Aplikasi: Ida Faridlah, M.Ag. (Pengawas SMP Kab. Garut)</p>
     </div>
 
-    <!-- TOOLBAR EKSPOR / IMPOR DATA -->
+    <!-- TOOLBAR DATA -->
     <div class="data-toolbar no-print">
       <div>
         <span id="statusTersimpan" class="status-tag">✓ Tersimpan Otomatis di Browser</span>
@@ -83,11 +84,11 @@
     
     <!-- TAB NAVIGASI MODUL -->
     <div class="tab-nav no-print">
-      <button class="tab-btn active" onclick="bukaModul('modul1', this)">1. Administrasi & Pengesahan</button>
-      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Analisis Karakteristik</button>
+      <button class="tab-btn active" onclick="bukaModul('modul1', this)">1. Administrasi & Cover</button>
+      <button class="tab-btn" onclick="bukaModul('modul2', this)">2. Karakteristik Satuan Pendidikan</button>
       <button class="tab-btn" onclick="bukaModul('modul3', this)">3. Visi, Misi & Tujuan</button>
-      <button class="tab-btn" onclick="bukaModul('modul4', this)">4. Diversifikasi & Struktur JP</button>
-      <button class="tab-btn" onclick="bukaModul('modul5', this)">5. Evaluasi & Kriteria</button>
+      <button class="tab-btn" onclick="bukaModul('modul4', this)">4. Pengorganisasian Pembelajaran</button>
+      <button class="tab-btn" onclick="bukaModul('modul5', this)">5. Perencanaan & Evaluasi</button>
       <button class="tab-btn" onclick="bukaModul('modul6', this)">6. Cetak Dokumen Utuh</button>
     </div>
 
@@ -152,32 +153,32 @@
 
     <!-- MODUL 2: KARAKTERISTIK -->
     <div id="modul2" class="tab-content no-print">
-      <h3>Modul 2: Karakteristik Satuan Pendidikan & Potensi Daerah Garut</h3>
+      <h3>Modul 2: Analisis Karakteristik Satuan Pendidikan</h3>
       
       <div class="form-group">
-        <label>1.1 Karakteristik Murid (Minat, Bakat, Kebutuhan & Aspirasi):</label>
-        <textarea id="karakteristikMurid" rows="3" placeholder="Gambarkan minat, bakat, serta aspirasi murid..." oninput="olahDataSimpan()"></textarea>
+        <label>2.1 Karakteristik Peserta Didik (Minat, Bakat, Kebutuhan & Latar Belakang):</label>
+        <textarea id="karakteristikMurid" rows="3" placeholder="Gambarkan minat, bakat, keberagaman latar belakang sosial budaya, serta aspirasi murid..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>1.2 Karakteristik Pendidik & Tenaga Kependidikan:</label>
-        <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi guru, jumlah guru penggerak, kompetensi digital..." oninput="olahDataSimpan()"></textarea>
+        <label>2.2 Karakteristik Pendidik & Tenaga Kependidikan (PTK):</label>
+        <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik, sertifikasi, Guru Penggerak, dan peta kompetensi pedagogik/digital..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>1.3 Sarana, Prasarana & Lingkungan Sekolah:</label>
-        <textarea id="karakteristikSarpras" rows="3" placeholder="Fasilitas laboratorium, perpustakaan, jaringan internet..." oninput="olahDataSimpan()"></textarea>
+        <label>2.3 Pemanfaatan Sarana, Prasarana, & Lingkungan Sekolah:</label>
+        <textarea id="karakteristikSarpras" rows="3" placeholder="Optimalisasi fasilitas belajar, laboratorium, perpustakaan, dan ruang terbuka hijau..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>1.4 Potensi Daerah, Bentang Alam & Kearifan Lokal Garut (Diversifikasi):</label>
-        <div class="help-text">Integrasikan potensi wilayah (misal: Dodol Garut, Batik Garut, Burayot, Domba Garut, Candi Cangkuang, Pertanian, Dsb).</div>
-        <textarea id="potensiDaerah" rows="4" placeholder="Potensi bentang alam, sejarah, seni budaya, serta ekonomi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+        <label>2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
+        <div class="help-text">Kontekstualisasi dengan potensi wilayah Garut (pertanian, peternakan domba, kerajinan kulit, seni budaya, dll).</div>
+        <textarea id="potensiDaerah" rows="4" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>1.5 Profil Sekolah Berdasarkan Rapor Pendidikan:</label>
-        <textarea id="raporPendidikan" rows="3" placeholder="Capaian Literasi, Numerasi, Iklim Keamanan Sekolah, Kebhinekaan..." oninput="olahDataSimpan()"></textarea>
+        <label>2.5 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+        <textarea id="raporPendidikan" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
@@ -187,36 +188,36 @@
       
       <div class="form-group">
         <label>Visi Sekolah:</label>
-        <input type="text" id="visiSekolah" placeholder="Terwujudnya Generasi Cerdas, Berkarakter Profil Pelajar Pancasila, Berbudaya Lokal Garut, dan Berwawasan Lingkungan" oninput="olahDataSimpan()">
+        <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
       </div>
 
       <div class="form-group">
         <label>Misi Sekolah:</label>
-        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning) berbasis konteks lokal...&#10;2. Mengembangkan potensi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
+        <textarea id="misiSekolah" rows="4" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan potensi kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
         <label>Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
-        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi sebesar 15%...&#10;2. Terlaksananya proyek P5 berwawasan kearifan lokal..." oninput="olahDataSimpan()"></textarea>
+        <textarea id="tujuanSekolah" rows="4" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Melaksanakan projek kokurikuler kontekstual kearifan lokal..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
-    <!-- MODUL 4: DIVERSIFIKASI & STRUKTUR JP -->
+    <!-- MODUL 4: PENGORGANISASIAN PEMBELAJARAN (REVISI KOKURIKULER 2025) -->
     <div id="modul4" class="tab-content no-print">
-      <h3>Modul 4: Pengorganisasian Pembelajaran & Strukur Jam Pelajaran (JP)</h3>
+      <h3>Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum</h3>
       
       <div class="form-group">
         <label>4.1 Pendekatan Pembelajaran:</label>
         <select id="pendekatan" onchange="olahDataSimpan()">
           <option>Mata Pelajaran (Reguler)</option>
           <option>Tematik Integratif</option>
-          <option>Blok Waktu</option>
+          <option>Blok Waktu / Periodik</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>4.2 Penjelasan Intrakurikuler Berbasis Konteks Lokal Garut:</label>
-        <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial dan kontekstual kearifan lokal Garut pada mata pelajaran..." oninput="olahDataSimpan()"></textarea>
+        <label>4.2 Pengorganisasian Intrakurikuler & Muatan Lokal:</label>
+        <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta strategi deep learning..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
@@ -235,32 +236,33 @@
             <th colspan="2">Kelas IX</th>
           </tr>
           <tr>
-            <th>Intra</th><th>P5</th>
-            <th>Intra</th><th>P5</th>
-            <th>Intra</th><th>P5</th>
+            <th>Intra</th><th>Kokurikuler</th>
+            <th>Intra</th><th>Kokurikuler</th>
+            <th>Intra</th><th>Kokurikuler</th>
           </tr>
         </thead>
         <tbody id="bodyTabelJP"></tbody>
       </table>
 
       <div class="form-group">
-        <label>4.4 Pengorganisasian Kokurikuler (P5, Kebencanaan, Perubahan Iklim):</label>
-        <textarea id="p5" rows="3" placeholder="Tema P5 yang dipilih (Kearifan Lokal, Gaya Hidup Berkelanjutan), alokasi waktu blok/mingguan..." oninput="olahDataSimpan()"></textarea>
+        <label>4.4 Pengorganisasian Kokurikuler:</label>
+        <div class="help-text">Gambarkan sistem pelaksanaan kokurikuler (sistem blok/mingguan), tema Projek Profil Pelajar Pancasila (P5), serta kegiatan projek kontekstual berbasis potensi Garut.</div>
+        <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler diisi dengan Projek Penguatan Profil Pelajar Pancasila (P5) dan projek diversifikasi kearifan lokal. Tema Kelas VII: Kearifan Lokal, Kelas VIII: Gaya Hidup Berkelanjutan, Kelas IX: Kewirausahaan..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
-        <label>4.5 Pengorganisasian Ekstrakurikuler & Program Khusus (AI/Koding/Kebencanaan):</label>
-        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler Wajib (Pramuka), Pilihan, serta Program Sekolah Model AI/Koding/Kebencanaan..." oninput="olahDataSimpan()"></textarea>
+        <label>4.5 Ekstrakurikuler & Program Pembiasaan Khusus:</label>
+        <textarea id="ekstrakurikuler" rows="3" placeholder="Ekstrakurikuler wajib (Pramuka), ekstrakurikuler pilihan, serta program pembiasaan karakter..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
-    <!-- MODUL 5: EVALUASI & KRITERIA -->
+    <!-- MODUL 5: PERENCANAAN & EVALUASI -->
     <div id="modul5" class="tab-content no-print">
-      <h3>Modul 5: Perencanaan, Evaluasi, & Kriteria Kenaikan Kelas/Kelulusan</h3>
+      <h3>Modul 5: Perencanaan Pembelajaran, Asesmen, & Evaluasi</h3>
       
       <div class="form-group">
-        <label>5.1 Perencanaan Pembelajaran Mendalam (Deep Learning & Asesmen):</label>
-        <textarea id="perencanaanPM" rows="3" placeholder="Strategi penyusunan ATP, Modul Ajar, Asesmen Diagnostik, Formatif, dan Sumatif..." oninput="olahDataSimpan()"></textarea>
+        <label>5.1 Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</label>
+        <textarea id="perencanaanPM" rows="3" placeholder="Penyusunan ATP, Modul Ajar, Asesmen Diagnostik, Formatif, dan Sumatif yang bermakna..." oninput="olahDataSimpan()"></textarea>
       </div>
 
       <div class="form-group">
@@ -269,26 +271,26 @@
       </div>
 
       <div class="form-group">
-        <label>5.3 Pendampingan, Evaluasi & Komunitas Belajar (Kombel):</label>
-        <textarea id="evaluasiKombel" rows="3" placeholder="Jadwal supervisi akademik, refleksi pembelajaran berkala, dan aktivitas Kombel..." oninput="olahDataSimpan()"></textarea>
+        <label>5.3 Pendampingan, Evaluasi Jangka Pendek/Panjang & Kombel:</label>
+        <textarea id="evaluasiKombel" rows="3" placeholder="Mekanisme refleksi tahunan, evaluasi 3-5 tahunan, supervisi pembelajaran, dan kegiatan Kombel..." oninput="olahDataSimpan()"></textarea>
       </div>
     </div>
 
     <!-- MODUL 6: CETAK DOKUMEN UTUH -->
     <div id="modul6" class="tab-content no-print">
       <h3>Modul 6: Pratinjau & Ekspor Dokumen Utuh KSP</h3>
-      <p>Seluruh dokumen KSP beserta Cover, Pengesahan, dan Lampiran SK Tim Penyusun telah tersusun secara otomatis di bawah ini.</p>
+      <p>Seluruh dokumen KSP telah tersusun secara otomatis mengikuti sistematika <strong>Panduan BSKAP Revisi 2025</strong>.</p>
       <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan PDF Dokumen KSP Lengkap</button>
     </div>
 
-    <!-- DOKUMEN HASIL RANGKUMAN UTUH KSP GARUT (PRINT OUT) -->
+    <!-- HASIL HASIL DOKUMEN CETAK KSP -->
     <div class="preview-box">
       
-      <!-- HALAMAN SAMPUL / COVER -->
+      <!-- COVER KSP -->
       <div class="cover-container">
         <div>
           <div class="cover-title">KURIKULUM SATUAN PENDIDIKAN<br>(KSP)</div>
-          <p style="font-size: 16px; font-weight: bold; color: #555;">BERBASIS HOLISTIK & DIVERSIFIKASI KURIKULUM</p>
+          <div class="cover-subtitle">SESUAI PANDUAN PENGEMBANGAN KSP & KOKURIKULER REVISI TAHUN 2025<br>BERBASIS HOLISTIK & DIVERSIFIKASI KURIKULUM</div>
         </div>
         <div>
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Tut_Wuri_Handayani.png" class="cover-logo" alt="Logo Tut Wuri Handayani">
@@ -303,11 +305,11 @@
 
       <div class="page-break"></div>
 
-      <!-- LEMBAR PENGESAHAN DOKUMEN -->
+      <!-- LEMBAR PENGESAHAN -->
       <div style="border: 1px solid #333; padding: 20px; margin-bottom: 30px;">
         <h3 style="text-align: center; color: black; margin-top: 0;">LEMBAR PENGESAHAN</h3>
         <p style="text-align: justify; font-size: 13px;">
-          Setelah memperhatikan pertimbangan dari Komite Sekolah dan hasil verifikasi Tim Penelaah, Dokumen Kurikulum Satuan Pendidikan (KSP) <strong><span id="prevSekolahSah">[Nama Sekolah]</span></strong> Tahun Ajaran 2026/2027 berbasis Holistik & Diversifikasi Kurikulum ini secara resmi disahkan dan dinyatakan berlaku.
+          Setelah memperhatikan pertimbangan Komite Sekolah dan hasil penelaahan Pengawas Pembina, Dokumen Kurikulum Satuan Pendidikan (KSP) <strong><span id="prevSekolahSah">[Nama Sekolah]</span></strong> Tahun Ajaran 2026/2027 disahkan dan dinyatakan berlaku.
         </p>
         <p style="text-align: right; font-size: 13px;">Ditetapkan di: Garut<br>Tanggal: <strong id="prevTglPenetapan">[Tanggal Penetapan]</strong></p>
         
@@ -343,13 +345,13 @@
       <p><strong>B. Karakteristik Pendidik & Tenaga Kependidikan:</strong></p>
       <p id="prevPTK" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>C. Sarana, Prasarana & Lingkungan Sekolah:</strong></p>
+      <p><strong>C. Sarana, Prasarana, & Lingkungan Belajar:</strong></p>
       <p id="prevSarpras" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>D. Potensi Daerah, Bentang Alam & Kearifan Lokal Garut (Diversifikasi):</strong></p>
+      <p><strong>D. Kemitraan & Potensi Kearifan Lokal Garut (Diversifikasi):</strong></p>
       <p id="prevPotensiDaerah" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>E. Profil Sekolah Berdasarkan Rapor Pendidikan:</strong></p>
+      <p><strong>E. Evaluasi Diri Rapor Pendidikan:</strong></p>
       <p id="prevRapor" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <!-- BAB II -->
@@ -364,12 +366,12 @@
       <p id="prevTujuan" style="white-space: pre-line;"><i>[Tujuan Sekolah]</i></p>
 
       <!-- BAB III -->
-      <h4>BAB III: PENGORGANISASIAN PEMBELAJARAN & DIVERSIFIKASI</h4>
+      <h4>BAB III: PENGORGANISASIAN PEMBELAJARAN</h4>
       <p><strong>A. Pendekatan Pembelajaran:</strong> <span id="prevPendekatan">Mata Pelajaran (Reguler)</span></p>
       
       <p><strong>B. Pengorganisasian Intrakurikuler & Minggu Efektif:</strong></p>
       <p id="prevIntrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
-      <p><strong>Alokasi Waktu Belajar Efektif:</strong> <span id="prevMingguEfektif">[Rincian Minggu Efektif]</span></p>
+      <p><strong>Rincian Waktu Belajar Efektif:</strong> <span id="prevMingguEfektif">[Rincian Minggu Efektif]</span></p>
 
       <p><strong>C. Tabel Alokasi Jam Pelajaran (JP):</strong></p>
       <table>
@@ -381,23 +383,23 @@
             <th colspan="2">Kelas IX</th>
           </tr>
           <tr>
-            <th>Intra</th><th>P5</th>
-            <th>Intra</th><th>P5</th>
-            <th>Intra</th><th>P5</th>
+            <th>Intra</th><th>Kokurikuler</th>
+            <th>Intra</th><th>Kokurikuler</th>
+            <th>Intra</th><th>Kokurikuler</th>
           </tr>
         </thead>
         <tbody id="prevTabelJP"></tbody>
       </table>
 
-      <p><strong>D. Pengorganisasian Kokurikuler (P5, Kebencanaan, Perubahan Iklim):</strong></p>
-      <p id="prevP5" style="white-space: pre-line;"><i>Belum ada data.</i></p>
+      <p><strong>D. Pengorganisasian Kokurikuler:</strong></p>
+      <p id="prevKokurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
-      <p><strong>E. Pengorganisasian Ekstrakurikuler & Program Unggulan:</strong></p>
+      <p><strong>E. Ekstrakurikuler & Pembiasaan:</strong></p>
       <p id="prevEkstrakurikuler" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <!-- BAB IV -->
-      <h4>BAB IV: PERENCANAAN, EVALUASI, DAN KRITERIA KELULUSAN</h4>
-      <p><strong>A. Perencanaan Pembelajaran Mendalam (Deep Learning & Asesmen):</strong></p>
+      <h4>BAB IV: PERENCANAAN PEMBELAJARAN & EVALUASI</h4>
+      <p><strong>A. Perencanaan Pembelajaran Mendalam (*Deep Learning* & Asesmen):</strong></p>
       <p id="prevPerencanaanPM" style="white-space: pre-line;"><i>Belum ada data.</i></p>
 
       <p><strong>B. Kriteria Kenaikan Kelas & Kelulusan Peserta Didik:</strong></p>
@@ -409,13 +411,13 @@
       <hr style="border: 0.5px dashed #ccc; margin-top: 30px;">
 
       <h4>LAMPIRAN-LAMPIRAN DOKUMEN KSP</h4>
-      <p><strong>1. Tim Penyusun Dokumen KSP (Lampiran SK Kepala Sekolah):</strong></p>
+      <p><strong>1. Tim Penyusun Dokumen KSP (SK Kepala Sekolah):</strong></p>
       <ol id="prevDaftarTim"></ol>
       <p><strong>2. Berkas Pendukung Utama:</strong></p>
       <ul>
-        <li>Capaian Pembelajaran (CP) & Alur Tujuan Pembelajaran (ATP) Berbasis Konteks Lokal Garut</li>
-        <li>Contoh Modul Ajar / RPP Pembelajaran Mendalam (*Deep Learning*)</li>
-        <li>Contoh Modul Proyek Penguatan Profil Pelajar Pancasila (P5) Berwawasan Kearifan Lokal & Kebencanaan</li>
+        <li>Alur Tujuan Pembelajaran (ATP) Kontekstual</li>
+        <li>Contoh Modul Ajar / RPP (*Deep Learning*)</li>
+        <li>Contoh Modul Kokurikuler / Projek Penguatan Profil Pelajar Pancasila</li>
         <li>Kalender Pendidikan Satuan Pendidikan Tahun Ajaran 2026/2027</li>
       </ul>
     </div>
@@ -458,11 +460,11 @@
         tr.innerHTML = `
           <td><strong>${mapel}</strong></td>
           <td><input type="number" class="jp-in" data-mapel="${i}" data-col="7intra" value="3" oninput="olahDataSimpan()"></td>
-          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="7p5" value="1" oninput="olahDataSimpan()"></td>
+          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="7koku" value="1" oninput="olahDataSimpan()"></td>
           <td><input type="number" class="jp-in" data-mapel="${i}" data-col="8intra" value="3" oninput="olahDataSimpan()"></td>
-          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="8p5" value="1" oninput="olahDataSimpan()"></td>
+          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="8koku" value="1" oninput="olahDataSimpan()"></td>
           <td><input type="number" class="jp-in" data-mapel="${i}" data-col="9intra" value="3" oninput="olahDataSimpan()"></td>
-          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="9p5" value="1" oninput="olahDataSimpan()"></td>
+          <td><input type="number" class="jp-in" data-mapel="${i}" data-col="9koku" value="1" oninput="olahDataSimpan()"></td>
         `;
         tbody.appendChild(tr);
       });
@@ -502,7 +504,7 @@
       document.getElementById('prevPendekatan').innerText = document.getElementById('pendekatan').value;
       document.getElementById('prevIntrakurikuler').innerText = document.getElementById('intrakurikuler').value || "Belum ada data.";
       document.getElementById('prevMingguEfektif').innerText = document.getElementById('mingguEfektif').value || "Semester 1: 18 Minggu Efektif | Semester 2: 16 Minggu Efektif";
-      document.getElementById('prevP5').innerText = document.getElementById('p5').value || "Belum ada data.";
+      document.getElementById('prevKokurikuler').innerText = document.getElementById('kokurikuler').value || "Belum ada data.";
       document.getElementById('prevEkstrakurikuler').innerText = document.getElementById('ekstrakurikuler').value || "Belum ada data.";
 
       document.getElementById('prevPerencanaanPM').innerText = document.getElementById('perencanaanPM').value || "Belum ada data.";
@@ -607,7 +609,7 @@
         pendekatan: document.getElementById('pendekatan').value,
         intrakurikuler: document.getElementById('intrakurikuler').value,
         mingguEfektif: document.getElementById('mingguEfektif').value,
-        p5: document.getElementById('p5').value,
+        kokurikuler: document.getElementById('kokurikuler').value,
         ekstrakurikuler: document.getElementById('ekstrakurikuler').value,
         perencanaanPM: document.getElementById('perencanaanPM').value,
         kriteriaKenaikan: document.getElementById('kriteriaKenaikan').value,
@@ -616,12 +618,12 @@
         jp: jpData
       };
 
-      localStorage.setItem('ksp_garut_2026_v3', JSON.stringify(dataAplikasi));
+      localStorage.setItem('ksp_garut_2026_bskap', JSON.stringify(dataAplikasi));
       document.getElementById('statusTersimpan').style.display = 'inline';
     }
 
     function muatDataTersimpan() {
-      const dataSiswa = localStorage.getItem('ksp_garut_2026_v3');
+      const dataSiswa = localStorage.getItem('ksp_garut_2026_bskap');
       if (!dataSiswa) return;
 
       const data = JSON.parse(dataSiswa);
@@ -647,7 +649,7 @@
       if (data.pendekatan) document.getElementById('pendekatan').value = data.pendekatan;
       if (data.intrakurikuler) document.getElementById('intrakurikuler').value = data.intrakurikuler;
       if (data.mingguEfektif) document.getElementById('mingguEfektif').value = data.mingguEfektif;
-      if (data.p5) document.getElementById('p5').value = data.p5;
+      if (data.kokurikuler || data.p5) document.getElementById('kokurikuler').value = data.kokurikuler || data.p5;
       if (data.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = data.ekstrakurikuler;
 
       if (data.perencanaanPM) document.getElementById('perencanaanPM').value = data.perencanaanPM;
@@ -673,7 +675,7 @@
     }
 
     function exportJSON() {
-      const dataSiswa = localStorage.getItem('ksp_garut_2026_v3');
+      const dataSiswa = localStorage.getItem('ksp_garut_2026_bskap');
       if (!dataSiswa) {
         alert("Belum ada data untuk diekspor.");
         return;
@@ -695,7 +697,7 @@
         try {
           const contents = e.target.result;
           JSON.parse(contents);
-          localStorage.setItem('ksp_garut_2026_v3', contents);
+          localStorage.setItem('ksp_garut_2026_bskap', contents);
           muatDataTersimpan();
           alert("Data KSP berhasil diimpor!");
         } catch (err) {

@@ -1131,57 +1131,75 @@
 }
 
     function perbaruiPratinjau(d) {
-      document.getElementById('p_namaSekolahCover').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
-      document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || 'Kab. Garut');
-      document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
+  if (!d) return;
 
-      document.getElementById('p_namaSekolahPengesahan').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_namaSekolahPengesahan2').innerText = d.namaSekolah || '[Nama Sekolah]';
-      document.getElementById('p_namaKomite').innerText = d.namaKomite || '[Nama Ketua Komite]';
-      document.getElementById('p_tglPenetapanSign').innerText = d.tglPenetapan || '14 Juli 2026';
-      document.getElementById('p_kepalaSekolah').innerText = d.kepalaSekolah || '[Nama Kepala Sekolah]';
-      document.getElementById('p_nipKepala').innerText = d.nipKepala || '[NIP Kepala Sekolah]';
-      document.getElementById('p_namaPengawas').innerText = d.namaPengawas || 'Ida Faridlah, M.Ag.';
-      document.getElementById('p_nipPengawas').innerText = d.nipPengawas || '197211141998022002';
+  // --- MODUL 1: COVER & PENGESAHAN ---
+  let nama = (d.namaSekolah || '').toUpperCase();
+  document.querySelectorAll('.p_namaSekolah, #p_namaSekolahCover, #p_namaSekolahPenetapan').forEach(el => {
+    el.textContent = nama || '[NAMA SATUAN PENDIDIKAN]';
+  });
+  if (document.getElementById('p_namaSekolahCoverSub')) document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
+  if (document.getElementById('p_npsnCover')) document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
+  if (document.getElementById('p_alamatCover')) document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || 'Kab. Garut');
+  if (document.getElementById('p_tglPenetapanCover')) document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
 
-      document.getElementById('p_kataPengantar').innerText = d.kataPengantar || 'Puji syukur kami panjatkan ke hadirat Allah SWT...';
-      document.getElementById('p_karakteristikMurid').innerText = d.karakteristikMurid || '-';
-      document.getElementById('p_karakteristikPTK').innerText = d.karakteristikPTK || '-';
-      document.getElementById('p_karakteristikSarpras').innerText = d.karakteristikSarpras || '-';
-      document.getElementById('p_potensiDaerah').innerText = d.potensiDaerah || '-';
-      document.getElementById('p_analisisBencana').innerText = d.analisisBencana || '-';
-      document.getElementById('p_raporPendidikan').innerText = d.raporPendidikan || '-';
-      document.getElementById('p_visiSekolah').innerText = d.visiSekolah || '-';
-      document.getElementById('p_misiSekolah').innerText = d.misiSekolah || '-';
-      document.getElementById('p_tujuanSekolah').innerText = d.tujuanSekolah || '-';
-      document.getElementById('p_pendekatan').innerText = d.pendekatan || 'Mata Pelajaran (Reguler)';
-      document.getElementById('p_intrakurikuler').innerText = d.intrakurikuler || '-';
-      document.getElementById('p_kokurikuler').innerText = d.kokurikuler || '-';
-      document.getElementById('p_ekstrakurikuler').innerText = d.ekstrakurikuler || '-';
-      document.getElementById('p_perencanaanBelajar').innerText = d.perencanaanBelajar || '-';
-      document.getElementById('p_posKedaruratan').innerText = d.posKedaruratan || '-';
-      document.getElementById('p_evaluasiPendampingan').innerText = d.evaluasiPendampingan || '-';
+  if (document.getElementById('p_namaSekolahPengesahan')) document.getElementById('p_namaSekolahPengesahan').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
+  if (document.getElementById('p_namaSekolahPengesahan2')) document.getElementById('p_namaSekolahPengesahan2').innerText = d.namaSekolah || '[Nama Sekolah]';
+  if (document.getElementById('p_namaKomite')) document.getElementById('p_namaKomite').innerText = d.namaKomite || '[Nama Ketua Komite]';
+  if (document.getElementById('p_tglPenetapanSign')) document.getElementById('p_tglPenetapanSign').innerText = d.tglPenetapan || '14 Juli 2026';
+  if (document.getElementById('p_kepalaSekolah')) document.getElementById('p_kepalaSekolah').innerText = d.kepalaSekolah || '[Nama Kepala Sekolah]';
+  if (document.getElementById('p_nipKepala')) document.getElementById('p_nipKepala').innerText = d.nipKepala || '[NIP Kepala Sekolah]';
+  if (document.getElementById('p_namaPengawas')) document.getElementById('p_namaPengawas').innerText = d.namaPengawas || 'Ida Faridlah, M.Ag.';
+  if (document.getElementById('p_nipPengawas')) document.getElementById('p_nipPengawas').innerText = d.nipPengawas || '197211141998022002';
+  if (document.getElementById('p_kataPengantar')) document.getElementById('p_kataPengantar').innerText = d.kataPengantar || 'Puji syukur kami panjatkan ke hadirat Allah SWT...';
 
-      // TABEL JP CETAK
-      let tbodyCetak = document.getElementById('p_bodyTabelJP');
-      tbodyCetak.innerHTML = '';
-      d.dataJP.forEach(item => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${item.mapel}</td>
-          <td style="text-align:center;">${item.c7Intra}</td>
-          <td style="text-align:center;">${item.c7Koku}</td>
-          <td style="text-align:center;">${item.c8Intra}</td>
-          <td style="text-align:center;">${item.c8Koku}</td>
-          <td style="text-align:center;">${item.c9Intra}</td>
-          <td style="text-align:center;">${item.c9Koku}</td>
-        `;
-        tbodyCetak.appendChild(tr);
-      });
-    }
+  // --- MODUL 2: KARAKTERISTIK & SPAB ---
+  if (document.getElementById('p_karakteristikMurid')) document.getElementById('p_karakteristikMurid').innerText = d.karakteristikMurid || '-';
+  if (document.getElementById('p_karakteristikPTK')) document.getElementById('p_karakteristikPTK').innerText = d.karakteristikPTK || '-';
+  if (document.getElementById('p_karakteristikSarpras')) document.getElementById('p_karakteristikSarpras').innerText = d.karakteristikSarpras || '-';
+  if (document.getElementById('p_potensiDaerah')) document.getElementById('p_potensiDaerah').innerText = d.potensiDaerah || '-';
+  if (document.getElementById('p_analisisBencana')) document.getElementById('p_analisisBencana').innerText = d.analisisBencana || '-';
+  if (document.getElementById('p_raporPendidikan')) document.getElementById('p_raporPendidikan').innerText = d.raporPendidikan || '-';
 
+  // --- MODUL 3: VISI, MISI, TUJUAN & 8 DPL (MEMBUANG GARIS BERDIRI '|') ---
+  let elemVisi = document.getElementById('p_visiSekolah') || document.getElementById('p_visi');
+  if (elemVisi) {
+    let teksVisi = d.visiSekolah || '-';
+    elemVisi.innerText = teksVisi.replace(/\|/g, '').trim();
+  }
+  let elemMisi = document.getElementById('p_misiSekolah') || document.getElementById('p_misi');
+  if (elemMisi) elemMisi.innerText = d.misiSekolah || '-';
+  let elemTujuan = document.getElementById('p_tujuanSekolah') || document.getElementById('p_tujuan');
+  if (elemTujuan) elemTujuan.innerText = d.tujuanSekolah || '-';
+
+  // --- MODUL 4 & 5: PENGORGANISASIAN, PERENCANAAN & POS SPAB ---
+  if (document.getElementById('p_pendekatan')) document.getElementById('p_pendekatan').innerText = d.pendekatan || 'Mata Pelajaran (Reguler)';
+  if (document.getElementById('p_intrakurikuler')) document.getElementById('p_intrakurikuler').innerText = d.intrakurikuler || '-';
+  if (document.getElementById('p_kokurikuler')) document.getElementById('p_kokurikuler').innerText = d.kokurikuler || '-';
+  if (document.getElementById('p_ekstrakurikuler')) document.getElementById('p_ekstrakurikuler').innerText = d.ekstrakurikuler || '-';
+  if (document.getElementById('p_perencanaanBelajar')) document.getElementById('p_perencanaanBelajar').innerText = d.perencanaanPembelajaran || d.perencanaanBelajar || '-';
+  if (document.getElementById('p_posKedaruratan')) document.getElementById('p_posKedaruratan').innerText = d.posSpab || d.posKedaruratan || '-';
+  if (document.getElementById('p_evaluasiPendampingan')) document.getElementById('p_evaluasiPendampingan').innerText = d.evaluasiPendampingan || '-';
+
+  // TABEL JP CETAK
+  let tbodyCetak = document.getElementById('p_bodyTabelJP');
+  if (tbodyCetak && d.dataJP) {
+    tbodyCetak.innerHTML = '';
+    d.dataJP.forEach(item => {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${item.mapel}</td>
+        <td style="text-align:center;">${item.c7Intra}</td>
+        <td style="text-align:center;">${item.c7Koku}</td>
+        <td style="text-align:center;">${item.c8Intra}</td>
+        <td style="text-align:center;">${item.c8Koku}</td>
+        <td style="text-align:center;">${item.c9Intra}</td>
+        <td style="text-align:center;">${item.c9Koku}</td>
+      `;
+      tbodyCetak.appendChild(tr);
+    });
+  }
+}
     function muatDataLokal() {
       let str = localStorage.getItem('ksp_garut_2026');
       if (!str) return;

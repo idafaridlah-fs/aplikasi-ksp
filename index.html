@@ -424,13 +424,13 @@
             <input type="text" id="alamatSekolah" placeholder="Kp. Cicayur" oninput="olahDataSimpan()">
           </div>
 
-          <!-- DROPDOWN 42 KECAMATAN GARUT -->
+          <!-- DROPDOWN 42 KECAMATAN GARUT PAS -->
           <div class="form-group">
             <label class="form-label">Kecamatan (Kabupaten Garut):</label>
             <select id="selectKecamatanModul1" class="form-control" onchange="typeof olahDataSimpan === 'function' && olahDataSimpan();">
               <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
 
-              <!-- GARUT UTARA & PERKOTAAN -->
+              <!-- GARUT UTARA & PERKOTAAN (14) -->
               <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
                 <option value="Garut Kota">Garut Kota</option>
                 <option value="Tarogong Kaler">Tarogong Kaler</option>
@@ -448,7 +448,7 @@
                 <option value="Cibatu">Cibatu</option>
               </optgroup>
 
-              <!-- GARUT TENGAH & PEGUNUNGAN -->
+              <!-- GARUT TENGAH & PEGUNUNGAN (14) -->
               <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
                 <option value="Cisurupan">Cisurupan</option>
                 <option value="Cikajang">Cikajang</option>
@@ -466,7 +466,7 @@
                 <option value="Cilawu">Cilawu</option>
               </optgroup>
 
-              <!-- GARUT SELATAN & PESISIR -->
+              <!-- GARUT SELATAN & PESISIR (14) -->
               <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
                 <option value="Pameungpeuk">Pameungpeuk</option>
                 <option value="Cibalong">Cibalong</option>
@@ -480,6 +480,8 @@
                 <option value="Pamulihan">Pamulihan</option>
                 <option value="Peundeuy">Peundeuy</option>
                 <option value="Cihurip">Cihurip</option>
+                <option value="Kutamaneuh">Kutamaneuh</option>
+                <option value="Cisompet">Cisompet</option>
               </optgroup>
             </select>
           </div>
@@ -1129,7 +1131,7 @@
       if (kec === "Cigedug" || kec === "Cikajang" || kec === "Cisurupan" || kec === "Banjarwangi" || kec === "Singajaya" || kec === "Talegong" || kec === "Cisewu") {
         teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan Garut yang memiliki kerawanan tinggi terhadap bencana tanah longsor, pergerakan tanah, serta guncangan gempa bumi tektonik/vulkanik (Sesar Garsela). Berdasarkan prinsip SPAB Pilar 1 & 2, sekolah menetapkan jalur evakuasi berpetunjuk jelas menuju lapangan terbuka sebagai titik kumpul utama, serta rutin menggelar simulasi kesiapsiagaan bersama Tim Siaga Bencana Sekolah (TSBS).`;
         teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, potensi holtikultura, dan perkebunan. Kemitraan sekolah dikembangkan bersama kelompok tani lokal, puskesmas, dan BPBD untuk mendukung edukasi mitigasi lingkungan serta kewirausahaan berbasis hasil bumi daerah.`;
-      } else if (kec === "Pameungpeuk" || kec === "Cibalong" || kec === "Cikelet" || kec === "Bungbulang" || kec === "Caringin") {
+      } else if (kec === "Pameungpeuk" || kec === "Cibalong" || kec === "Cikelet" || kec === "Bungbulang" || kec === "Caringin" || kec === "Mekarmukti") {
         teksBencana = `${namaSek} berada di wilayah pesisir Kecamatan ${kec} yang memiliki potensi risiko bencana gempa bumi tektonik, ancaman tsunami, serta banjir rob. Implementasi SPAB difokuskan pada penguatan rambu evakuasi ke tempat tinggi (Vertical Evacuation), penyediaan sirine peringatan dini, dan edukasi tanggap bencana pesisir.`;
         teksPotensi = `Memanfaatkan potensi pesisir pantai Garut Selatan, sumber daya maritim, serta pariwisata bahari sebagai laboratorium alam pembelajaran kontekstual dan pengembangan karakter kebaharian peserta didik.`;
       } else if (kec === "Garut Kota" || kec === "Tarogong Kidul" || kec === "Tarogong Kaler" || kec === "Karangpawitan") {

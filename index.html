@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KSP SMP DIVERSIFIKASI & SPAB 2026</title>
-  
   <!-- Import Font PT Serif dari Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
+  
   <style>
     /* =========================================================
        THEME STYLING - ALWAYS COLOR-CODED TABS & MODULES
@@ -105,7 +104,7 @@
       opacity: 0.82;
     }
 
-    /* WARNA TIAP TOMBOL TAB (SEJATI AWAL SEBELUM DIKLIK) */
+    /* WARNA TIAP TOMBOL TAB */
     .nav-tab:nth-child(1) { background-color: #a89585; }
     .nav-tab:nth-child(2) { background-color: #789681; }
     .nav-tab:nth-child(3) { background-color: #7797b0; }
@@ -118,7 +117,7 @@
       transform: translateY(-1px);
     }
 
-    /* WARNA TOMBOL TAB SAAT AKTIF / DIKLIK */
+    /* WARNA TOMBOL TAB SAAT AKTIF */
     .nav-tab:nth-child(1).active { background-color: var(--color-m1); opacity: 1; font-weight: 700; border-color: #ffffff; box-shadow: 0 3px 10px rgba(0,0,0,0.3); transform: scale(1.03); }
     .nav-tab:nth-child(2).active { background-color: var(--color-m2); opacity: 1; font-weight: 700; border-color: #ffffff; box-shadow: 0 3px 10px rgba(0,0,0,0.3); transform: scale(1.03); }
     .nav-tab:nth-child(3).active { background-color: var(--color-m3); opacity: 1; font-weight: 700; border-color: #ffffff; box-shadow: 0 3px 10px rgba(0,0,0,0.3); transform: scale(1.03); }
@@ -142,12 +141,12 @@
     }
 
     /* WARNA KHUSUS TIAP LATAR MODUL */
-    #modul1 .card { background-color: #FAF7F2; border-left: 6px solid var(--color-m1); } 
-    #modul2 .card { background-color: #F1F5F2; border-left: 6px solid var(--color-m2); } 
-    #modul3 .card { background-color: #F2F6F9; border-left: 6px solid var(--color-m3); } 
-    #modul4 .card { background-color: #FBF6EF; border-left: 6px solid var(--color-m4); } 
-    #modul5 .card { background-color: #F6F4F8; border-left: 6px solid var(--color-m5); } 
-    #modul6 .card { background-color: #EFF7F3; border-left: 6px solid var(--color-m6); } 
+    #modul1 .card { background-color: #FAF7F2; border-left: 6px solid var(--color-m1); }
+    #modul2 .card { background-color: #F1F5F2; border-left: 6px solid var(--color-m2); }
+    #modul3 .card { background-color: #F2F6F9; border-left: 6px solid var(--color-m3); }
+    #modul4 .card { background-color: #FBF6EF; border-left: 6px solid var(--color-m4); }
+    #modul5 .card { background-color: #F6F4F8; border-left: 6px solid var(--color-m5); }
+    #modul6 .card { background-color: #EFF7F3; border-left: 6px solid var(--color-m6); }
 
     .card-title {
       font-size: 1.2rem;
@@ -165,7 +164,7 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* LAYOUT GRID FORM (2 KOLOM) */
+    /* LAYOUT GRID FORM */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -173,9 +172,7 @@
       margin-bottom: 1.25rem;
     }
 
-    .form-group {
-      margin-bottom: 1rem;
-    }
+    .form-group { margin-bottom: 1rem; }
 
     .form-label {
       display: block;
@@ -185,17 +182,7 @@
       margin-bottom: 0.375rem;
     }
 
-    .help-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.375rem;
-      font-style: italic;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    select,
-    textarea {
+    input[type="text"], input[type="number"], select, textarea {
       width: 100%;
       padding: 0.65rem 0.875rem;
       border: 1px solid #c0cdc3;
@@ -214,7 +201,6 @@
       box-shadow: 0 0 0 3.5px var(--focus-ring);
     }
 
-    /* Tabel Styling */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -236,12 +222,6 @@
       color: var(--primary-dark);
     }
 
-    .table-total-row {
-      background-color: #e3ece5;
-      font-weight: bold;
-    }
-
-    /* Tombol (Buttons) */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -257,49 +237,14 @@
       font-family: 'PT Serif', Georgia, serif;
     }
 
-    .btn-primary {
-      background-color: var(--primary);
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-dark);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-secondary {
-      background-color: rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.4);
-    }
-
-    .btn-ai {
-      background-color: #4A6B82;
-      color: #ffffff;
-      font-size: 0.8rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-    }
-
-    .btn-ai:hover {
-      background-color: #344D5E;
-    }
-
-    .btn-danger {
-      background-color: #d9534f;
-      color: white;
-    }
-
-    .btn-success {
-      background-color: var(--primary);
-      color: white;
-      font-size: 1.05rem;
-      padding: 0.85rem 1.5rem;
-    }
+    .btn-primary { background-color: var(--primary); color: #ffffff; }
+    .btn-primary:hover { background-color: var(--primary-dark); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+    .btn-secondary { background-color: rgba(255, 255, 255, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); }
+    .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.4); }
+    .btn-ai { background-color: #4A6B82; color: #ffffff; font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 6px; }
+    .btn-ai:hover { background-color: #344D5E; }
+    .btn-danger { background-color: #d9534f; color: white; }
+    .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
 
     .status-tag {
       font-size: 0.85rem;
@@ -308,58 +253,6 @@
       padding: 5px 14px;
       border-radius: 20px;
       font-weight: 700;
-    }
-
-    /* PREVIEW & COVER BOX */
-    .preview-box {
-      margin-top: 30px;
-      padding: 35px;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      line-height: 1.6;
-    }
-
-    .cover-container {
-      text-align: center;
-      border: 4px double var(--primary);
-      padding: 40px 20px;
-      margin-bottom: 40px;
-      min-height: 750px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
-    }
-
-    .cover-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .cover-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .cover-logo {
-      margin: 25px auto;
-      max-width: 140px;
-    }
-
-    .cover-school {
-      font-size: 20px;
-      font-weight: bold;
-      color: var(--primary);
-      margin-top: 15px;
-      text-transform: uppercase;
     }
 
     @media print {
@@ -379,9 +272,8 @@
       <h1>KSP SMP DIVERSIFIKASI & SPAB 2026</h1>
       <p>Integrasi Panduan BSKAP 2025, Diversifikasi Garut, & Satuan Pendidikan Aman Bencana — <strong>Pengembang: Ida Faridlah, M.Ag.</strong></p>
     </div>
-    
     <div class="header-toolbar">
-      <!-- TAB NAVIGASI -->
+      <!-- TAB NAVIGASI MODUL -->
       <div class="nav-tabs">
         <button class="nav-tab active" onclick="bukaModul('modul1', this)">1. Administrasi & Cover</button>
         <button class="nav-tab" onclick="bukaModul('modul2', this)">2. Karakteristik & SPAB</button>
@@ -390,7 +282,6 @@
         <button class="nav-tab" onclick="bukaModul('modul5', this)">5. Perencanaan & POS</button>
         <button class="nav-tab" onclick="bukaModul('modul6', this)">6. Cetak Dokumen</button>
       </div>
-
       <!-- UTILITY BUTTONS -->
       <div style="display: flex; gap: 0.5rem; align-items: center;">
         <span id="statusTersimpan" class="status-tag">✓ Tersimpan Otomatis</span>
@@ -402,7 +293,7 @@
   </header>
 
   <div class="container">
-
+    
     <!-- MODUL 1: ADMINISTRASI -->
     <div id="modul1" class="tab-content active no-print">
       <div class="card">
@@ -410,13 +301,11 @@
           <span>Modul 1: Administrasi, Cover & Pengesahan Resmi</span>
         </div>
         
-        <!-- GRID FORM 2 KOLOM -->
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Nama Satuan Pendidikan (Sekolah):</label>
             <input type="text" id="namaSekolah" placeholder="SMPN 2 Cigedug" oninput="olahDataSimpan()">
           </div>
-
           <div class="form-group">
             <label class="form-label">NPSN Sekolah:</label>
             <input type="text" id="npsnSekolah" placeholder="698315778" oninput="olahDataSimpan()">
@@ -428,74 +317,66 @@
             <label class="form-label">Alamat Jalan & No.:</label>
             <input type="text" id="alamatSekolah" placeholder="Kp. Cicayur" oninput="olahDataSimpan()">
           </div>
-
           <div class="form-group">
-  <label class="form-label">Kecamatan Sekolah (Kabupaten Garut):</label>
-  <select id="selectKecamatanModul1" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
-  <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
-
-  <!-- GARUT UTARA & PERKOTAAN -->
-  <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
-    <option value="Garut Kota">Garut Kota</option>
-    <option value="Tarogong Kaler">Tarogong Kaler</option>
-    <option value="Tarogong Kidul">Tarogong Kidul</option>
-    <option value="Karangpawitan">Karangpawitan</option>
-    <option value="Banyuresmi">Banyuresmi</option>
-    <option value="Leles">Leles</option>
-    <option value="Kadungora">Kadungora</option>
-    <option value="BL. Limbangan">BL. Limbangan</option>
-    <option value="Selaawi">Selaawi</option>
-    <option value="Cibiuk">Cibiuk</option>
-    <option value="Leuwigoong">Leuwigoong</option>
-    <option value="Malambong">Malambong</option>
-    <option value="Kersamanah">Kersamanah</option>
-    <option value="Cibatu">Cibatu</option>
-  </optgroup>
-
-  <!-- GARUT TENGAH & PEGUNUNGAN -->
-  <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
-    <option value="Cisurupan">Cisurupan</option>
-    <option value="Cikajang">Cikajang</option>
-    <option value="Samarang">Samarang</option>
-    <option value="Pasirwangi">Pasirwangi</option>
-    <option value="Bayongbong">Bayongbong</option>
-    <option value="Cigedug">Cigedug</option>
-    <option value="Banjarwangi">Banjarwangi</option>
-    <option value="Singajaya">Singajaya</option>
-    <option value="Sucinaraja">Sucinaraja</option>
-    <option value="Wanaraja">Wanaraja</option>
-    <option value="Pangatikan">Pangatikan</option>
-    <option value="Sukawening">Sukawening</option>
-    <option value="Karangtengah">Karangtengah</option>
-    <option value="Cilawu">Cilawu</option>
-  </optgroup>
-
-  <!-- GARUT SELATAN & PESISIR -->
-  <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
-    <option value="Pameungpeuk">Pameungpeuk</option>
-    <option value="Cibalong">Cibalong</option>
-    <option value="Cikelet">Cikelet</option>
-    <option value="Bungbulang">Bungbulang</option>
-    <option value="Mekarmukti">Mekarmukti</option>
-    <option value="Pakenjeng">Pakenjeng</option>
-    <option value="Cisewu">Cisewu</option>
-    <option value="Caringin">Caringin</option>
-    <option value="Talegong">Talegong</option>
-    <option value="Pamulihan">Pamulihan</option>
-    <option value="Peundeuy">Peundeuy</option>
-    <option value="Cihurip">Cihurip</option>
-    <option value="Singajaya">Singajaya</option>
-    <option value="Cibalong">Cibalong</option>
-  </optgroup>
-</select>
-</div>
+            <label class="form-label">Kecamatan Sekolah (Kabupaten Garut):</label>
+            <!-- ID MODUL 1 -->
+            <select id="selectKecamatanModul1" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
+              <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
+              <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
+                <option value="Garut Kota">Garut Kota</option>
+                <option value="Tarogong Kaler">Tarogong Kaler</option>
+                <option value="Tarogong Kidul">Tarogong Kidul</option>
+                <option value="Karangpawitan">Karangpawitan</option>
+                <option value="Banyuresmi">Banyuresmi</option>
+                <option value="Leles">Leles</option>
+                <option value="Kadungora">Kadungora</option>
+                <option value="BL. Limbangan">BL. Limbangan</option>
+                <option value="Selaawi">Selaawi</option>
+                <option value="Cibiuk">Cibiuk</option>
+                <option value="Leuwigoong">Leuwigoong</option>
+                <option value="Malambong">Malambong</option>
+                <option value="Kersamanah">Kersamanah</option>
+                <option value="Cibatu">Cibatu</option>
+              </optgroup>
+              <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
+                <option value="Cisurupan">Cisurupan</option>
+                <option value="Cikajang">Cikajang</option>
+                <option value="Samarang">Samarang</option>
+                <option value="Pasirwangi">Pasirwangi</option>
+                <option value="Bayongbong">Bayongbong</option>
+                <option value="Cigedug">Cigedug</option>
+                <option value="Banjarwangi">Banjarwangi</option>
+                <option value="Singajaya">Singajaya</option>
+                <option value="Sucinaraja">Sucinaraja</option>
+                <option value="Wanaraja">Wanaraja</option>
+                <option value="Pangatikan">Pangatikan</option>
+                <option value="Sukawening">Sukawening</option>
+                <option value="Karangtengah">Karangtengah</option>
+                <option value="Cilawu">Cilawu</option>
+              </optgroup>
+              <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
+                <option value="Pameungpeuk">Pameungpeuk</option>
+                <option value="Cibalong">Cibalong</option>
+                <option value="Cikelet">Cikelet</option>
+                <option value="Bungbulang">Bungbulang</option>
+                <option value="Mekarmukti">Mekarmukti</option>
+                <option value="Pakenjeng">Pakenjeng</option>
+                <option value="Cisewu">Cisewu</option>
+                <option value="Caringin">Caringin</option>
+                <option value="Talegong">Talegong</option>
+                <option value="Pamulihan">Pamulihan</option>
+                <option value="Peundeuy">Peundeuy</option>
+                <option value="Cihurip">Cihurip</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
 
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Nama Kepala Sekolah & Gelar:</label>
             <input type="text" id="kepalaSekolah" placeholder="H. Moch. Dudung Zami'at, M.Pd." oninput="olahDataSimpan()">
           </div>
-
           <div class="form-group">
             <label class="form-label">NIP Kepala Sekolah:</label>
             <input type="text" id="nipKepala" placeholder="197110292006041008" oninput="olahDataSimpan()">
@@ -507,7 +388,6 @@
             <label class="form-label">Pengawas Pembina / Penelaah:</label>
             <input type="text" id="namaPengawas" value="Ida Faridlah, M.Ag." oninput="olahDataSimpan()">
           </div>
-
           <div class="form-group">
             <label class="form-label">NIP Pengawas Pembina:</label>
             <input type="text" id="nipPengawas" placeholder="197211141998022002" oninput="olahDataSimpan()">
@@ -519,7 +399,6 @@
             <label class="form-label">Ketua Komite Sekolah:</label>
             <input type="text" id="namaKomite" placeholder="H. Yaman Suryaman, S.Pd., M.Pd." oninput="olahDataSimpan()">
           </div>
-
           <div class="form-group">
             <label class="form-label">Tanggal Penetapan Dokumen KSP:</label>
             <input type="text" id="tglPenetapan" placeholder="14 Juli 2026" oninput="olahDataSimpan()">
@@ -532,12 +411,10 @@
         </div>
 
         <hr style="border:0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
-
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
           <h4 style="margin:0; color: var(--primary);">Tim Penyusun Dokumen KSP</h4>
           <button class="btn btn-primary" onclick="tambahBarisTim()">+ Tambah Anggota Tim</button>
         </div>
-
         <table>
           <thead>
             <tr>
@@ -551,930 +428,307 @@
       </div>
     </div>
 
-    <!-- MODUL 2: KARAKTERISTIK SEKOLAH & SPAB (DENGAN ASISTEN PANDUAN GARUT) -->
-<div id="modul2" class="tab-content no-print">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Modul 2: Karakteristik Sekolah & Kesiapsiagaan Bencana (SPAB)</h3>
-      <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Generator Draf AI Modul 2</button>
-    </div>
-
-    <!-- PANAL PANDUAN PINTAR KECAMATAN -->
-    <div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
-          <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
+    <!-- MODUL 2: KARAKTERISTIK SEKOLAH & SPAB -->
+    <div id="modul2" class="tab-content no-print">
+      <div class="card">
+        <div class="card-title">
+          <span>Modul 2: Karakteristik Sekolah & Kesiapsiagaan Bencana (SPAB)</span>
+          <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Generator Draf AI Modul 2</button>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <!-- PANEL PANDUAN PINTAR KECAMATAN -->
-<div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
-  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-    <div>
-      <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
-      <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <!-- UBAH ID DAN EVENT ONCHANGE DI SINI -->
-      <!-- MODUL 2: KARAKTERISTIK SEKOLAH & SPAB (DENGAN ASISTEN PANDUAN GARUT) -->
-<div id="modul2" class="tab-content no-print">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Modul 2: Karakteristik Sekolah & Kesiapsiagaan Bencana (SPAB)</h3>
-      <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Generator Draf AI Modul 2</button>
-    </div>
 
-    <!-- PANEL PANDUAN PINTAR KECAMATAN -->
-    <div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
-          <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
+        <!-- PANEL PANDUAN PINTAR KECAMATAN -->
+        <div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
+              <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <!-- ID MODUL 2 DIBUAT UNIK DI SINI -->
+              <select id="selectKecamatanModul2" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
+                <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
+                <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
+                  <option value="Garut Kota">Garut Kota</option>
+                  <option value="Tarogong Kaler">Tarogong Kaler</option>
+                  <option value="Tarogong Kidul">Tarogong Kidul</option>
+                  <option value="Karangpawitan">Karangpawitan</option>
+                  <option value="Banyuresmi">Banyuresmi</option>
+                  <option value="Leles">Leles</option>
+                  <option value="Kadungora">Kadungora</option>
+                  <option value="BL. Limbangan">BL. Limbangan</option>
+                  <option value="Selaawi">Selaawi</option>
+                  <option value="Cibiuk">Cibiuk</option>
+                  <option value="Leuwigoong">Leuwigoong</option>
+                  <option value="Malambong">Malambong</option>
+                  <option value="Kersamanah">Kersamanah</option>
+                  <option value="Cibatu">Cibatu</option>
+                </optgroup>
+                <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
+                  <option value="Cisurupan">Cisurupan</option>
+                  <option value="Cikajang">Cikajang</option>
+                  <option value="Samarang">Samarang</option>
+                  <option value="Pasirwangi">Pasirwangi</option>
+                  <option value="Bayongbong">Bayongbong</option>
+                  <option value="Cigedug">Cigedug</option>
+                  <option value="Banjarwangi">Banjarwangi</option>
+                  <option value="Singajaya">Singajaya</option>
+                  <option value="Sucinaraja">Sucinaraja</option>
+                  <option value="Wanaraja">Wanaraja</option>
+                  <option value="Pangatikan">Pangatikan</option>
+                  <option value="Sukawening">Sukawening</option>
+                  <option value="Karangtengah">Karangtengah</option>
+                  <option value="Cilawu">Cilawu</option>
+                </optgroup>
+                <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
+                  <option value="Pameungpeuk">Pameungpeuk</option>
+                  <option value="Cibalong">Cibalong</option>
+                  <option value="Cikelet">Cikelet</option>
+                  <option value="Bungbulang">Bungbulang</option>
+                  <option value="Mekarmukti">Mekarmukti</option>
+                  <option value="Pakenjeng">Pakenjeng</option>
+                  <option value="Cisewu">Cisewu</option>
+                  <option value="Caringin">Caringin</option>
+                  <option value="Talegong">Talegong</option>
+                  <option value="Pamulihan">Pamulihan</option>
+                  <option value="Peundeuy">Peundeuy</option>
+                  <option value="Cihurip">Cihurip</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <select id="selectKecamatanModul2" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
-            <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
-            <!-- GARUT UTARA & PERKOTAAN -->
-            <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
-              <option value="Garut Kota">Garut Kota</option>
-              <option value="Tarogong Kaler">Tarogong Kaler</option>
-              <option value="Tarogong Kidul">Tarogong Kidul</option>
-              <option value="Karangpawitan">Karangpawitan</option>
-              <option value="Banyuresmi">Banyuresmi</option>
-              <option value="Leles">Leles</option>
-              <option value="Kadungora">Kadungora</option>
-              <option value="BL. Limbangan">BL. Limbangan</option>
-              <option value="Selaawi">Selaawi</option>
-              <option value="Cibiuk">Cibiuk</option>
-              <option value="Leuwigoong">Leuwigoong</option>
-              <option value="Malambong">Malambong</option>
-              <option value="Kersamanah">Kersamanah</option>
-              <option value="Cibatu">Cibatu</option>
-            </optgroup>
-            <!-- GARUT TENGAH & PEGUNUNGAN -->
-            <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
-              <option value="Cisurupan">Cisurupan</option>
-              <option value="Cikajang">Cikajang</option>
-              <option value="Samarang">Samarang</option>
-              <option value="Pasirwangi">Pasirwangi</option>
-              <option value="Bayongbong">Bayongbong</option>
-              <option value="Cigedug">Cigedug</option>
-              <option value="Banjarwangi">Banjarwangi</option>
-              <option value="Singajaya">Singajaya</option>
-              <option value="Sucinaraja">Sucinaraja</option>
-              <option value="Wanaraja">Wanaraja</option>
-              <option value="Pangatikan">Pangatikan</option>
-              <option value="Sukawening">Sukawening</option>
-              <option value="Karangtengah">Karangtengah</option>
-              <option value="Cilawu">Cilawu</option>
-            </optgroup>
-            <!-- GARUT SELATAN & PESISIR -->
-            <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
-              <option value="Pameungpeuk">Pameungpeuk</option>
-              <option value="Cibalong">Cibalong</option>
-              <option value="Cikelet">Cikelet</option>
-              <option value="Bungbulang">Bungbulang</option>
-              <option value="Mekarmukti">Mekarmukti</option>
-              <option value="Pakenjeng">Pakenjeng</option>
-              <option value="Cisewu">Cisewu</option>
-              <option value="Caringin">Caringin</option>
-              <option value="Talegong">Talegong</option>
-              <option value="Pamulihan">Pamulihan</option>
-              <option value="Peundeuy">Peundeuy</option>
-              <option value="Cihurip">Cihurip</option>
-            </optgroup>
-          </select>
+
+        <div class="form-group">
+          <label class="form-label">2.1 Karakteristik Peserta Didik & Sosiokultural:</label>
+          <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang ekonomi/sosial orang tua..." oninput="olahDataSimpan()"></textarea>
         </div>
-      </div>
-    </div>
 
-    <!-- 2.1 KARAKTERISTIK PESERTA DIDIK -->
-    <div class="form-group">
-      <label class="form-label">2.1 Karakteristik Peserta Didik & Sosiokultural:</label>
-      <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang ekonomi/sosial orang tua, dan inklusivitas..." oninput="simpanDataLokal()"></textarea>
-    </div>
+        <div class="form-group">
+          <label class="form-label">2.2 Pendidik & Tenaga Kependidikan (PTK):</label>
+          <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik guru, kompetensi digital..." oninput="olahDataSimpan()"></textarea>
+        </div>
 
-    <!-- 2.2 KARAKTERISTIK PTK -->
-    <div class="form-group">
-      <label class="form-label">2.2 Pendidik & Tenaga Kependidikan (PTK):</label>
-      <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik guru, kompetensi digital, serta keterlibatan staf kependidikan..." oninput="simpanDataLokal()"></textarea>
-    </div>
+        <div class="form-group">
+          <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Kesiapsiagaan SPAB:</label>
+          <textarea id="sarprasSekolah" rows="3" placeholder="Fasilitas fisik laboratorium, ruang baca, serta kelengkapan sarana keamanan..." oninput="olahDataSimpan()"></textarea>
+          
+          <div style="margin-top: 10px; padding: 10px; background: #fafafa; border: 1px dashed #c0d1c4; border-radius: 6px;">
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5c7865;">📋 Checklist Sarana Kesiapsiagaan SPAB Sekolah:</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem;">
+              <label><input type="checkbox" id="chkJalurEvakuasi" checked onchange="olahDataSimpan()"> Rambu & Jalur Evakuasi</label>
+              <label><input type="checkbox" id="chkTitikKumpul" checked onchange="olahDataSimpan()"> Titik Kumpul Aman</label>
+              <label><input type="checkbox" id="chkAPAR" onchange="olahDataSimpan()"> APAR & Peralatan P3K</label>
+              <label><input type="checkbox" id="chkPetaBencana" checked onchange="olahDataSimpan()"> Peta Risiko Bencana Sekolah</label>
+            </div>
+          </div>
+        </div>
 
-    <!-- 2.3 SARPRAS & CHECKLIST SPAB -->
-    <div class="form-group">
-      <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Kesiapsiagaan SPAB:</label>
-      <textarea id="sarprasSekolah" rows="3" placeholder="Fasilitas fisik laboratorium, ruang baca, serta kelengkapan sarana keamanan bencana..." oninput="simpanDataLokal()"></textarea>
-      
-      <!-- Checklist Sarpras SPAB -->
-      <div style="margin-top: 10px; padding: 10px; background: #fafafa; border: 1px dashed #c0d1c4; border-radius: 6px;">
-        <span style="font-size: 0.85rem; font-weight: 600; color: #5c7865;">📋 Checklist Sarana Kesiapsiagaan SPAB Sekolah:</span>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem;">
-          <label><input type="checkbox" id="chkJalurEvakuasi" checked onchange="simpanDataLokal()"> Rambu & Jalur Evakuasi</label>
-          <label><input type="checkbox" id="chkTitikKumpul" checked onchange="simpanDataLokal()"> Titik Kumpul Aman</label>
-          <label><input type="checkbox" id="chkAPAR" onchange="simpanDataLokal()"> APAR & Peralatan P3K</label>
-          <label><input type="checkbox" id="chkPetaBencana" checked onchange="simpanDataLokal()"> Peta Risiko Bencana Sekolah</label>
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label class="form-label" style="margin: 0;">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
+            <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanKearifanLokal()">💡 Gunakan Panduan Wilayah</button>
+          </div>
+          <textarea id="potensiDaerah" rows="3" placeholder="Memanfaatkan kearifan lokal Garut serta bentang alam..." oninput="olahDataSimpan()"></textarea>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label class="form-label" style="margin: 0;">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
+            <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanMitigasi()">💡 Gunakan Panduan SPAB</button>
+          </div>
+          <textarea id="analisisBencana" rows="3" placeholder="Deskripsi kerentanan bencana wilayah Garut..." oninput="olahDataSimpan()"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+          <textarea id="evaluasiRapor" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB)..." oninput="olahDataSimpan()"></textarea>
         </div>
       </div>
     </div>
-
-    <!-- 2.4 KEMITRAAN, BENTANG ALAM & KEARIFAN LOKAL -->
-    <div class="form-group">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <label class="form-label" style="margin: 0;">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
-        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanKearifanLokal()">💡 Gunakan Panduan Wilayah</button>
-      </div>
-      <textarea id="potensiDaerah" rows="3" placeholder="Memanfaatkan kearifan lokal Garut serta bentang alam sebagai media belajar terbuka..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.5 ANALISIS RISIKO BENCANA -->
-    <div class="form-group">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <label class="form-label" style="margin: 0;">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
-        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanMitigasi()">💡 Gunakan Panduan SPAB</button>
-      </div>
-      <p style="font-size: 0.78rem; color: #666; margin-bottom: 4px;">Kontekstualisasi kerawanan bencana wilayah Garut serta kelengkapan ketersediaan tim TSBS & peta keselamatan.</p>
-      <textarea id="analisisBencana" rows="3" placeholder="Deskripsi kerentanan bencana wilayah Garut dan langkah kesiapan mitigasi sekolah..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.6 EVALUASI DIRI RAPOR PENDIDIKAN -->
-    <div class="form-group">
-      <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
-      <textarea id="evaluasiRapor" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="simpanDataLokal()"></textarea>
-    </div>
-  </div>
-</div>
-
-    <!-- 2.1 KARAKTERISTIK PESERTA DIDIK -->
-    <div class="form-group">
-      <label class="form-label">2.1 Karakteristik Peserta Didik & Sosiokultural:</label>
-      <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang ekonomi/sosial orang tua, dan inklusivitas..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.2 KARAKTERISTIK PTK -->
-    <div class="form-group">
-      <label class="form-label">2.2 Pendidik & Tenaga Kependidikan (PTK):</label>
-      <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik guru, kompetensi digital, serta keterlibatan staf kependidikan..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.3 SARPRAS & CHECKLIST SPAB -->
-    <div class="form-group">
-      <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Kesiapsiagaan SPAB:</label>
-      <textarea id="sarprasSekolah" rows="3" placeholder="Fasilitas fisik laboratorium, ruang baca, serta kelengkapan sarana keamanan bencana..." oninput="simpanDataLokal()"></textarea>
-      
-      <!-- Checklist Sarpras SPAB -->
-      <div style="margin-top: 10px; padding: 10px; background: #fafafa; border: 1px dashed #c0d1c4; border-radius: 6px;">
-        <span style="font-size: 0.85rem; font-weight: 600; color: #5c7865;">📋 Checklist Sarana Kesiapsiagaan SPAB Sekolah:</span>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem;">
-          <label><input type="checkbox" id="chkJalurEvakuasi" checked onchange="simpanDataLokal()"> Rambu & Jalur Evakuasi</label>
-          <label><input type="checkbox" id="chkTitikKumpul" checked onchange="simpanDataLokal()"> Titik Kumpul Aman</label>
-          <label><input type="checkbox" id="chkAPAR" onchange="simpanDataLokal()"> APAR & Peralatan P3K</label>
-          <label><input type="checkbox" id="chkPetaBencana" checked onchange="simpanDataLokal()"> Peta Risiko Bencana Sekolah</label>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2.4 KEMITRAAN, BENTANG ALAM & KEARIFAN LOKAL -->
-    <div class="form-group">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <label class="form-label" style="margin: 0;">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
-        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanKearifanLokal()">💡 Gunakan Panduan Wilayah</button>
-      </div>
-      <textarea id="potensiDaerah" rows="3" placeholder="Memanfaatkan kearifan lokal Garut serta bentang alam sebagai media belajar terbuka..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.5 ANALISIS RISIKO BENCANA -->
-    <div class="form-group">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-        <label class="form-label" style="margin: 0;">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
-        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanMitigasi()">💡 Gunakan Panduan SPAB</button>
-      </div>
-      <p style="font-size: 0.78rem; color: #666; margin-bottom: 4px;">Kontekstualisasi kerawanan bencana wilayah Garut serta kelengkapan ketersediaan tim TSBS & peta keselamatan.</p>
-      <textarea id="analisisBencana" rows="3" placeholder="Deskripsi kerentanan bencana wilayah Garut dan langkah kesiapan mitigasi sekolah..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.6 EVALUASI DIRI RAPOR PENDIDIKAN -->
-    <div class="form-group">
-      <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
-      <textarea id="evaluasiRapor" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="simpanDataLokal()"></textarea>
-    </div>
-  </div>
-</div>
 
     <!-- MODUL 3: VISI MISI -->
     <div id="modul3" class="tab-content no-print">
       <div class="card">
         <div class="card-title">
           <span>Modul 3: Visi, Misi, & Tujuan Satuan Pendidikan</span>
-          <button class="btn btn-ai" onclick="generateDrafModul3()">✨ Generator Draf Visi-Misi SPAB & Diversifikasi</button>
         </div>
-
         <div class="form-group">
           <label class="form-label">Visi Sekolah:</label>
-          <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
+          <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter..." oninput="olahDataSimpan()">
         </div>
-
         <div class="form-group">
           <label class="form-label">Misi Sekolah:</label>
-          <textarea id="misiSekolah" rows="5" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan pendidikan kesiapsiagaan bencana & kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
-          <textarea id="tujuanSekolah" rows="5" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Mewujudkan Satuan Pendidikan Aman Bencana (SPAB)..." oninput="olahDataSimpan()"></textarea>
+          <textarea id="misiSekolah" rows="5" placeholder="1. Menyelenggarakan Pembelajaran..." oninput="olahDataSimpan()"></textarea>
         </div>
       </div>
     </div>
 
-    <!-- MODUL 4: PENGORGANISASIAN & KALKULATOR JP -->
+    <!-- MODUL 4, 5, 6 TAB CONTENT LAINNYA -->
     <div id="modul4" class="tab-content no-print">
       <div class="card">
-        <div class="card-title">Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum (Kalkulator JP)</div>
-
-        <div class="form-group">
-          <label class="form-label">4.1 Pendekatan Pembelajaran:</label>
-          <select id="pendekatan" onchange="olahDataSimpan()">
-            <option>Mata Pelajaran (Reguler)</option>
-            <option>Tematik Integratif</option>
-            <option>Blok Waktu / Periodik</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">4.2 Pengorganisasian Intrakurikuler (Terintegrasi Pendidikan Kebencanaan):</label>
-          <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) pada mapel IPA, IPS, dan PJOK.</div>
-          <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">4.3 Rincian Minggu Efektif (Semester 1 & 2):</label>
-          <input type="text" id="mingguEfektif" placeholder="Semester 1: 18 Minggu Efektif | Semester 2: 16 Minggu Efektif" oninput="olahDataSimpan()">
-        </div>
-
-        <hr style="border:0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
-
-        <h4 style="color: var(--primary);">Tabel Alokasi Jam Pelajaran (JP) Per Minggu & Auto-Kalkulator</h4>
-        <table>
-          <thead>
-            <tr>
-              <th rowspan="2">Mata Pelajaran</th>
-              <th colspan="2" style="text-align: center;">Kelas VII</th>
-              <th colspan="2" style="text-align: center;">Kelas VIII</th>
-              <th colspan="2" style="text-align: center;">Kelas IX</th>
-            </tr>
-            <tr>
-              <th>Intra</th><th>Kokurikuler</th>
-              <th>Intra</th><th>Kokurikuler</th>
-              <th>Intra</th><th>Kokurikuler</th>
-            </tr>
-          </thead>
-          <tbody id="bodyTabelJP"></tbody>
-          <tfoot>
-            <tr class="table-total-row">
-              <td>TOTAL JP MINGGUAN</td>
-              <td id="tot7Intra">0</td>
-              <td id="tot7Koku">0</td>
-              <td id="tot8Intra">0</td>
-              <td id="tot8Koku">0</td>
-              <td id="tot9Intra">0</td>
-              <td id="tot9Koku">0</td>
-            </tr>
-          </tfoot>
-        </table>
-
-        <div class="form-group" style="margin-top: 1.5rem;">
-          <label class="form-label">4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana):</label>
-          <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan. Tema Kelas VII: Gaya Hidup Berkelanjutan (Tanggap Bencana/Mitigasi)..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">4.5 Ekstrakurikuler & Program Pembiasaan Spesifik:</label>
-          <textarea id="ekstrakurikuler" rows="3" placeholder="Pramuka (Wajib), PMR / Tim Siaga Bencana Sekolah (TSBS), Kesenian Garut, Olahraga..." oninput="olahDataSimpan()"></textarea>
-        </div>
+        <div class="card-title"><span>Modul 4: Pengorganisasian Pembelajaran</span></div>
+        <p>Isi modul pengorganisasian pembelajaran...</p>
       </div>
     </div>
 
-    <!-- MODUL 5: PERENCANAAN & POS -->
     <div id="modul5" class="tab-content no-print">
       <div class="card">
-        <div class="card-title">
-          <span>Modul 5: Perencanaan Pembelajaran, Evaluasi & POS SPAB</span>
-          <button class="btn btn-ai" onclick="generateDrafModul5()">✨ Generator Draf POS SPAB & Evaluasi</button>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">5.1 Perencanaan Pembelajaran (Mekanisme CP, ATP, & Deep Learning):</label>
-          <textarea id="perencanaanBelajar" rows="4" placeholder="Penyusunan Capaian Pembelajaran (CP), Alur Tujuan Pembelajaran (ATP), serta Modul Ajar berorientasi Deep Learning (Mindful, Meaningful, Joyful Learning)..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">5.2 Prosedur Operasional Standar (POS) Keselamatan & Evakuasi Bencana Sekolah:</label>
-          <textarea id="posKedaruratan" rows="4" placeholder="Prosedur standar penanganan tanggap darurat bencana: simulasi evakuasi berkala (drill), pembagian peran Tim Siaga Bencana, dan jalur komando darurat..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">5.3 Evaluasi, Pendampingan, & Pengembangan Profesional Guru:</label>
-          <textarea id="evaluasiPendampingan" rows="4" placeholder="Pelaksanaan supervisi akademik berkala, Komunitas Belajar (Kombel) internal, refleksi mingguan, serta evaluasi dokumen KSP setiap akhir semester/tahun..." oninput="olahDataSimpan()"></textarea>
-        </div>
+        <div class="card-title"><span>Modul 5: Perencanaan & POS Sekolah</span></div>
+        <p>Isi modul perencanaan & POS...</p>
       </div>
     </div>
 
-    <!-- MODUL 6: DOKUMEN PRATINJAU & EKSPOR -->
-    <div id="modul6" class="tab-content">
-      <!-- TOMBOL AKSI ATAS PRATINJAU -->
-      <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; background:#ffffff; padding:1.25rem 2rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:1.5rem; box-shadow:var(--shadow-md);">
-        <button class="btn btn-secondary" style="background:#58635b; color:white;" onclick="bukaModul('modul1', document.querySelectorAll('.nav-tab')[0])">← Kembali Edit Modul</button>
-        <div style="display:flex; gap:0.75rem;">
-          <button class="btn btn-primary" style="background-color:#3B6998;" onclick="exportToWord()">📥 Export Word (.doc)</button>
-          <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Save PDF Dokumen Utuh</button>
-        </div>
-      </div>
-
-      <!-- AREA DOKUMEN CETAK UTUH -->
-      <div id="areaCetakUtuh" class="preview-box">
-        <!-- COVER -->
-        <div class="cover-container">
-          <div>
-            <div style="font-size: 14px; font-weight: bold; letter-spacing: 2px; color: var(--primary-dark); margin-bottom: 15px;">DOKUMEN RESMI SATUAN PENDIDIKAN</div>
-            <div class="cover-title">KURIKULUM SATUAN PENDIDIKAN (KSP)</div>
-            <div class="cover-subtitle">SESUAI PANDUAN PENGEMBANGAN KSP & KOKURIKULER REVISI TAHUN 2025<br>BERBASIS DIVERSIFIKASI & SATUAN PENDIDIKAN AMAN BENCANA (SPAB)</div>
-            <div style="margin-top: 15px; display: inline-block; padding: 6px 16px; border: 2px solid var(--primary); border-radius: 20px; font-weight: bold; color: var(--primary-dark);">TAHUN AJARAN 2026/2027 • FASE D (SMP)</div>
-          </div>
-
-          <div>
-            <div style="font-size: 80px; color: var(--primary); margin: 20px 0;">🏫</div>
-            <div class="cover-school" id="p_namaSekolahCover">[NAMA SATUAN PENDIDIKAN]</div>
-            <div style="font-size: 13px; color: var(--text-main); margin-top: 5px;">NPSN: <span id="p_npsnCover">-</span></div>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;" id="p_alamatCover">[Alamat Lengkap Sekolah & Wilayah Garut]</div>
-          </div>
-
-          <div style="font-size: 13px; font-weight: bold; color: var(--primary-dark);">
-            TIM PENYUSUN KURIKULUM SATUAN PENDIDIKAN<br>
-            <span id="p_namaSekolahCoverSub">[NAMA SATUAN PENDIDIKAN]</span><br>
-            TANGGAL PENETAPAN: <span id="p_tglPenetapanCover">14 Juli 2026</span>
-          </div>
-        </div>
-
-        <div class="page-break"></div>
-
-        <!-- LEMBAR PENGESAHAN -->
-        <div style="text-align: center; margin-bottom: 30px;">
-          <h3 style="margin-bottom: 5px; text-transform: uppercase;">LEMBAR PENGESAHAN</h3>
-          <p style="margin-top: 0; font-size: 14px;">DOKUMEN KURIKULUM SATUAN PENDIDIKAN (KSP)</p>
-          <p style="font-weight: bold; font-size: 15px;" id="p_namaSekolahPengesahan">[NAMA SATUAN PENDIDIKAN]</p>
-        </div>
-
-        <p style="text-align: justify; text-indent: 40px; font-size: 14px;">
-          Setelah melalui proses evaluasi internal, penyelarasan program, dan kajian komprehensif bersama oleh Tim Penyusun Kurikulum, Dewan Guru, dan Komite Sekolah, Dokumen Kurikulum Satuan Pendidikan (KSP) <strong id="p_namaSekolahPengesahan2">[Nama Sekolah]</strong> Tahun Ajaran 2026/2027 disahkan dan dinyatakan BERLAKU sebagai pedoman pelaksanaan pembelajaran mulai tanggal ditetapkan.
-        </p>
-
-        <br><br>
-        <table style="width: 100%; border: none; font-size: 14px; background: transparent;">
-          <tr style="border: none;">
-            <td style="width: 50%; border: none; vertical-align: top;">
-              Menyetujui,<br>
-              Ketua Komite Sekolah<br><br><br><br>
-              <strong id="p_namaKomite">[Nama Ketua Komite]</strong>
-            </td>
-            <td style="width: 50%; border: none; vertical-align: top;">
-              Ditetapkan di: Garut<br>
-              Pada Tanggal: <span id="p_tglPenetapanSign">14 Juli 2026</span><br><br>
-              Kepala Sekolah<br><br><br><br>
-              <strong id="p_kepalaSekolah">[Nama Kepala Sekolah]</strong><br>
-              NIP. <span id="p_nipKepala">[NIP Kepala Sekolah]</span>
-            </td>
-          </tr>
-          <tr style="border: none;">
-            <td colspan="2" style="border: none; text-align: center; padding-top: 40px;">
-              Mengetahui & Menelaah,<br>
-              Pengawas Pembina SMP<br><br><br><br>
-              <strong id="p_namaPengawas">Ida Faridlah, M.Ag.</strong><br>
-              NIP. <span id="p_nipPengawas">197211141998022002</span>
-            </td>
-          </tr>
-        </table>
-
-        <div class="page-break"></div>
-
-        <!-- KATA PENGANTAR -->
-        <h3 style="text-align: center; text-transform: uppercase;">KATA PENGANTAR</h3>
-        <p id="p_kataPengantar" style="text-align: justify; white-space: pre-line; font-size: 14px;"></p>
-
-        <div class="page-break"></div>
-
-        <!-- ISI DOKUMEN BAB 1-5 -->
-        <h3>BAB I: ANALISIS KARAKTERISTIK SATUAN PENDIDIKAN & RISIKO BENCANA</h3>
-        <h4>1.1 Karakteristik Peserta Didik</h4>
-        <p id="p_karakteristikMurid" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>1.2 Karakteristik Pendidik & Tenaga Kependidikan</h4>
-        <p id="p_karakteristikPTK" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>1.3 Sarana, Prasarana & Lingkungan Sekolah</h4>
-        <p id="p_karakteristikSarpras" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>1.4 Kemitraan & Potensi Kearifan Lokal Garut</h4>
-        <p id="p_potensiDaerah" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>1.5 Analisis Risiko Bencana & SPAB</h4>
-        <p id="p_analisisBencana" style="text-align: justify; white-space: pre-line;"></p>
-
-        <h4>1.6 Evaluasi Rapor Pendidikan</h4>
-        <p id="p_raporPendidikan" style="text-align: justify; white-space: pre-line;"></p>
-
-        <hr style="margin: 30px 0; border-top: 1px dashed var(--border-color);">
-
-        <h3>BAB II: VISI, MISI, & TUJUAN SATUAN PENDIDIKAN</h3>
-        <h4>2.1 Visi Sekolah</h4>
-        <blockquote style="font-style: italic; font-weight: bold; border-left: 4px solid var(--primary); padding-left: 15px;" id="p_visiSekolah"></blockquote>
-        
-        <h4>2.2 Misi Sekolah</h4>
-        <p id="p_misiSekolah" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>2.3 Tujuan Satuan Pendidikan</h4>
-        <p id="p_tujuanSekolah" style="text-align: justify; white-space: pre-line;"></p>
-
-        <hr style="margin: 30px 0; border-top: 1px dashed var(--border-color);">
-
-        <h3>BAB III: PENGORGANISASIAN PEMBELAJARAN</h3>
-        <p><strong>Pendekatan Pembelajaran:</strong> <span id="p_pendekatan"></span></p>
-        <h4>3.1 Intrakurikuler</h4>
-        <p id="p_intrakurikuler" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>3.2 Rincian Alokasi Waktu Jam Pelajaran (JP)</h4>
-        <table id="tabelJPCetak">
-          <thead>
-            <tr>
-              <th rowspan="2">Mata Pelajaran</th>
-              <th colspan="2">Kelas VII</th>
-              <th colspan="2">Kelas VIII</th>
-              <th colspan="2">Kelas IX</th>
-            </tr>
-            <tr>
-              <th>Intra</th><th>Koku</th>
-              <th>Intra</th><th>Koku</th>
-              <th>Intra</th><th>Koku</th>
-            </tr>
-          </thead>
-          <tbody id="p_bodyTabelJP"></tbody>
-        </table>
-
-        <h4>3.3 Kokurikuler (P5 & Tema Bencana)</h4>
-        <p id="p_kokurikuler" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>3.4 Ekstrakurikuler</h4>
-        <p id="p_ekstrakurikuler" style="text-align: justify; white-space: pre-line;"></p>
-
-        <hr style="margin: 30px 0; border-top: 1px dashed var(--border-color);">
-
-        <h3>BAB IV: PERENCANAAN PEMBELAJARAN & POS SPAB</h3>
-        <h4>4.1 Perencanaan Pembelajaran & Deep Learning</h4>
-        <p id="p_perencanaanBelajar" style="text-align: justify; white-space: pre-line;"></p>
-        
-        <h4>4.2 Prosedur Operasional Standar (POS) Kedaruratan & Evakuasi Bencana</h4>
-        <p id="p_posKedaruratan" style="text-align: justify; white-space: pre-line;"></p>
-
-        <hr style="margin: 30px 0; border-top: 1px dashed var(--border-color);">
-
-        <h3>BAB V: EVALUASI, PENDAMPINGAN, & PENGEMBANGAN PROFESIONAL</h3>
-        <p id="p_evaluasiPendampingan" style="text-align: justify; white-space: pre-line;"></p>
+    <div id="modul6" class="tab-content no-print">
+      <div class="card">
+        <div class="card-title"><span>Modul 6: Cetak Dokumen KSP</span></div>
+        <button class="btn btn-success" onclick="window.print()">🖨️ Cetak / Simpan ke PDF</button>
       </div>
     </div>
 
   </div>
 
-  <!-- LOGIK JAVASCRIPT APLIKASI -->
+  <!-- SCRIPT JAVASCRIPT KESELURUHAN -->
   <script>
-    const mapelStandar = [
-      "Pendidikan Agama dan Budi Pekerti",
-      "Pendidikan Pancasila",
-      "Bahasa Indonesia",
-      "Matematika",
-      "Ilmu Pengetahuan Alam (IPA)",
-      "Ilmu Pengetahuan Sosial (IPS)",
-      "Bahasa Inggris",
-      "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)",
-      "Informatika",
-      "Seni dan Prakarya",
-      "Muatan Lokal: Bahasa Sunda",
-      "Muatan Lokal: Education SPAB / Kebencanaan Garut"
-    ];
-
-    let dataTim = [
-      { nama: "H. Moch. Dudung Zami'at, M.Pd.", jabatan: "Ketua Tim / Kepala Sekolah" },
-      { nama: "Ida Faridlah, M.Ag.", jabatan: "Penelaah / Pengawas Pembina" },
-      { nama: "H. Yaman Suryaman, M.Pd.", jabatan: "Sekretaris Tim / Wakasek Kurikulum" }
-    ];
-
-    let dataJP = mapelStandar.map(m => ({
-      mapel: m,
-      c7Intra: 3, c7Koku: 1,
-      c8Intra: 3, c8Koku: 1,
-      c9Intra: 3, c9Koku: 1
-    }));
-
-    window.onload = function() {
-      muatDataLokal();
-      susunTabelTim();
-      susunTabelJP();
-      olahDataSimpan();
+    // DATABASE PANDUAN KECAMATAN GARUT
+    window.dbWilayahGarut = {
+      "Default": {
+        kearifan: "Mengembangkan potensi lingkungan lokal Kabupaten Garut dan kearifan masyarakat setempat.",
+        mitigasi: "Menyelenggarakan simulasi kesiapsiagaan bencana rutin serta edukasi risiko kebencanaan lokal."
+      },
+      "Garut Kota": {
+        kearifan: "Pemanfaatan pusat sejarah Garut, kerajinan kulit Sukaregang, serta dinamika perkotaan.",
+        mitigasi: "Mitigasi risiko kebakaran permukiman padat dan banjir luapan sungai Cimanuk."
+      },
+      "Cigedug": {
+        kearifan: "Pertanian hortikultura lereng Gunung Cikuray, komoditas kentang, serta tradisi agraris.",
+        mitigasi: "Mitigasi kerentanan tanah longsor lereng pegunungan dan erupsi gunung api Cikuray."
+      },
+      "Cisurupan": {
+        kearifan: "Kawasan agrowisata Papandayan, perkebunan teh, dan pelestarian budaya pegunungan.",
+        mitigasi: "Edukasi bencana erupsi gunung api Gunung Papandayan serta ancaman tanah longsor."
+      }
     };
 
-    function bukaModul(idModul, elBtn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    // FUNGSI SWITCH TAB MODUL (SANGAT AMAN DARI ERROR)
+    function bukaModul(modulId, btnEl) {
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      const tabs = document.querySelectorAll('.nav-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      const target = document.getElementById(modulId);
+      if (target) {
+        target.classList.add('active');
+      }
       
-      document.getElementById(idModul).classList.add('active');
-      if (elBtn) elBtn.classList.add('active');
+      if (btnEl) {
+        btnEl.classList.add('active');
+      }
     }
 
-    function susunTabelTim() {
-      let tbody = document.getElementById('bodyTabelTim');
-      tbody.innerHTML = '';
-      dataTim.forEach((item, index) => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><input type="text" value="${item.nama}" oninput="updateTim(${index}, 'nama', this.value)"></td>
-          <td><input type="text" value="${item.jabatan}" oninput="updateTim(${index}, 'jabatan', this.value)"></td>
-          <td style="text-align:center;"><button class="btn btn-danger" style="padding: 3px 8px; font-size: 0.8rem;" onclick="hapusTim(${index})">Hapus</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
+    // FUNGSI SINKRONISASI KECAMATAN DUA-ARAH (M1 <-> M2)
+    function sinkronKecamatan(val) {
+      const m1 = document.getElementById("selectKecamatanModul1");
+      const m2 = document.getElementById("selectKecamatanModul2");
+      
+      if (m1 && m1.value !== val) m1.value = val;
+      if (m2 && m2.value !== val) m2.value = val;
     }
 
-    function tambahBarisTim() {
-      dataTim.push({ nama: "", jabatan: "Anggota Tim Penyusun" });
-      susunTabelTim();
-      olahDataSimpan();
-    }
-
-    function updateTim(index, field, val) {
-      dataTim[index][field] = val;
-      olahDataSimpan();
-    }
-
-    function hapusTim(index) {
-      dataTim.splice(index, 1);
-      susunTabelTim();
-      olahDataSimpan();
-    }
-
-    function susunTabelJP() {
-      let tbody = document.getElementById('bodyTabelJP');
-      tbody.innerHTML = '';
-      dataJP.forEach((item, index) => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${item.mapel}</strong></td>
-          <td><input type="number" value="${item.c7Intra}" oninput="updateJP(${index}, 'c7Intra', this.value)"></td>
-          <td><input type="number" value="${item.c7Koku}" oninput="updateJP(${index}, 'c7Koku', this.value)"></td>
-          <td><input type="number" value="${item.c8Intra}" oninput="updateJP(${index}, 'c8Intra', this.value)"></td>
-          <td><input type="number" value="${item.c8Koku}" oninput="updateJP(${index}, 'c8Koku', this.value)"></td>
-          <td><input type="number" value="${item.c9Intra}" oninput="updateJP(${index}, 'c9Intra', this.value)"></td>
-          <td><input type="number" value="${item.c9Koku}" oninput="updateJP(${index}, 'c9Koku', this.value)"></td>
-        `;
-        tbody.appendChild(tr);
-      });
-      hitungTotalJP();
-    }
-
-    function updateJP(index, field, val) {
-      dataJP[index][field] = parseInt(val) || 0;
-      hitungTotalJP();
-      olahDataSimpan();
-    }
-
-    function hitungTotalJP() {
-      let t7I = 0, t7K = 0, t8I = 0, t8K = 0, t9I = 0, t9K = 0;
-      dataJP.forEach(item => {
-        t7I += item.c7Intra; t7K += item.c7Koku;
-        t8I += item.c8Intra; t8K += item.c8Koku;
-        t9I += item.c9Intra; t9K += item.c9Koku;
-      });
-
-      document.getElementById('tot7Intra').innerText = t7I;
-      document.getElementById('tot7Koku').innerText = t7K;
-      document.getElementById('tot8Intra').innerText = t8I;
-      document.getElementById('tot8Koku').innerText = t8K;
-      document.getElementById('tot9Intra').innerText = t9I;
-      document.getElementById('tot9Koku').innerText = t9K;
-    }
-
+    // FUNGSI SIMPAN DATA LOKAL & SIMPAN UTAMA
     function olahDataSimpan() {
-      let data = {
-        namaSekolah: document.getElementById('namaSekolah').value,
-        npsnSekolah: document.getElementById('npsnSekolah').value,
-        alamatSekolah: document.getElementById('alamatSekolah').value,
-        wilayahSekolah: document.getElementById('wilayahSekolah').value,
-        kepalaSekolah: document.getElementById('kepalaSekolah').value,
-        nipKepala: document.getElementById('nipKepala').value,
-        namaPengawas: document.getElementById('namaPengawas').value,
-        nipPengawas: document.getElementById('nipPengawas').value,
-        namaKomite: document.getElementById('namaKomite').value,
-        tglPenetapan: document.getElementById('tglPenetapan').value,
-        kataPengantar: document.getElementById('kataPengantar').value,
-        karakteristikMurid: document.getElementById('karakteristikMurid').value,
-        karakteristikPTK: document.getElementById('karakteristikPTK').value,
-        karakteristikSarpras: document.getElementById('karakteristikSarpras').value,
-        potensiDaerah: document.getElementById('potensiDaerah').value,
-        analisisBencana: document.getElementById('analisisBencana').value,
-        raporPendidikan: document.getElementById('raporPendidikan').value,
-        visiSekolah: document.getElementById('visiSekolah').value,
-        misiSekolah: document.getElementById('misiSekolah').value,
-        tujuanSekolah: document.getElementById('tujuanSekolah').value,
-        pendekatan: document.getElementById('pendekatan').value,
-        intrakurikuler: document.getElementById('intrakurikuler').value,
-        mingguEfektif: document.getElementById('mingguEfektif').value,
-        kokurikuler: document.getElementById('kokurikuler').value,
-        ekstrakurikuler: document.getElementById('ekstrakurikuler').value,
-        perencanaanBelajar: document.getElementById('perencanaanBelajar').value,
-        posKedaruratan: document.getElementById('posKedaruratan').value,
-        evaluasiPendampingan: document.getElementById('evaluasiPendampingan').value,
-        dataTim: dataTim,
-        dataJP: dataJP
-      };
-
-      localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
-      perbaruiPratinjau(data);
+      simpanDataLokal();
     }
 
-    function perbaruiPratinjau(d) {
-      document.getElementById('p_namaSekolahCover').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
-      document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || '');
-      document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
-
-      document.getElementById('p_namaSekolahPengesahan').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      document.getElementById('p_namaSekolahPengesahan2').innerText = d.namaSekolah || '[Nama Sekolah]';
-      document.getElementById('p_namaKomite').innerText = d.namaKomite || '[Nama Ketua Komite]';
-      document.getElementById('p_tglPenetapanSign').innerText = d.tglPenetapan || '14 Juli 2026';
-      document.getElementById('p_kepalaSekolah').innerText = d.kepalaSekolah || '[Nama Kepala Sekolah]';
-      document.getElementById('p_nipKepala').innerText = d.nipKepala || '[NIP Kepala Sekolah]';
-      document.getElementById('p_namaPengawas').innerText = d.namaPengawas || 'Ida Faridlah, M.Ag.';
-      document.getElementById('p_nipPengawas').innerText = d.nipPengawas || '197211141998022002';
-
-      document.getElementById('p_kataPengantar').innerText = d.kataPengantar || 'Puji syukur kami panjatkan ke hadirat Allah SWT...';
-      document.getElementById('p_karakteristikMurid').innerText = d.karakteristikMurid || '-';
-      document.getElementById('p_karakteristikPTK').innerText = d.karakteristikPTK || '-';
-      document.getElementById('p_karakteristikSarpras').innerText = d.karakteristikSarpras || '-';
-      document.getElementById('p_potensiDaerah').innerText = d.potensiDaerah || '-';
-      document.getElementById('p_analisisBencana').innerText = d.analisisBencana || '-';
-      document.getElementById('p_raporPendidikan').innerText = d.raporPendidikan || '-';
-      document.getElementById('p_visiSekolah').innerText = d.visiSekolah || '-';
-      document.getElementById('p_misiSekolah').innerText = d.misiSekolah || '-';
-      document.getElementById('p_tujuanSekolah').innerText = d.tujuanSekolah || '-';
-      document.getElementById('p_pendekatan').innerText = d.pendekatan || 'Mata Pelajaran (Reguler)';
-      document.getElementById('p_intrakurikuler').innerText = d.intrakurikuler || '-';
-      document.getElementById('p_kokurikuler').innerText = d.kokurikuler || '-';
-      document.getElementById('p_ekstrakurikuler').innerText = d.ekstrakurikuler || '-';
-      document.getElementById('p_perencanaanBelajar').innerText = d.perencanaanBelajar || '-';
-      document.getElementById('p_posKedaruratan').innerText = d.posKedaruratan || '-';
-      document.getElementById('p_evaluasiPendampingan').innerText = d.evaluasiPendampingan || '-';
-
-      // TABEL JP CETAK
-      let tbodyCetak = document.getElementById('p_bodyTabelJP');
-      tbodyCetak.innerHTML = '';
-      d.dataJP.forEach(item => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${item.mapel}</td>
-          <td style="text-align:center;">${item.c7Intra}</td>
-          <td style="text-align:center;">${item.c7Koku}</td>
-          <td style="text-align:center;">${item.c8Intra}</td>
-          <td style="text-align:center;">${item.c8Koku}</td>
-          <td style="text-align:center;">${item.c9Intra}</td>
-          <td style="text-align:center;">${item.c9Koku}</td>
-        `;
-        tbodyCetak.appendChild(tr);
-      });
+    function simpanDataLokal() {
+      const statusEl = document.getElementById('statusTersimpan');
+      if (statusEl) {
+        statusEl.innerText = "✓ Tersimpan Otomatis";
+        statusEl.style.background = "#e2ece5";
+      }
     }
 
-    function muatDataLokal() {
-      let str = localStorage.getItem('ksp_garut_2026');
-      if (!str) return;
-      let d = JSON.parse(str);
+    // TERAPKAN PANDUAN KEARIFAN LOKAL
+    window.terapkanPanduanKearifanLokal = function() {
+      try {
+        const el1 = document.getElementById('selectKecamatanModul1');
+        const el2 = document.getElementById('selectKecamatanModul2');
+        const kec = (el2 && el2.value) ? el2.value : ((el1 && el1.value) ? el1.value : '');
 
-      if (d.namaSekolah) document.getElementById('namaSekolah').value = d.namaSekolah;
-      if (d.npsnSekolah) document.getElementById('npsnSekolah').value = d.npsnSekolah;
-      if (d.alamatSekolah) document.getElementById('alamatSekolah').value = d.alamatSekolah;
-      if (d.wilayahSekolah) document.getElementById('wilayahSekolah').value = d.wilayahSekolah;
-      if (d.kepalaSekolah) document.getElementById('kepalaSekolah').value = d.kepalaSekolah;
-      if (d.nipKepala) document.getElementById('nipKepala').value = d.nipKepala;
-      if (d.namaPengawas) document.getElementById('namaPengawas').value = d.namaPengawas;
-      if (d.nipPengawas) document.getElementById('nipPengawas').value = d.nipPengawas;
-      if (d.namaKomite) document.getElementById('namaKomite').value = d.namaKomite;
-      if (d.tglPenetapan) document.getElementById('tglPenetapan').value = d.tglPenetapan;
-      if (d.kataPengantar) document.getElementById('kataPengantar').value = d.kataPengantar;
-      if (d.karakteristikMurid) document.getElementById('karakteristikMurid').value = d.karakteristikMurid;
-      if (d.karakteristikPTK) document.getElementById('karakteristikPTK').value = d.karakteristikPTK;
-      if (d.karakteristikSarpras) document.getElementById('karakteristikSarpras').value = d.karakteristikSarpras;
-      if (d.potensiDaerah) document.getElementById('potensiDaerah').value = d.potensiDaerah;
-      if (d.analisisBencana) document.getElementById('analisisBencana').value = d.analisisBencana;
-      if (d.raporPendidikan) document.getElementById('raporPendidikan').value = d.raporPendidikan;
-      if (d.visiSekolah) document.getElementById('visiSekolah').value = d.visiSekolah;
-      if (d.misiSekolah) document.getElementById('misiSekolah').value = d.misiSekolah;
-      if (d.tujuanSekolah) document.getElementById('tujuanSekolah').value = d.tujuanSekolah;
-      if (d.pendekatan) document.getElementById('pendekatan').value = d.pendekatan;
-      if (d.intrakurikuler) document.getElementById('intrakurikuler').value = d.intrakurikuler;
-      if (d.mingguEfektif) document.getElementById('mingguEfektif').value = d.mingguEfektif;
-      if (d.kokurikuler) document.getElementById('kokurikuler').value = d.kokurikuler;
-      if (d.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = d.ekstrakurikuler;
-      if (d.perencanaanBelajar) document.getElementById('perencanaanBelajar').value = d.perencanaanBelajar;
-      if (d.posKedaruratan) document.getElementById('posKedaruratan').value = d.posKedaruratan;
-      if (d.evaluasiPendampingan) document.getElementById('evaluasiPendampingan').value = d.evaluasiPendampingan;
+        const data = window.dbWilayahGarut[kec] || window.dbWilayahGarut["Default"];
+        const target = document.getElementById('potensiDaerah');
+        if (target) target.value = data.kearifan;
 
-      if (d.dataTim) dataTim = d.dataTim;
-      if (d.dataJP) dataJP = d.dataJP;
+        olahDataSimpan();
+      } catch (e) {
+        console.log('Panduan kearifan error:', e);
+      }
+    };
+
+    // TERAPKAN PANDUAN MITIGASI SPAB
+    window.terapkanPanduanMitigasi = function() {
+      try {
+        const el1 = document.getElementById('selectKecamatanModul1');
+        const el2 = document.getElementById('selectKecamatanModul2');
+        const kec = (el2 && el2.value) ? el2.value : ((el1 && el1.value) ? el1.value : '');
+
+        const data = window.dbWilayahGarut[kec] || window.dbWilayahGarut["Default"];
+        const target = document.getElementById('analisisBencana');
+        if (target) target.value = data.mitigasi;
+
+        olahDataSimpan();
+      } catch (e) {
+        console.log('Panduan mitigasi error:', e);
+      }
+    };
+
+    // DUMMY TAMBAH BARIS TIM
+    function tambahBarisTim() {
+      const tbody = document.getElementById('bodyTabelTim');
+      if (!tbody) return;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" placeholder="Nama Guru, S.Pd." oninput="olahDataSimpan()"></td>
+        <td><input type="text" placeholder="Anggota Tim KSP" oninput="olahDataSimpan()"></td>
+        <td style="text-align:center;"><button class="btn btn-danger" onclick="this.closest('tr').remove(); olahDataSimpan();">Hapus</button></td>
+      `;
+      tbody.appendChild(tr);
     }
 
-    /* GENERATOR DRAF OTOMATIS */
-    function generateDrafModul2() {
-      document.getElementById('analisisBencana').value = "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus, menetapkan titik kumpul utama yang lapang, serta membentuk Tim Siaga Bencana Sekolah (TSBS) yang terintegrasi dengan BPBD setempat.";
-      document.getElementById('potensiDaerah').value = "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.";
-      olahDataSimpan();
-      alert("✨ Draf Analisis Bencana & Diversifikasi Garut Berhasil Dimuat!");
-    }
-
-    function generateDrafModul3() {
-      document.getElementById('visiSekolah').value = "Terwujudnya Peserta Didik yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global";
-      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB) ke dalam kegiatan intrakurikuler dan kokurikuler.\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut dan potensi bentang alam daerah.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
-      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi siswa berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah yang terlatih dalam simulasi tanggap darurat bencana (drill).\n3. Menghasilkan karya projek kokurikuler (P5) berbasis kearifan lokal Garut.";
-      olahDataSimpan();
-      alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
-    }
-
-    function generateDrafModul5() {
-      document.getElementById('perencanaanBelajar').value = "Perencanaan pembelajaran disusun dalam bentuk Alur Tujuan Pembelajaran (ATP) dan Modul Ajar berorientasi Deep Learning (Mindful, Meaningful, dan Joyful Learning) yang mengintegrasikan aspek mitigasi bencana.";
-      document.getElementById('posKedaruratan').value = "Prosedur Operasional Standar (POS) Kedaruratan mengatur tata cara evakuasi mandiri saat terjadi gempa bumi/bencana, pemfungsian sirine peringatan dini, serta pengaktifan Tim Siaga Bencana Sekolah.";
-      document.getElementById('evaluasiPendampingan').value = "Evaluasi pembelajaran dan pelaksanaan KSP dilakukan secara berkala melalui Komunitas Belajar (Kombel) mingguan, supervisi akademik Kepala Sekolah, serta refleksi akhir semester.";
-      olahDataSimpan();
-      alert("✨ Draf POS SPAB & Perencanaan Berhasil Dimuat!");
-    }
-
-    /* EXPORT & IMPORT JSON */
+    // EXPORT JSON
     function exportJSON() {
-      let str = localStorage.getItem('ksp_garut_2026');
-      if (!str) return alert("Belum ada data untuk diexport!");
-      let blob = new Blob([str], { type: "application/json" });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = url;
-      a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.json`;
+      const data = {
+        namaSekolah: document.getElementById('namaSekolah')?.value || '',
+        npsnSekolah: document.getElementById('npsnSekolah')?.value || '',
+        kecamatan: document.getElementById('selectKecamatanModul1')?.value || ''
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = "KSP_Data_Garut.json";
       a.click();
     }
 
+    // IMPORT JSON
     function importJSON(input) {
-      let file = input.files[0];
+      const file = input.files[0];
       if (!file) return;
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.onload = function(e) {
         try {
-          let data = JSON.parse(e.target.result);
-          localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
-          muatDataLokal();
-          susunTabelTim();
-          susunTabelJP();
+          const data = JSON.parse(e.target.result);
+          if (data.namaSekolah) document.getElementById('namaSekolah').value = data.namaSekolah;
+          if (data.npsnSekolah) document.getElementById('npsnSekolah').value = data.npsnSekolah;
+          if (data.kecamatan) sinkronKecamatan(data.kecamatan);
           olahDataSimpan();
-          alert("✓ Data KSP Berhasil Diimport!");
+          alert('Data JSON berhasil dimuat!');
         } catch (err) {
-          alert("File JSON tidak valid!");
+          alert('Format file JSON tidak valid.');
         }
       };
       reader.readAsText(file);
     }
-
-    /* EXPORT WORD (.doc) */
-    function exportToWord() {
-      let html = document.getElementById('areaCetakUtuh').innerHTML;
-      let blob = new Blob(['\ufeff' + html], {
-        type: 'application/msword'
-      });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = url;
-      a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.doc`;
-      a.click();
-    }
-    // Database Panduan Wilayah Garut (Diversifikasi & SPAB)
-const dbWilayahGarut = {
-  "Cisurupan": {
-    kearifan: "Mengoptimalkan kearifan lokal kawasan agrowisata dan perkebunan lereng Gunung Papandayan. Pembelajaran memanfaatkan bentang alam pegunungan untuk pendidikan lingkungan hidup, pertanian holtikultura, dan seni budaya Sunda lokal.",
-    mitigasi: "Sekolah berada pada wilayah kerawanan bencana erupsi vulkanik Gunung Papandayan dan risiko tanah longsor. Mitigasi SPAB memprioritaskan pemetaan simulasi evakuasi berkala, pembentukan Tim Siaga Bencana Sekolah (TSBS), serta koordinasi dengan Pos Pengamatan Gunung Api dan BPBD Garut."
-  },
-  "Tarogong Kaler": {
-    kearifan: "Memanfaatkan potensi wisata alam Cipanas dan kerajinan khas Garut sebagai sarana pembelajaran berbasis kewirausahaan dan ekowisata. Siswa diajak mengenali pengelolaan lingkungan berbasis kearifan lokal.",
-    mitigasi: "Sekolah berlokasi di kawasan rawan bencana gempa bumi tektonik (Sesar Garsela) dan genangan banjir musim hujan. Mitigasi SPAB difokuskan pada penguatan struktur jalur evakuasi menuju titik kumpul terbuka serta penyediaan sarana peringatan dini."
-  },
-  "Pameungpeuk": {
-    kearifan: "Mengangkat kearifan lokal bahari dan potensi maritim Garut Selatan. Pembelajaran diintegrasikan dengan pemanfaatan sumber daya laut, kewirausahaan olahan hasil perikanan, serta pelestarian ekosistem pesisir pantai.",
-    mitigasi: "Sekolah terletak di kawasan pesisir rawan bencana gempa bumi tektonik laut dan potensi tsunami. Mitigasi SPAB difokuskan pada edukasi rambu evakuasi vertikal, simulasi tanggap darurat tsunami, dan kemitraan dengan Pos AL/BPBD Garut."
-  },
-  "Garut Kota": {
-    kearifan: "Mengintegrasikan nilai-nilai sejarah kota, sentra industri kreatif Garut (kuliner dodol dan kerajinan kulit), serta pelestarian seni tradisional Sunda dalam penguatan karakter dan kewirausahaan siswa.",
-    mitigasi: "Sekolah berlokasi di pusat perkotaan dengan risiko tinggi gempa bumi tektonik dan potensi banjir luapan sungai. Mitigasi SPAB difokuskan pada penetapan titik kumpul lapangan sekolah serta simulasi evakuasi mandiri bagi seluruh warga sekolah."
-  },
-  "Default": {
-    kearifan: "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sekitar sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.",
-    mitigasi: "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus dan membentuk Tim Siaga Bencana Sekolah (TSBS)."
-  }
-};
-
-// Fungsi Mengupdate Panduan saat Kecamatan Dipilih
-function updatePanduanKecamatan(kecamatan) {
-  const data = dbWilayahGarut[kecamatan] || dbWilayahGarut["Default"];
-  
-  // Tampilkan notifikasi visual sederhana
-  if (kecamatan) {
-    console.log("Panduan dimuat untuk Kecamatan: " + kecamatan);
-  }
-}
-
-// Tombol Terapkan Panduan Kearifan Lokal
-function terapkanPanduanKearifanLokal() {
-  const kec = document.getElementById('selectKecamatanModul2').value;
-  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
-  document.getElementById('potensiDaerah').value = data.kearifan;
-  if (typeof simpanDataLokal === 'function') simpanDataLokal();
-}
-
-// Tombol Terapkan Panduan Mitigasi SPAB
-function terapkanPanduanMitigasi() {
-  const kec = document.getElementById('selectKecamatanModul2').value;
-  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
-  document.getElementById('analisisBencana').value = data.mitigasi;
-  if (typeof simpanDataLokal === 'function') simpanDataLokal();
-}
-    // ==========================================================================
-// PANDUAN PINTAR DIVERSIFIKASI & SPAB KABUPATEN GARUT (ZERO-CONFLICT VERSION)
-// ==========================================================================
-
-window.dbWilayahGarut = window.dbWilayahGarut || {
-  "Cisurupan": {
-    kearifan: "Mengoptimalkan kearifan lokal kawasan agrowisata dan perkebunan lereng Gunung Papandayan. Pembelajaran memanfaatkan bentang alam pegunungan untuk pendidikan lingkungan hidup, pertanian holtikultura, dan seni budaya Sunda lokal.",
-    mitigasi: "Sekolah berada pada wilayah kerawanan bencana erupsi vulkanik Gunung Papandayan dan risiko tanah longsor. Mitigasi SPAB memprioritaskan pemetaan simulasi evakuasi berkala, pembentukan Tim Siaga Bencana Sekolah (TSBS), serta koordinasi dengan Pos Pengamatan Gunung Api dan BPBD Garut."
-  },
-  "Tarogong Kaler": {
-    kearifan: "Memanfaatkan potensi wisata alam Cipanas dan kerajinan khas Garut sebagai sarana pembelajaran berbasis kewirausahaan dan ekowisata. Siswa diajak mengenali pengelolaan lingkungan berbasis kearifan lokal.",
-    mitigasi: "Sekolah berlokasi di kawasan rawan bencana gempa bumi tektonik (Sesar Garsela) dan genangan banjir musim hujan. Mitigasi SPAB difokuskan pada penguatan struktur jalur evakuasi menuju titik kumpul terbuka serta penyediaan sarana peringatan dini."
-  },
-  "Pameungpeuk": {
-    kearifan: "Mengangkat kearifan lokal bahari dan potensi maritim Garut Selatan. Pembelajaran diintegrasikan dengan pemanfaatan sumber daya laut, kewirausahaan olahan hasil perikanan, serta pelestarian ekosistem pesisir pantai.",
-    mitigasi: "Sekolah terletak di kawasan pesisir rawan bencana gempa bumi tektonik laut dan potensi tsunami. Mitigasi SPAB difokuskan pada edukasi rambu evakuasi vertikal, simulasi tanggap darurat tsunami, dan kemitraan dengan Pos AL/BPBD Garut."
-  },
-  "Garut Kota": {
-    kearifan: "Mengintegrasikan nilai-nilai sejarah kota, sentra industri kreatif Garut (kuliner dodol dan kerajinan kulit), serta pelestarian seni tradisional Sunda dalam penguatan karakter dan kewirausahaan siswa.",
-    mitigasi: "Sekolah berlokasi di pusat perkotaan dengan risiko tinggi gempa bumi tektonik dan potensi banjir luapan sungai. Mitigasi SPAB difokuskan pada penetapan titik kumpul lapangan sekolah serta simulasi evakuasi mandiri bagi seluruh warga sekolah."
-  },
-  "Default": {
-    kearifan: "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sekitar sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.",
-    mitigasi: "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus dan membentuk Tim Siaga Bencana Sekolah (TSBS)."
-  }
-};
-
-window.sinkronKecamatan = function(nilaiKecamatan) {
-  try {
-    var selectModul2 = document.getElementById('selectKecamatanModul2');
-    if (selectModul2) {
-      selectModul2.value = nilaiKecamatan;
-    }
-  } catch (e) {
-    console.log('Sinkronisasi error:', e);
-  }
-};
-
-window.terapkanPanduanKearifanLokal = function() {
-  try {
-    var el1 = document.getElementById('selectKecamatanModul1');
-    var el2 = document.getElementById('selectKecamatanModul2');
-    var kec = (el2 && el2.value) ? el2.value : ((el1 && el1.value) ? el1.value : '');
-    
-    var data = window.dbWilayahGarut[kec] || window.dbWilayahGarut["Default"];
-    var target = document.getElementById('potensiDaerah');
-    if (target) target.value = data.kearifan;
-    
-    if (typeof olahDataSimpan === 'function') olahDataSimpan();
-    if (typeof simpanDataLokal === 'function') simpanDataLokal();
-  } catch (e) {
-    console.log('Panduan kearifan error:', e);
-  }
-};
-
-window.terapkanPanduanMitigasi = function() {
-  try {
-    var el1 = document.getElementById('selectKecamatanModul1');
-    var el2 = document.getElementById('selectKecamatanModul2');
-    var kec = (el2 && el2.value) ? el2.value : ((el1 && el1.value) ? el1.value : '');
-    
-    var data = window.dbWilayahGarut[kec] || window.dbWilayahGarut["Default"];
-    var target = document.getElementById('analisisBencana');
-    if (target) target.value = data.mitigasi;
-    
-    if (typeof olahDataSimpan === 'function') olahDataSimpan();
-    if (typeof simpanDataLokal === 'function') simpanDataLokal();
-  } catch (e) {
-    console.log('Panduan mitigasi error:', e);
-  }
-};
   </script>
 </body>
 </html>

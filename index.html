@@ -1200,6 +1200,25 @@
     });
   }
 }
+  // TABEL JP CETAK
+  let tbodyCetak = document.getElementById('p_bodyTabelJP');
+  if (tbodyCetak && d.dataJP) {
+    tbodyCetak.innerHTML = '';
+    d.dataJP.forEach(item => {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${item.mapel}</td>
+        <td style="text-align:center;">${item.c7Intra}</td>
+        <td style="text-align:center;">${item.c7Koku}</td>
+        <td style="text-align:center;">${item.c8Intra}</td>
+        <td style="text-align:center;">${item.c8Koku}</td>
+        <td style="text-align:center;">${item.c9Intra}</td>
+        <td style="text-align:center;">${item.c9Koku}</td>
+      `;
+      tbodyCetak.appendChild(tr);
+    });
+  }
+}
     function muatDataLokal() {
       let str = localStorage.getItem('ksp_garut_2026');
       if (!str) return;

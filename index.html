@@ -495,41 +495,107 @@
       </div>
     </div>
 
-    <!-- MODUL 2: KARAKTERISTIK & SPAB (SAJIAN DISESUAIKAN) -->
+    <!-- MODUL 2: KARAKTERISTIK SEKOLAH & SPAB (DENGAN ASISTEN PANDUAN GARUT) -->
 <div id="modul2" class="tab-content no-print">
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">Modul 2: Karakteristik Sekolah & Kesiapsiagaan Bencana (SPAB)</h3>
-      <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Draf Analisis SPAB & Garut</button>
+      <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Generator Draf AI Modul 2</button>
     </div>
 
-    <!-- 2.1 ANALISIS RISIKO BENCANA -->
-    <div class="form-group">
-      <label class="form-label">2.1 Analisis Risiko Bencana & Kesiapsiagaan (SPAB Pilar 1 & 2):</label>
-      <textarea id="analisisBencana" rows="3" placeholder="Deskripsikan kerentanan wilayah (gempa, longsor, dll) serta kesiapan awal sekolah..." oninput="simpanDataLokal()"></textarea>
-    </div>
+    <!-- PANAL PANDUAN PINTAR KECAMATAN -->
+    <div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
+          <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <select id="selectKecamatanModul2" style="padding: 6px 10px; border-radius: 6px; border: 1px solid #7d9b85;" onchange="updatePanduanKecamatan(this.value)">
+            <option value="">-- Pilih Kecamatan Garut --</option>
+            <!-- Wilayah Garut Utara & Kota -->
+            <option value="Garut Kota">Garut Kota</option>
+            <option value="Tarogong Kaler">Tarogong Kaler</option>
+            <option value="Tarogong Kidul">Tarogong Kidul</option>
+            <option value="Karangpawitan">Karangpawitan</option>
+            <option value="Leles">Leles</option>
+            <option value="Kadungora">Kadungora</option>
+            <option value="Limbangan">BL. Limbangan</option>
+            <option value="Cibiuk">Cibiuk</option>
+            <option value="Malambong">Malambong</option>
 
-    <!-- 2.2 CHECKLIST INTERAKTIF INVENTARIS SARPRAS -->
-    <div class="form-group" style="margin-top: 1.25rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-        <label class="form-label" style="margin: 0;">2.2 Checklist Inventaris Sarana & Prasarana Sekolah:</label>
-        <button class="btn btn-outline" type="button" style="font-size: 0.78rem; padding: 4px 10px;" onclick="tambahSarprasBaru()">+ Tambah Item Sarpras</button>
+            <!-- Wilayah Garut Tengah & Pegunungan -->
+            <option value="Cisurupan">Cisurupan</option>
+            <option value="Cikajang">Cikajang</option>
+            <option value="Samarang">Samarang</option>
+            <option value="Pasirwangi">Pasirwangi</option>
+            <option value="Bayongbong">Bayongbong</option>
+            <option value="Cigedug">Cigedug</option>
+
+            <!-- Wilayah Garut Selatan & Pesisir -->
+            <option value="Pameungpeuk">Pameungpeuk</option>
+            <option value="Cibalong">Cibalong</option>
+            <option value="Cikelet">Cikelet</option>
+            <option value="Bungbulang">Bungbulang</option>
+            <option value="Cisewu">Cisewu</option>
+            <option value="Caringin">Caringin</option>
+          </select>
+        </div>
       </div>
-      
-      <!-- Wadah Item Sarpras Interaktif -->
-      <div id="containerSarpras" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
     </div>
 
-    <!-- 2.3 KEMITRAAN & KEARIFAN LOKAL -->
-    <div class="form-group" style="margin-top: 1.25rem;">
-      <label class="form-label">2.3 Kemitraan & Potensi Kearifan Lokal Garut (Diversifikasi):</label>
-      <textarea id="potensiDaerah" rows="3" placeholder="Kerjasama dengan BPBD, Dinas Kesehatan, Pemanfaatan kearifan lokal seni/budaya Garut..." oninput="simpanDataLokal()"></textarea>
-    </div>
-
-    <!-- 2.4 KARAKTERISTIK MURID & PTK -->
+    <!-- 2.1 KARAKTERISTIK PESERTA DIDIK -->
     <div class="form-group">
-      <label class="form-label">2.4 Karakteristik Peserta Didik & PTK:</label>
-      <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang sosiokultural, kualifikasi guru & staf..." oninput="simpanDataLokal()"></textarea>
+      <label class="form-label">2.1 Karakteristik Peserta Didik & Sosiokultural:</label>
+      <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang ekonomi/sosial orang tua, dan inklusivitas..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.2 KARAKTERISTIK PTK -->
+    <div class="form-group">
+      <label class="form-label">2.2 Pendidik & Tenaga Kependidikan (PTK):</label>
+      <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik guru, kompetensi digital, serta keterlibatan staf kependidikan..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.3 SARPRAS & CHECKLIST SPAB -->
+    <div class="form-group">
+      <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Kesiapsiagaan SPAB:</label>
+      <textarea id="sarprasSekolah" rows="3" placeholder="Fasilitas fisik laboratorium, ruang baca, serta kelengkapan sarana keamanan bencana..." oninput="simpanDataLokal()"></textarea>
+      
+      <!-- Checklist Sarpras SPAB -->
+      <div style="margin-top: 10px; padding: 10px; background: #fafafa; border: 1px dashed #c0d1c4; border-radius: 6px;">
+        <span style="font-size: 0.85rem; font-weight: 600; color: #5c7865;">📋 Checklist Sarana Kesiapsiagaan SPAB Sekolah:</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem;">
+          <label><input type="checkbox" id="chkJalurEvakuasi" checked onchange="simpanDataLokal()"> Rambu & Jalur Evakuasi</label>
+          <label><input type="checkbox" id="chkTitikKumpul" checked onchange="simpanDataLokal()"> Titik Kumpul Aman</label>
+          <label><input type="checkbox" id="chkAPAR" onchange="simpanDataLokal()"> APAR & Peralatan P3K</label>
+          <label><input type="checkbox" id="chkPetaBencana" checked onchange="simpanDataLokal()"> Peta Risiko Bencana Sekolah</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 KEMITRAAN, BENTANG ALAM & KEARIFAN LOKAL -->
+    <div class="form-group">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <label class="form-label" style="margin: 0;">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
+        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanKearifanLokal()">💡 Gunakan Panduan Wilayah</button>
+      </div>
+      <textarea id="potensiDaerah" rows="3" placeholder="Memanfaatkan kearifan lokal Garut serta bentang alam sebagai media belajar terbuka..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.5 ANALISIS RISIKO BENCANA -->
+    <div class="form-group">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <label class="form-label" style="margin: 0;">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
+        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanMitigasi()">💡 Gunakan Panduan SPAB</button>
+      </div>
+      <p style="font-size: 0.78rem; color: #666; margin-bottom: 4px;">Kontekstualisasi kerawanan bencana wilayah Garut serta kelengkapan ketersediaan tim TSBS & peta keselamatan.</p>
+      <textarea id="analisisBencana" rows="3" placeholder="Deskripsi kerentanan bencana wilayah Garut dan langkah kesiapan mitigasi sekolah..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.6 EVALUASI DIRI RAPOR PENDIDIKAN -->
+    <div class="form-group">
+      <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+      <textarea id="evaluasiRapor" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="simpanDataLokal()"></textarea>
     </div>
   </div>
 </div>
@@ -1129,6 +1195,55 @@
       a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.doc`;
       a.click();
     }
+    // Database Panduan Wilayah Garut (Diversifikasi & SPAB)
+const dbWilayahGarut = {
+  "Cisurupan": {
+    kearifan: "Mengoptimalkan kearifan lokal kawasan agrowisata dan perkebunan lereng Gunung Papandayan. Pembelajaran memanfaatkan bentang alam pegunungan untuk pendidikan lingkungan hidup, pertanian holtikultura, dan seni budaya Sunda lokal.",
+    mitigasi: "Sekolah berada pada wilayah kerawanan bencana erupsi vulkanik Gunung Papandayan dan risiko tanah longsor. Mitigasi SPAB memprioritaskan pemetaan simulasi evakuasi berkala, pembentukan Tim Siaga Bencana Sekolah (TSBS), serta koordinasi dengan Pos Pengamatan Gunung Api dan BPBD Garut."
+  },
+  "Tarogong Kaler": {
+    kearifan: "Memanfaatkan potensi wisata alam Cipanas dan kerajinan khas Garut sebagai sarana pembelajaran berbasis kewirausahaan dan ekowisata. Siswa diajak mengenali pengelolaan lingkungan berbasis kearifan lokal.",
+    mitigasi: "Sekolah berlokasi di kawasan rawan bencana gempa bumi tektonik (Sesar Garsela) dan genangan banjir musim hujan. Mitigasi SPAB difokuskan pada penguatan struktur jalur evakuasi menuju titik kumpul terbuka serta penyediaan sarana peringatan dini."
+  },
+  "Pameungpeuk": {
+    kearifan: "Mengangkat kearifan lokal bahari dan potensi maritim Garut Selatan. Pembelajaran diintegrasikan dengan pemanfaatan sumber daya laut, kewirausahaan olahan hasil perikanan, serta pelestarian ekosistem pesisir pantai.",
+    mitigasi: "Sekolah terletak di kawasan pesisir rawan bencana gempa bumi tektonik laut dan potensi tsunami. Mitigasi SPAB difokuskan pada edukasi rambu evakuasi vertikal, simulasi tanggap darurat tsunami, dan kemitraan dengan Pos AL/BPBD Garut."
+  },
+  "Garut Kota": {
+    kearifan: "Mengintegrasikan nilai-nilai sejarah kota, sentra industri kreatif Garut (kuliner dodol dan kerajinan kulit), serta pelestarian seni tradisional Sunda dalam penguatan karakter dan kewirausahaan siswa.",
+    mitigasi: "Sekolah berlokasi di pusat perkotaan dengan risiko tinggi gempa bumi tektonik dan potensi banjir luapan sungai. Mitigasi SPAB difokuskan pada penetapan titik kumpul lapangan sekolah serta simulasi evakuasi mandiri bagi seluruh warga sekolah."
+  },
+  "Default": {
+    kearifan: "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sekitar sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.",
+    mitigasi: "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus dan membentuk Tim Siaga Bencana Sekolah (TSBS)."
+  }
+};
+
+// Fungsi Mengupdate Panduan saat Kecamatan Dipilih
+function updatePanduanKecamatan(kecamatan) {
+  const data = dbWilayahGarut[kecamatan] || dbWilayahGarut["Default"];
+  
+  // Tampilkan notifikasi visual sederhana
+  if (kecamatan) {
+    console.log("Panduan dimuat untuk Kecamatan: " + kecamatan);
+  }
+}
+
+// Tombol Terapkan Panduan Kearifan Lokal
+function terapkanPanduanKearifanLokal() {
+  const kec = document.getElementById('selectKecamatanModul2').value;
+  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
+  document.getElementById('potensiDaerah').value = data.kearifan;
+  if (typeof simpanDataLokal === 'function') simpanDataLokal();
+}
+
+// Tombol Terapkan Panduan Mitigasi SPAB
+function terapkanPanduanMitigasi() {
+  const kec = document.getElementById('selectKecamatanModul2').value;
+  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
+  document.getElementById('analisisBencana').value = data.mitigasi;
+  if (typeof simpanDataLokal === 'function') simpanDataLokal();
+}
   </script>
 </body>
 </html>

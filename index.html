@@ -1077,44 +1077,41 @@
     }
 
     function olahDataSimpan() {
-      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
-      let data = {
-        namaSekolah: document.getElementById('namaSekolah').value,
-        npsnSekolah: document.getElementById('npsnSekolah').value,
-        alamatSekolah: document.getElementById('alamatSekolah').value,
-        wilayahSekolah: kec ? "Kec. " + kec + ", Kab. Garut" : "",
-        selectKecamatan: kec,
-        kepalaSekolah: document.getElementById('kepalaSekolah').value,
-        nipKepala: document.getElementById('nipKepala').value,
-        namaPengawas: document.getElementById('namaPengawas').value,
-        nipPengawas: document.getElementById('nipPengawas').value,
-        namaKomite: document.getElementById('namaKomite').value,
-        tglPenetapan: document.getElementById('tglPenetapan').value,
-        kataPengantar: document.getElementById('kataPengantar').value,
-        karakteristikMurid: document.getElementById('karakteristikMurid').value,
-        karakteristikPTK: document.getElementById('karakteristikPTK').value,
-        karakteristikSarpras: document.getElementById('karakteristikSarpras').value,
-        potensiDaerah: document.getElementById('potensiDaerah').value,
-        analisisBencana: document.getElementById('analisisBencana').value,
-        raporPendidikan: document.getElementById('raporPendidikan').value,
-        visiSekolah: document.getElementById('visiSekolah').value,
-        misiSekolah: document.getElementById('misiSekolah').value,
-        tujuanSekolah: document.getElementById('tujuanSekolah').value,
-        pendekatan: document.getElementById('pendekatan').value,
-        intrakurikuler: document.getElementById('intrakurikuler').value,
-        mingguEfektif: document.getElementById('mingguEfektif').value,
-        kokurikuler: document.getElementById('kokurikuler').value,
-        ekstrakurikuler: document.getElementById('ekstrakurikuler').value,
-        perencanaanBelajar: document.getElementById('perencanaanBelajar').value,
-        posKedaruratan: document.getElementById('posKedaruratan').value,
-        evaluasiPendampingan: document.getElementById('evaluasiPendampingan').value,
-        dataTim: dataTim,
-        dataJP: dataJP
-      };
+  let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+  let data = {
+    namaSekolah: document.getElementById('namaSekolah') ? document.getElementById('namaSekolah').value : '',
+    npsnSekolah: document.getElementById('npsnSekolah') ? document.getElementById('npsnSekolah').value : '',
+    alamatSekolah: document.getElementById('alamatSekolah') ? document.getElementById('alamatSekolah').value : '',
+    wilayahSekolah: kec ? "Kec. " + kec + ", Kab. Garut" : "",
+    selectKecamatan: kec,
+    kepalaSekolah: document.getElementById('kepalaSekolah') ? document.getElementById('kepalaSekolah').value : '',
+    nipKepala: document.getElementById('nipKepala') ? document.getElementById('nipKepala').value : '',
+    namaPengawas: document.getElementById('namaPengawas') ? document.getElementById('namaPengawas').value : '',
+    nipPengawas: document.getElementById('nipPengawas') ? document.getElementById('nipPengawas').value : '',
+    namaKomite: document.getElementById('namaKomite') ? document.getElementById('namaKomite').value : '',
+    tglPenetapan: document.getElementById('tglPenetapan') ? document.getElementById('tglPenetapan').value : '',
+    kataPengantar: document.getElementById('kataPengantar') ? document.getElementById('kataPengantar').value : '',
+    karakteristikMurid: document.getElementById('karakteristikMurid') ? document.getElementById('karakteristikMurid').value : '',
+    karakteristikPTK: document.getElementById('karakteristikPTK') ? document.getElementById('karakteristikPTK').value : '',
+    karakteristikSarpras: document.getElementById('karakteristikSarpras') ? document.getElementById('karakteristikSarpras').value : '',
+    potensiDaerah: document.getElementById('potensiDaerah') ? document.getElementById('potensiDaerah').value : '',
+    analisisBencana: document.getElementById('analisisBencana') ? document.getElementById('analisisBencana').value : '',
+    raporPendidikan: document.getElementById('raporPendidikan') ? document.getElementById('raporPendidikan').value : '',
+    visiSekolah: document.getElementById('visiSekolah') ? document.getElementById('visiSekolah').value : '',
+    misiSekolah: document.getElementById('misiSekolah') ? document.getElementById('misiSekolah').value : '',
+    tujuanSekolah: document.getElementById('tujuanSekolah') ? document.getElementById('tujuanSekolah').value : '',
+    pendekatan: document.getElementById('pendekatan') ? document.getElementById('pendekatan').value : ''
+  };
 
-      localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
-      perbaruiPratinjau(data);
-    }
+  // Simpan data ke memori browser
+  localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
+  localStorage.setItem('ksp_data_2026', JSON.stringify(data));
+
+  // LANGSUNG RENDERING KE MODUL 6
+  if (typeof perbaruiPratinjau === 'function') {
+    perbaruiPratinjau(data);
+  }
+}
 
     function perbaruiPratinjau(d) {
       document.getElementById('p_namaSekolahCover').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';

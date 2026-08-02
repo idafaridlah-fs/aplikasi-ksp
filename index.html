@@ -280,8 +280,8 @@
     .btn-ai {
       background-color: #4A6B82;
       color: #ffffff;
-      font-size: 0.8rem;
-      padding: 0.35rem 0.75rem;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 6px;
     }
 
@@ -409,7 +409,7 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Nama Satuan Pendidikan (Sekolah):</label>
-            <input type="text" id="namaSekolah" placeholder="SMPN 2 Cigedug" oninput="olahDataSimpan()">
+            <input type="text" id="namaSekolah" placeholder="SMP Negeri 2 Cigedug" oninput="olahDataSimpan()">
           </div>
 
           <div class="form-group">
@@ -546,12 +546,12 @@
       </div>
     </div>
 
-    <!-- MODUL 2: KARAKTERISTIK -->
+    <!-- MODUL 2: KARAKTERISTIK & SPAB -->
     <div id="modul2" class="tab-content no-print">
       <div class="card">
         <div class="card-title">
           <span>Modul 2: Analisis Karakteristik Satuan Pendidikan & Risiko Bencana</span>
-          <button class="btn btn-ai" onclick="generateDrafModul2()">✨ Generator Draf Analisis Bencana (Garut & SPAB)</button>
+          <button class="btn btn-ai" onclick="generateDrafModul2()">✨ Auto-Generate Analisis Risiko Bencana Kecamatan</button>
         </div>
 
         <div class="form-group">
@@ -576,8 +576,8 @@
 
         <div class="form-group">
           <label class="form-label">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
-          <div class="help-text">Kontekstualisasi kerawanan bencana wilayah Garut (gempa bumi, tanah longsor, banjir musiman) serta kelengkapan ketersediaan peta evakuasi dan rambu keselamatan.</div>
-          <textarea id="analisisBencana" rows="4" placeholder="Sekolah berada di kawasan rawan bencana [pilih: longsor/gempa bumi/banjir]. Sekolah telah menyediakan jalur evakuasi, titik kumpul aman, dan membentuk Tim Siaga Bencana Sekolah (TSBS)..." oninput="olahDataSimpan()"></textarea>
+          <div class="help-text">Tombol 'Auto-Generate' di atas akan menyusun teks kesiapsiagaan bencana secara presisi sesuai Kecamatan yang Anda pilih di Modul 1.</div>
+          <textarea id="analisisBencana" rows="4" placeholder="Analisis risiko bencana akan disesuaikan otomatis berdasarkan karakteristik geografis kecamatan..." oninput="olahDataSimpan()"></textarea>
         </div>
 
         <div class="form-group">
@@ -1118,18 +1118,47 @@
       if (d.dataJP) dataJP = d.dataJP;
     }
 
-    /* GENERATOR DRAF OTOMATIS */
+    /* GENERATOR DRAF KECAMATAN PRESISI UNTUK MODUL 2 */
     function generateDrafModul2() {
-      document.getElementById('analisisBencana').value = "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus, menetapkan titik kumpul utama yang lapang, serta membentuk Tim Siaga Bencana Sekolah (TSBS) yang terintegrasi dengan BPBD setempat.";
-      document.getElementById('potensiDaerah').value = "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.";
+      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
+      
+      let teksBencana = "";
+      let teksPotensi = "";
+
+      if (kec === "Cigedug" || kec === "Cikajang" || kec === "Cisurupan" || kec === "Banjarwangi" || kec === "Singajaya" || kec === "Talegong" || kec === "Cisewu") {
+        teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan Garut yang memiliki kerawanan tinggi terhadap bencana tanah longsor, pergerakan tanah, serta guncangan gempa bumi tektonik/vulkanik (Sesar Garsela). Berdasarkan prinsip SPAB Pilar 1 & 2, sekolah menetapkan jalur evakuasi berpetunjuk jelas menuju lapangan terbuka sebagai titik kumpul utama, serta rutin menggelar simulasi kesiapsiagaan bersama Tim Siaga Bencana Sekolah (TSBS).`;
+        teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, potensi holtikultura, dan perkebunan. Kemitraan sekolah dikembangkan bersama kelompok tani lokal, puskesmas, dan BPBD untuk mendukung edukasi mitigasi lingkungan serta kewirausahaan berbasis hasil bumi daerah.`;
+      } else if (kec === "Pameungpeuk" || kec === "Cibalong" || kec === "Cikelet" || kec === "Bungbulang" || kec === "Caringin") {
+        teksBencana = `${namaSek} berada di wilayah pesisir Kecamatan ${kec} yang memiliki potensi risiko bencana gempa bumi tektonik, ancaman tsunami, serta banjir rob. Implementasi SPAB difokuskan pada penguatan rambu evakuasi ke tempat tinggi (Vertical Evacuation), penyediaan sirine peringatan dini, dan edukasi tanggap bencana pesisir.`;
+        teksPotensi = `Memanfaatkan potensi pesisir pantai Garut Selatan, sumber daya maritim, serta pariwisata bahari sebagai laboratorium alam pembelajaran kontekstual dan pengembangan karakter kebaharian peserta didik.`;
+      } else if (kec === "Garut Kota" || kec === "Tarogong Kidul" || kec === "Tarogong Kaler" || kec === "Karangpawitan") {
+        teksBencana = `${namaSek} berlokasi di kawasan perkotaan Kecamatan ${kec} dengan potensi risiko genangan banjir musiman, kepadatan lalu lintas, serta risiko kebakaran. Implementasi SPAB mengutamakan kesiapan infrastruktur gedung aman, jalur evakuasi bebas hambatan, serta simulasi gempa bumi kota.`;
+        teksPotensi = `Kawasan perkotaan memberikan kemudahan akses kemitraan dengan perguruan tinggi, lembaga pemerintah, UMKM kerajinan kulit/makanan khas, serta pusat layanan publik Garut.`;
+      } else {
+        teksBencana = `${namaSek} berada di wilayah Kecamatan ${kec || 'Kabupaten Garut'} yang memiliki karakteristik bentang alam dengan potensi kerawanan gempa bumi, angin kencang, dan banjir musiman. Sekolah mengimplementasikan SPAB melalui pemetaan jalur evakuasi aman dan pembentukan Tim Siaga Bencana Sekolah.`;
+        teksPotensi = `Mengoptimalkan potensi kearifan lokal Garut, budaya Sunda, serta bentang alam wilayah Kecamatan ${kec || 'Garut'} sebagai sumber belajar kontekstual berbasis lingkungan.`;
+      }
+
+      document.getElementById('analisisBencana').value = teksBencana;
+      document.getElementById('potensiDaerah').value = teksPotensi;
+      
+      if (!document.getElementById('karakteristikMurid').value) {
+        document.getElementById('karakteristikMurid').value = "Peserta didik memiliki latar belakang sosial ekonomi yang bervariasi, berbudaya Sunda yang kuat, serta memiliki minat tinggi dalam bidang kearifan lokal, teknologi digital, dan olahraga.";
+      }
+      if (!document.getElementById('karakteristikPTK').value) {
+        document.getElementById('karakteristikPTK').value = "Tenaga pendidik berkualifikasi S1/S2, sebagian besar telah tersertifikasi profesional, serta aktif dalam kegiatan Komunitas Belajar (Kombel) dan Pelatihan Mandiri Platform Merdeka Mengajar (PMM).";
+      }
+
       olahDataSimpan();
-      alert("✨ Draf Analisis Bencana & Diversifikasi Garut Berhasil Dimuat!");
+      alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dicuat Otomatis!`);
     }
 
     function generateDrafModul3() {
-      document.getElementById('visiSekolah').value = "Terwujudnya Peserta Didik yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global";
-      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB) ke dalam kegiatan intrakurikuler dan kokurikuler.\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut dan potensi bentang alam daerah.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
-      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi siswa berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah yang terlatih dalam simulasi tanggap darurat bencana (drill).\n3. Menghasilkan karya projek kokurikuler (P5) berbasis kearifan lokal Garut.";
+      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
+      document.getElementById('visiSekolah').value = `Terwujudnya Peserta Didik ${namaSek} yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana (SPAB), Berbudaya Lokal Garut, dan Berwawasan Global`;
+      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) yang berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB) ke dalam kegiatan intrakurikuler dan kokurikuler.\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut dan potensi bentang alam daerah.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
+      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi siswa berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah yang terlatih dalam simulasi tanggap darurat bencana (drill berkala).\n3. Menghasilkan karya projek kokurikuler (P5) berbasis kearifan lokal Garut.";
       olahDataSimpan();
       alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
     }

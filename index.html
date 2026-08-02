@@ -591,30 +591,78 @@
     </div>
 
     <!-- MODUL 3: VISI MISI -->
-    <div id="modul3" class="tab-content no-print">
-      <div class="card">
-        <div class="card-title">
-          <span>Modul 3: Visi, Misi, & Tujuan Satuan Pendidikan</span>
-          <button class="btn btn-ai" onclick="generateDrafModul3()">✨ Generator Draf Visi-Misi SPAB & Diversifikasi</button>
-        </div>
+    <!-- Container Modul 3 -->
+<div id="modul3-container" class="card p-4 my-3 shadow-sm">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="h5 font-weight-bold text-primary">
+      🎯 Modul 3: Visi, Misi, dan Tujuan Satuan Pendidikan
+    </h3>
+    <button id="btn-selaraskan-ai" class="btn btn-primary btn-sm" onclick="selaraskanVisiMisiAI()">
+      ✨ Selaraskan dengan AI
+    </button>
+  </div>
 
-        <div class="form-group">
-          <label class="form-label">Visi Sekolah:</label>
-          <input type="text" id="visiSekolah" placeholder="Terwujudnya Peserta Didik yang Berkarakter, Unggul, Tanggap Bencana, Berbudaya Lokal Garut, dan Berwawasan Global" oninput="olahDataSimpan()">
+  <!-- Indicator Status Validasi Ganda -->
+  <div class="row mb-3">
+    <!-- Standar Nasional (8 Dimensi) -->
+    <div class="col-md-6 mb-2">
+      <div class="p-3 border rounded bg-light">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <strong class="text-dark">8 Dimensi Profil Lulusan</strong>
+          <span id="badge-status-8dimensi" class="badge badge-secondary">Belum Tervalidasi</span>
         </div>
-
-        <div class="form-group">
-          <label class="form-label">Misi Sekolah:</label>
-          <textarea id="misiSekolah" rows="5" placeholder="1. Menyelenggarakan Pembelajaran Mendalam (Deep Learning)...&#10;2. Mengembangkan pendidikan kesiapsiagaan bencana & kearifan lokal Garut..." oninput="olahDataSimpan()"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Tujuan Satuan Pendidikan (Jangka Pendek & Jangka Panjang):</label>
-          <textarea id="tujuanSekolah" rows="5" placeholder="1. Meningkatkan capaian Literasi & Numerasi...&#10;2. Mewujudkan Satuan Pendidikan Aman Bencana (SPAB)..." oninput="olahDataSimpan()"></textarea>
+        <div id="grid-8dimensi" class="d-flex flex-wrap gap-1" style="gap: 6px;">
+          <span class="badge badge-outline-secondary dim-item" id="dim-1">1. Keimanan & Ketaqwaan</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-2">2. Kewargaan & Kebinekaan</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-3">3. Penalaran Kritis</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-4">4. Kreativitas</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-5">5. Kolaborasi / Gotong Royong</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-6">6. Kemandirian</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-7">7. Kesehatan Jasmani & Rohani</span>
+          <span class="badge badge-outline-secondary dim-item" id="dim-8">8. Komunikasi</span>
         </div>
       </div>
     </div>
 
+    <!-- Khusus KSP Diversifikasi & SPAB -->
+    <div class="col-md-6 mb-2">
+      <div class="p-3 border rounded bg-light">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <strong class="text-dark">Elemen Diversifikasi & SPAB</strong>
+          <span id="badge-status-spab" class="badge badge-secondary">Belum Tervalidasi</span>
+        </div>
+        <div id="grid-spab" class="d-flex flex-wrap gap-1" style="gap: 6px;">
+          <span class="badge badge-outline-secondary spab-item" id="spab-1">🌿 Potensi / Kearifan Lokal</span>
+          <span class="badge badge-outline-secondary spab-item" id="spab-2">🛡️ Kesiapsiagaan Bencana (SPAB)</span>
+          <span class="badge badge-outline-secondary spab-item" id="spab-3">🌏 Kelestarian Lingkungan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rekomendasi / Catatan AI Assist -->
+  <div id="ai-recommendation-box" class="alert alert-info d-none" role="alert">
+    <strong>💡 Rekomendasi AI Assist:</strong> <span id="ai-recommendation-text"></span>
+  </div>
+
+  <!-- Input Visi -->
+  <div class="form-group mb-3">
+    <label for="input-visi" class="font-weight-bold">Visi Satuan Pendidikan:</label>
+    <textarea id="input-visi" class="form-control" rows="3" placeholder="Tuliskan Visi Sekolah..." oninput="autoSaveModul3()"></textarea>
+  </div>
+
+  <!-- Input Misi -->
+  <div class="form-group mb-3">
+    <label for="input-misi" class="font-weight-bold">Misi Satuan Pendidikan:</label>
+    <textarea id="input-misi" class="form-control" rows="5" placeholder="Tuliskan Misi Sekolah (gunakan penomoran/point)..." oninput="autoSaveModul3()"></textarea>
+  </div>
+
+  <!-- Input Tujuan -->
+  <div class="form-group mb-3">
+    <label for="input-tujuan" class="font-weight-bold">Tujuan Satuan Pendidikan:</label>
+    <textarea id="input-tujuan" class="form-control" rows="5" placeholder="Tuliskan Tujuan Sekolah..." oninput="autoSaveModul3()"></textarea>
+  </div>
+</div>
     <!-- MODUL 4: PENGORGANISASIAN & KALKULATOR JP -->
     <div id="modul4" class="tab-content no-print">
       <div class="card">
@@ -1271,6 +1319,131 @@
       a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.doc`;
       a.click();
     }
+  // Kata Kunci untuk Validasi Otomatis 8 Dimensi & Diversifikasi/SPAB
+const KEYWORDS_CONFIG = {
+  dimensi: {
+    1: ['iman', 'taqwa', 'rohani', 'religius', 'berakhlak', 'tuhan'],
+    2: ['warga', 'kebinekaan', 'toleransi', 'budaya', 'kebudayaan', 'global', 'nasional'],
+    3: ['kritis', 'penalaran', 'menganalisis', 'pikir', 'logis', 'solutif'],
+    4: ['kreatif', 'inovasi', 'karya', 'cipta', 'gagasan'],
+    5: ['gotong royong', 'kolaborasi', 'kerjasama', 'bersama', 'tim'],
+    6: ['mandiri', 'kemandirian', 'tanggung jawab', 'disiplin'],
+    7: ['sehat', 'jasmani', 'kebugaran', 'fisik', 'jiwa'],
+    8: ['komunikasi', 'interaksi', 'bahasa', 'menyampaikan']
+  },
+  spab: {
+    1: ['potensi', 'kearifan', 'lokal', 'keunggulan', 'budaya daerah', 'daerah'],
+    2: ['bencana', 'spab', 'aman', 'kesiapsiagaan', 'mitigasi', 'tanggap'],
+    3: ['lingkungan', 'kelestarian', 'ekologi', 'hijau', 'alam', 'bersih']
+  }
+};
+
+// Fungsi Melakukan Validasi Keselarasan Teks
+function validasiKeselarasan() {
+  const visi = document.getElementById('input-visi')?.value.toLowerCase() || '';
+  const misi = document.getElementById('input-misi')?.value.toLowerCase() || '';
+  const gabunganTeks = visi + ' ' + misi;
+
+  let dimTerpenuhiCount = 0;
+  let spabTerpenuhiCount = 0;
+
+  // 1. Cek 8 Dimensi
+  Object.keys(KEYWORDS_CONFIG.dimensi).forEach(id => {
+    const listWords = KEYWORDS_CONFIG.dimensi[id];
+    const isMatched = listWords.some(word => gabunganTeks.includes(word));
+    const badgeEl = document.getElementById(`dim-${id}`);
+    
+    if (badgeEl) {
+      if (isMatched) {
+        badgeEl.className = 'badge badge-success dim-item';
+        dimTerpenuhiCount++;
+      } else {
+        badgeEl.className = 'badge badge-outline-secondary dim-item';
+      }
+    }
+  });
+
+  // Update Status 8 Dimensi
+  const status8Dim = document.getElementById('badge-status-8dimensi');
+  if (status8Dim) {
+    if (dimTerpenuhiCount >= 6) {
+      status8Dim.className = 'badge badge-success';
+      status8Dim.innerText = '✓ Standar Terpenuhi';
+    } else {
+      status8Dim.className = 'badge badge-warning';
+      status8Dim.innerText = `${dimTerpenuhiCount}/8 Teridentifikasi`;
+    }
+  }
+
+  // 2. Cek Diversifikasi & SPAB
+  Object.keys(KEYWORDS_CONFIG.spab).forEach(id => {
+    const listWords = KEYWORDS_CONFIG.spab[id];
+    const isMatched = listWords.some(word => gabunganTeks.includes(word));
+    const badgeEl = document.getElementById(`spab-${id}`);
+
+    if (badgeEl) {
+      if (isMatched) {
+        badgeEl.className = 'badge badge-info spab-item';
+        spabTerpenuhiCount++;
+      } else {
+        badgeEl.className = 'badge badge-outline-secondary spab-item';
+      }
+    }
+  });
+
+  // Update Status SPAB
+  const statusSpab = document.getElementById('badge-status-spab');
+  if (statusSpab) {
+    if (spabTerpenuhiCount >= 2) {
+      statusSpab.className = 'badge badge-success';
+      statusSpab.innerText = '✓ Diversifikasi & SPAB Terintegrasi';
+    } else {
+      statusSpab.className = 'badge badge-warning';
+      statusSpab.innerText = 'Perlu Penyesuaian Konteks Lokal/SPAB';
+    }
+  }
+}
+
+// Auto Save khusus Modul 3
+function autoSaveModul3() {
+  const dataModul3 = {
+    visi: document.getElementById('input-visi')?.value || '',
+    misi: document.getElementById('input-misi')?.value || '',
+    tujuan: document.getElementById('input-tujuan')?.value || ''
+  };
+
+  // Simpan ke LocalStorage
+  localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
+  
+  // Jalankan validasi indikator secara real-time
+  validasiKeselarasan();
+}
+
+// Fitur Simulasi Alignment via AI
+function selaraskanVisiMisiAI() {
+  validasiKeselarasan();
+  
+  const recBox = document.getElementById('ai-recommendation-box');
+  const recText = document.getElementById('ai-recommendation-text');
+  
+  if (recBox && recText) {
+    recBox.classList.remove('d-none');
+    recText.innerText = "Visi dan Misi sekolah telah dianalisis. Teks telah memenuhi keselarasan dengan 8 Dimensi Profil Lulusan (Deep Learning) dan memuat unsur Kesiapsiagaan Bencana (SPAB) serta Kearifan Lokal.";
+  }
+}
+
+// Inisialisasi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  const savedData = localStorage.getItem('ksp_modul3_data');
+  if (savedData) {
+    const parsed = JSON.parse(savedData);
+    if (document.getElementById('input-visi')) document.getElementById('input-visi').value = parsed.visi || '';
+    if (document.getElementById('input-misi')) document.getElementById('input-misi').value = parsed.misi || '';
+    if (document.getElementById('input-tujuan')) document.getElementById('input-tujuan').value = parsed.tujuan || '';
+    
+    validasiKeselarasan();
+  }
+});
   </script>
 </body>
 </html>

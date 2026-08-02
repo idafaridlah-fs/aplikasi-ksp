@@ -1342,6 +1342,7 @@
     }
 
     /* EXPORT WORD (.doc) */
+    /* EXPORT WORD (.doc) */
     function exportToWord() {
       let html = document.getElementById('areaCetakUtuh').innerHTML;
       let blob = new Blob(['\ufeff' + html], {
@@ -1353,213 +1354,82 @@
       a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.doc`;
       a.click();
     }
-  // Kata Kunci untuk Validasi Otomatis 8 Dimensi & Diversifikasi/SPAB
-const KEYWORDS_CONFIG = {
-  dimensi: {
-    1: ['iman', 'taqwa', 'rohani', 'religius', 'berakhlak', 'tuhan'],
-    2: ['warga', 'kebinekaan', 'toleransi', 'budaya', 'kebudayaan', 'global', 'nasional'],
-    3: ['kritis', 'penalaran', 'menganalisis', 'pikir', 'logis', 'solutif'],
-    4: ['kreatif', 'inovasi', 'karya', 'cipta', 'gagasan'],
-    5: ['gotong royong', 'kolaborasi', 'kerjasama', 'bersama', 'tim'],
-    6: ['mandiri', 'kemandirian', 'tanggung jawab', 'disiplin'],
-    7: ['sehat', 'jasmani', 'kebugaran', 'fisik', 'jiwa'],
-    8: ['komunikasi', 'interaksi', 'bahasa', 'menyampaikan']
-  },
-  spab: {
-    1: ['potensi', 'kearifan', 'lokal', 'keunggulan', 'budaya daerah', 'daerah'],
-    2: ['bencana', 'spab', 'aman', 'kesiapsiagaan', 'mitigasi', 'tanggap'],
-    3: ['lingkungan', 'kelestarian', 'ekologi', 'hijau', 'alam', 'bersih']
-  }
-};
 
-// Fungsi Melakukan Validasi Keselarasan Teks
-function validasiKeselarasan() {
-  const visi = document.getElementById('input-visi')?.value.toLowerCase() || '';
-  const misi = document.getElementById('input-misi')?.value.toLowerCase() || '';
-  const gabunganTeks = visi + ' ' + misi;
+    // ==========================================
+    // MODUL 3: LOGIKA CENTANG & GENERATOR AI
+    // ==========================================
 
-  let dimTerpenuhiCount = 0;
-  let spabTerpenuhiCount = 0;
-
-  // 1. Cek 8 Dimensi
-  Object.keys(KEYWORDS_CONFIG.dimensi).forEach(id => {
-    const listWords = KEYWORDS_CONFIG.dimensi[id];
-    const isMatched = listWords.some(word => gabunganTeks.includes(word));
-    const badgeEl = document.getElementById(`dim-${id}`);
-    
-    if (badgeEl) {
-      if (isMatched) {
-        badgeEl.className = 'badge badge-success dim-item';
-        dimTerpenuhiCount++;
-      } else {
-        badgeEl.className = 'badge badge-outline-secondary dim-item';
+    function updateDPLPilihan() {
+      const chkDpl = document.querySelectorAll('.chk-dpl:checked');
+      const badgeStatus = document.getElementById('badge-status-8dimensi');
+      
+      if (badgeStatus) {
+        badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
+        if (chkDpl.length > 0) {
+          badgeStatus.className = 'badge badge-success';
+        } else {
+          badgeStatus.className = 'badge badge-info';
+        }
       }
+
+      autoSaveModul3();
     }
-  });
 
-  // Update Status 8 Dimensi
-  const status8Dim = document.getElementById('badge-status-8dimensi');
-  if (status8Dim) {
-    if (dimTerpenuhiCount >= 6) {
-      status8Dim.className = 'badge badge-success';
-      status8Dim.innerText = '✓ Standar Terpenuhi';
-    } else {
-      status8Dim.className = 'badge badge-warning';
-      status8Dim.innerText = `${dimTerpenuhiCount}/8 Teridentifikasi`;
-    }
-  }
+    function selaraskanVisiMisiAI() {
+      const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
+      const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
 
-  // 2. Cek Diversifikasi & SPAB
-  Object.keys(KEYWORDS_CONFIG.spab).forEach(id => {
-    const listWords = KEYWORDS_CONFIG.spab[id];
-    const isMatched = listWords.some(word => gabunganTeks.includes(word));
-    const badgeEl = document.getElementById(`spab-${id}`);
-
-    if (badgeEl) {
-      if (isMatched) {
-        badgeEl.className = 'badge badge-info spab-item';
-        spabTerpenuhiCount++;
-      } else {
-        badgeEl.className = 'badge badge-outline-secondary spab-item';
+      if (selectedDPL.length === 0) {
+        alert("Silakan centang minimal 1 atau 2 Dimensi Profil Lulusan yang menjadi fokus sekolah tahun ajaran ini!");
+        return;
       }
-    }
-  });
 
-  // Update Status SPAB
-  const statusSpab = document.getElementById('badge-status-spab');
-  if (statusSpab) {
-    if (spabTerpenuhiCount >= 2) {
-      statusSpab.className = 'badge badge-success';
-      statusSpab.innerText = '✓ Diversifikasi & SPAB Terintegrasi';
-    } else {
-      statusSpab.className = 'badge badge-warning';
-      statusSpab.innerText = 'Perlu Penyesuaian Konteks Lokal/SPAB';
-    }
-  }
-}
+      let dplText = selectedDPL.join(', ');
+      let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
 
-// Auto Save khusus Modul 3
-function autoSaveModul3() {
-  const dataModul3 = {
-    visi: document.getElementById('input-visi')?.value || '',
-    misi: document.getElementById('input-misi')?.value || '',
-    tujuan: document.getElementById('input-tujuan')?.value || ''
-  };
+      const namaSekolahInput = document.getElementById('namaSekolah') || document.querySelector('input[placeholder*="Nama Satuan Pendidikan"]');
+      const namaSekolah = namaSekolahInput?.value || 'Satuan Pendidikan';
 
-  // Simpan ke LocalStorage
-  localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
-  
-  // Jalankan validasi indikator secara real-time
-  validasiKeselarasan();
-}
-
-// Fitur Simulasi Alignment via AI
-function selaraskanVisiMisiAI() {
-  validasiKeselarasan();
-  
-  const recBox = document.getElementById('ai-recommendation-box');
-  const recText = document.getElementById('ai-recommendation-text');
-  
-  if (recBox && recText) {
-    recBox.classList.remove('d-none');
-    recText.innerText = "Visi dan Misi sekolah telah dianalisis. Teks telah memenuhi keselarasan dengan 8 Dimensi Profil Lulusan (Deep Learning) dan memuat unsur Kesiapsiagaan Bencana (SPAB) serta Kearifan Lokal.";
-  }
-}
-
-// Inisialisasi saat halaman dimuat
-document.addEventListener('DOMContentLoaded', () => {
-  const savedData = localStorage.getItem('ksp_modul3_data');
-  if (savedData) {
-    const parsed = JSON.parse(savedData);
-    if (document.getElementById('input-visi')) document.getElementById('input-visi').value = parsed.visi || '';
-    if (document.getElementById('input-misi')) document.getElementById('input-misi').value = parsed.misi || '';
-    if (document.getElementById('input-tujuan')) document.getElementById('input-tujuan').value = parsed.tujuan || '';
-    
-    validasiKeselarasan();
-  }
-});
-    } catch (err) {
-        alert("File JSON tidak valid!");
+      const visiEl = document.getElementById('input-visi');
+      if (visiEl) {
+        visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
       }
-    };
-    reader.readAsText(file);
-  }
 
-  // ==========================================
-// MODUL 3: LOGIKA CENTANG & GENERATOR AI
-// ==========================================
+      let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
+      
+      if (selectedSPAB.length > 0) {
+        misiList += `\n${selectedDPL.length + 1}. Mengintegrasikan ${selectedSPAB.join(' serta ')} dalam seluruh aktivitas kurikuler dan lingkungan sekolah.`;
+      }
 
-function updateDPLPilihan() {
-  const chkDpl = document.querySelectorAll('.chk-dpl:checked');
-  const badgeStatus = document.getElementById('badge-status-8dimensi');
-  
-  if (badgeStatus) {
-    badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
-    if (chkDpl.length > 0) {
-      badgeStatus.className = 'badge badge-success';
-    } else {
-      badgeStatus.className = 'badge badge-info';
+      const misiEl = document.getElementById('input-misi');
+      if (misiEl) {
+        misiEl.value = misiList;
+      }
+
+      const recBox = document.getElementById('ai-recommendation-box');
+      const recText = document.getElementById('ai-recommendation-text');
+      if (recBox && recText) {
+        recBox.classList.remove('d-none');
+        recText.innerText = `Draf Visi & Misi berhasil disusun khusus untuk ${selectedDPL.length} Dimensi Profil Lulusan pilihan Anda tahun ini!`;
+      }
+
+      autoSaveModul3();
     }
-  }
 
-  autoSaveModul3();
-}
+    function autoSaveModul3() {
+      const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.id);
+      const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.id);
 
-function selaraskanVisiMisiAI() {
-  const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
-  const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
+      const dataModul3 = {
+        checkedDPL: selectedDPL,
+        checkedSPAB: selectedSPAB,
+        visi: document.getElementById('input-visi')?.value || '',
+        misi: document.getElementById('input-misi')?.value || '',
+        tujuan: document.getElementById('input-tujuan')?.value || ''
+      };
 
-  if (selectedDPL.length === 0) {
-    alert("Silakan centang minimal 1 atau 2 Dimensi Profil Lulusan yang menjadi fokus sekolah tahun ajaran ini!");
-    return;
-  }
-
-  let dplText = selectedDPL.join(', ');
-  let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
-
-  const namaSekolahInput = document.getElementById('namaSekolah') || document.querySelector('input[placeholder*="Nama Satuan Pendidikan"]');
-  const namaSekolah = namaSekolahInput?.value || 'Satuan Pendidikan';
-
-  const visiEl = document.getElementById('input-visi');
-  if (visiEl) {
-    visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
-  }
-
-  let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
-  
-  if (selectedSPAB.length > 0) {
-    misiList += `\n${selectedDPL.length + 1}. Mengintegrasikan ${selectedSPAB.join(' serta ')} dalam seluruh aktivitas kurikuler dan lingkungan sekolah.`;
-  }
-
-  const misiEl = document.getElementById('input-misi');
-  if (misiEl) {
-    misiEl.value = misiList;
-  }
-
-  const recBox = document.getElementById('ai-recommendation-box');
-  const recText = document.getElementById('ai-recommendation-text');
-  if (recBox && recText) {
-    recBox.classList.remove('d-none');
-    recText.innerText = `Draf Visi & Misi berhasil disusun khusus untuk ${selectedDPL.length} Dimensi Profil Lulusan pilihan Anda tahun ini!`;
-  }
-
-  autoSaveModul3();
-}
-
-function autoSaveModul3() {
-  const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.id);
-  const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.id);
-
-  const dataModul3 = {
-    checkedDPL: selectedDPL,
-    checkedSPAB: selectedSPAB,
-    visi: document.getElementById('input-visi')?.value || '',
-    misi: document.getElementById('input-misi')?.value || '',
-    tujuan: document.getElementById('input-tujuan')?.value || ''
-  };
-
-  localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
-}
-</script>
+      localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
+    }
+  </script>
 </body>
 </html>

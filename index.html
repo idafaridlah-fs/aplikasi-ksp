@@ -553,7 +553,7 @@
       <div class="card">
         <div class="card-title">
           <span>Modul 2: Analisis Karakteristik Satuan Pendidikan & Risiko Bencana</span>
-          <button class="btn btn-ai" onclick="generateDrafModul2()">✨ Auto-Generate Analisis Risiko Bencana Kecamatan</button>
+          <button class="btn btn-ai" onclick="generateDrafModul2()">✨ Auto-Generate Analisis Potensi & Risiko Bencana Kecamatan</button>
         </div>
 
         <div class="form-group">
@@ -573,7 +573,8 @@
 
         <div class="form-group">
           <label class="form-label">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
-          <textarea id="potensiDaerah" rows="3" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
+          <div class="help-text">Draf potensi alam dan kemitraan akan terisi otomatis secara presisi sesuai dengan wilayah kecamatan yang dipilih.</div>
+          <textarea id="potensiDaerah" rows="4" placeholder="Potensi bentang alam, kearifan lokal, serta kemitraan dengan dunia usaha/masyarakat sekitar..." oninput="olahDataSimpan()"></textarea>
         </div>
 
         <div class="form-group">
@@ -617,7 +618,10 @@
     <!-- MODUL 4: PENGORGANISASIAN & KALKULATOR JP -->
     <div id="modul4" class="tab-content no-print">
       <div class="card">
-        <div class="card-title">Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum (Kalkulator JP)</div>
+        <div class="card-title">
+          <span>Modul 4: Pengorganisasian Pembelajaran & Struktur Kurikulum (Kalkulator JP)</span>
+          <button class="btn btn-ai" onclick="generateDrafModul4()">✨ Auto-Generate Pengorganisasian Pembelajaran (Diversifikasi)</button>
+        </div>
 
         <div class="form-group">
           <label class="form-label">4.1 Pendekatan Pembelajaran:</label>
@@ -629,9 +633,9 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label">4.2 Pengorganisasian Intrakurikuler (Terintegrasi Pendidikan Kebencanaan):</label>
-          <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) pada mapel IPA, IPS, dan PJOK.</div>
-          <textarea id="intrakurikuler" rows="3" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
+          <label class="form-label">4.2 Pengorganisasian Intrakurikuler (Terintegrasi Potensi Lokal & SPAB):</label>
+          <div class="help-text">Jelaskan integrasi materi Pencegahan & Pengurangan Risiko Bencana (PRB) dan potensi daerah pada mapel IPA, IPS, Bahasa Sunda, dan PJOK.</div>
+          <textarea id="intrakurikuler" rows="4" placeholder="Pengintegrasian materi esensial, muatan lokal Bahasa Sunda, serta integrasi edukasi bencana pada mapel IPA, IPS, dan PJOK..." oninput="olahDataSimpan()"></textarea>
         </div>
 
         <div class="form-group">
@@ -671,8 +675,8 @@
         </table>
 
         <div class="form-group" style="margin-top: 1.5rem;">
-          <label class="form-label">4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana):</label>
-          <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan. Tema Kelas VII: Gaya Hidup Berkelanjutan (Tanggap Bencana/Mitigasi)..." oninput="olahDataSimpan()"></textarea>
+          <label class="form-label">4.4 Pengorganisasian Kokurikuler (P5 & Tema Tanggap Bencana / Potensi Lokal):</label>
+          <textarea id="kokurikuler" rows="4" placeholder="Kegiatan kokurikuler mencakup P5 dan projek kebencanaan serta diversifikasi potensi daerah..." oninput="olahDataSimpan()"></textarea>
         </div>
 
         <div class="form-group">
@@ -1120,7 +1124,11 @@
       if (d.dataJP) dataJP = d.dataJP;
     }
 
-    /* GENERATOR DRAF KECAMATAN PRESISI UNTUK MODUL 2 */
+    /* KELOMPOK KECAMATAN UNTUK AI DIVERSIFIKASI */
+    const KEC_SELATAN = ["Pameungpeuk", "Cibalong", "Cikelet", "Bungbulang", "Mekarmukti", "Pakenjeng", "Cisewu", "Caringin", "Talegong", "Pamulihan", "Peundeuy", "Cihurip", "Kutamaneuh", "Cisompet"];
+    const KEC_UTARA = ["Garut Kota", "Tarogong Kaler", "Tarogong Kidul", "Karangpawitan", "Banyuresmi", "Leles", "Kadungora", "BL. Limbangan", "Selaawi", "Cibiuk", "Leuwigoong", "Malambong", "Kersamanah", "Cibatu"];
+
+    /* GENERATOR DRAF MODUL 2 (POTENSI & SPAB) */
     function generateDrafModul2() {
       let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
       let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
@@ -1128,18 +1136,16 @@
       let teksBencana = "";
       let teksPotensi = "";
 
-      if (kec === "Cigedug" || kec === "Cikajang" || kec === "Cisurupan" || kec === "Banjarwangi" || kec === "Singajaya" || kec === "Talegong" || kec === "Cisewu") {
-        teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan Garut yang memiliki kerawanan tinggi terhadap bencana tanah longsor, pergerakan tanah, serta guncangan gempa bumi tektonik/vulkanik (Sesar Garsela). Berdasarkan prinsip SPAB Pilar 1 & 2, sekolah menetapkan jalur evakuasi berpetunjuk jelas menuju lapangan terbuka sebagai titik kumpul utama, serta rutin menggelar simulasi kesiapsiagaan bersama Tim Siaga Bencana Sekolah (TSBS).`;
-        teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, potensi holtikultura, dan perkebunan. Kemitraan sekolah dikembangkan bersama kelompok tani lokal, puskesmas, dan BPBD untuk mendukung edukasi mitigasi lingkungan serta kewirausahaan berbasis hasil bumi daerah.`;
-      } else if (kec === "Pameungpeuk" || kec === "Cibalong" || kec === "Cikelet" || kec === "Bungbulang" || kec === "Caringin" || kec === "Mekarmukti") {
-        teksBencana = `${namaSek} berada di wilayah pesisir Kecamatan ${kec} yang memiliki potensi risiko bencana gempa bumi tektonik, ancaman tsunami, serta banjir rob. Implementasi SPAB difokuskan pada penguatan rambu evakuasi ke tempat tinggi (Vertical Evacuation), penyediaan sirine peringatan dini, dan edukasi tanggap bencana pesisir.`;
-        teksPotensi = `Memanfaatkan potensi pesisir pantai Garut Selatan, sumber daya maritim, serta pariwisata bahari sebagai laboratorium alam pembelajaran kontekstual dan pengembangan karakter kebaharian peserta didik.`;
-      } else if (kec === "Garut Kota" || kec === "Tarogong Kidul" || kec === "Tarogong Kaler" || kec === "Karangpawitan") {
-        teksBencana = `${namaSek} berlokasi di kawasan perkotaan Kecamatan ${kec} dengan potensi risiko genangan banjir musiman, kepadatan lalu lintas, serta risiko kebakaran. Implementasi SPAB mengutamakan kesiapan infrastruktur gedung aman, jalur evakuasi bebas hambatan, serta simulasi gempa bumi kota.`;
-        teksPotensi = `Kawasan perkotaan memberikan kemudahan akses kemitraan dengan perguruan tinggi, lembaga pemerintah, UMKM kerajinan kulit/makanan khas, serta pusat layanan publik Garut.`;
+      if (KEC_SELATAN.includes(kec)) {
+        teksBencana = `${namaSek} berada di wilayah pesisir/selatan Kecamatan ${kec} yang memiliki potensi risiko bencana gempa bumi tektonik, ancaman tsunami, pergerakan tanah, serta banjir rob. Implementasi SPAB difokuskan pada penguatan jalur evakuasi menuju tempat aman, penyediaan sirine peringatan dini, dan edukasi tanggap bencana pesisir secara berkala.`;
+        teksPotensi = `Kecamatan ${kec} kaya akan potensi maritim, pariwisata bahari, perikanan laut, serta komoditas kelapa dan rempah. Kemitraan dikembangkan bersama Tempat Pelelangan Ikan (TPI), Pos SAR Pesisir, Puskesmas, dan BPBD untuk mendukung edukasi mitigasi dan kewirausahaan berbasis potensi bahari.`;
+      } else if (KEC_UTARA.includes(kec)) {
+        teksBencana = `${namaSek} berlokasi di kawasan urban/perkotaan Kecamatan ${kec} dengan potensi risiko genangan banjir musiman, kepadatan pemukiman, dan risiko kebakaran. Implementasi SPAB mengutamakan kesiapan infrastruktur gedung aman, jalur evakuasi bebas hambatan, serta simulasi mandiri gempa bumi perkotaan.`;
+        teksPotensi = `Kecamatan ${kec} memiliki keunggulan aksesibilitas industri kreatif, kerajinan kulit/kuliner lokal, sentra UMKM, dan objek wisata budaya/heritage. Kemitraan sekolah terjalin dengan Dinas Perindustrian, perguruan tinggi lokal, UMKM sentra kerajinan, dan BPBD Garut.`;
       } else {
-        teksBencana = `${namaSek} berada di wilayah Kecamatan ${kec || 'Kabupaten Garut'} yang memiliki karakteristik bentang alam dengan potensi kerawanan gempa bumi, angin kencang, dan banjir musiman. Sekolah mengimplementasikan SPAB melalui pemetaan jalur evakuasi aman dan pembentukan Tim Siaga Bencana Sekolah.`;
-        teksPotensi = `Mengoptimalkan potensi kearifan lokal Garut, budaya Sunda, serta bentang alam wilayah Kecamatan ${kec || 'Garut'} sebagai sumber belajar kontekstual berbasis lingkungan.`;
+        // GARUT TENGAH & PEGUNUNGAN
+        teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan Garut yang memiliki kerawanan tinggi terhadap bencana tanah longsor, pergerakan tanah, serta guncangan gempa vulkanik/tektonik (Sesar Garsela). Berdasarkan prinsip SPAB Pilar 1 & 2, sekolah menetapkan jalur evakuasi berpetunjuk jelas menuju titik kumpul utama serta rutin menggelar simulasi kesiapsiagaan bersama Tim Siaga Bencana Sekolah (TSBS).`;
+        teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, potensi pertanian holtikultura, kebun teh/kopi, serta agrowisata. Kemitraan sekolah dikembangkan bersama Kelompok Tani lokal, Penyuluh Pertanian, Puskesmas, dan BPBD untuk mendukung edukasi pelestarian lingkungan agropolitan.`;
       }
 
       document.getElementById('analisisBencana').value = teksBencana;
@@ -1154,6 +1160,38 @@
 
       olahDataSimpan();
       alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dicuat Otomatis!`);
+    }
+
+    /* GENERATOR DRAF MODUL 4 (PENGORGANISASIAN DIVERSIFIKASI) */
+    function generateDrafModul4() {
+      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
+
+      let teksIntra = "";
+      let teksKoku = "";
+      let teksEkstra = "";
+
+      if (KEC_SELATAN.includes(kec)) {
+        teksIntra = `Pengintegrasian Kurikulum Diversifikasi pada Mata Pelajaran IPA (Ekosistem Laut & Gelombang), IPS (Ekonomi Maritim & Pariwisata Pesisir), PJOK (Keselamatan di Air/Pantai), serta Mulok Bahasa Sunda berbasis cerita rakyat/kearifan lokal pesisir Garut Selatan. Materi Pencegahan & Pengurangan Risiko Bencana (PRB) terintegrasi pada topik gempa & tsunami.`;
+        teksKoku = `Pelaksanaan Projek Penguatan Profil Pelajar Pancasila (P5) mengusung tema:\n- Kelas VII: Gaya Hidup Berkelanjutan (Mitigasi Tsunami & Pelestarian Ekosistem Pesisir)\n- Kelas VIII: Kewirausahaan (Pengolahan Hasil Laut / Perikanan Garut Selatan)\n- Kelas IX: Kearifan Lokal (Seni Budaya & Tradisi Bahari Garut Selatan)`;
+        teksEkstra = `1. Pramuka (Wajib - Fokus Navigasi & Survival Pesisir)\n2. Tim Siaga Bencana Sekolah (TSBS) / PMR Tanggap Pesisir\n3. Sanggar Seni Sunda & Kesenian Pesisir\n4. Ekstrakurikuler Bahari, Olahraga Pantai & Kewirausahaan Hasil Laut`;
+      } else if (KEC_UTARA.includes(kec)) {
+        teksIntra = `Pengintegrasian Kurikulum Diversifikasi pada Mata Pelajaran IPS (Ekonomi Perkotaan & Perdagangan UMKM), Informatika/Prakarya (Digital Marketing & Kerajinan), PJOK (Kebugaran Perkotaan), serta Mulok Bahasa Sunda. Pendidikan PRB diintegrasikan pada kesiapsiagaan kebakaran & banjir musiman kota.`;
+        teksKoku = `Pelaksanaan Projek Penguatan Profil Pelajar Pancasila (P5) mengusung tema:\n- Kelas VII: Kewirausahaan (Inovasi Produk Kerajinan/Kuliner Khas Garut & Digital Marketing)\n- Kelas VIII: Rekayasa dan Teknologi (Pengelolaan Sampah Perkotaan & Aplikasi Tanggap Bencana)\n- Kelas IX: Kearifan Lokal (Pelesatrian Heritage & Seni Tradisional Garut Perkotaan)`;
+        teksEkstra = `1. Pramuka (Wajib)\n2. PMR & Komunitas Pelajar Tanggap Bencana Perkotaan\n3. IT Club & Digital Marketing Young Entrepreneur\n4. Sanggar Seni Tradisional Sunda & Olahraga Prestasi`;
+      } else {
+        // GARUT TENGAH & PEGUNUNGAN
+        teksIntra = `Pengintegrasian Kurikulum Diversifikasi pada Mata Pelajaran IPA (Struktur Bumi, Gunung Api, & Konservasi Tanah), IPS (Ekonomi Agropolitan & Pertanian Organik), PJOK (Navigasi Darat & Tracking Gunung), serta Mulok Bahasa Sunda. Pendidikan PRB diintegrasikan pada kesiapsiagaan gempa vulkanik/tektonik & longsor.`;
+        teksKoku = `Pelaksanaan Projek Penguatan Profil Pelajar Pancasila (P5) mengusung tema:\n- Kelas VII: Gaya Hidup Berkelanjutan (Konservasi Lahan Miring & Pertanian Organik Pegunungan)\n- Kelas VIII: Kewirausahaan (Pemanfaatan & Inovasi Hasil Bumi / Agrowisata Local Garut)\n- Kelas IX: Kearifan Lokal (Pelesatrian Budaya Agrikultur & Seni Tradisional Sunda Pegunungan)`;
+        teksEkstra = `1. Pramuka (Wajib - Navigasi & Pioneers)\n2. Tim Siaga Bencana Sekolah (TSBS) / PMR Tanggap Gunung & Longsor\n3. Pencinta Alam Sekolah & Green School Club\n4. Sanggar Seni Khas Pegunungan & Olahraga`;
+      }
+
+      document.getElementById('intrakurikuler').value = teksIntra;
+      document.getElementById('kokurikuler').value = teksKoku;
+      document.getElementById('ekstrakurikuler').value = teksEkstra;
+
+      olahDataSimpan();
+      alert(`✨ Draf Pengorganisasian Pembelajaran Diversifikasi untuk Kecamatan ${kec || 'Garut'} Berhasil Dicuat!`);
     }
 
     function generateDrafModul3() {

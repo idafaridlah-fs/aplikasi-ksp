@@ -1486,90 +1486,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // KODE JAVASCRIPT MODUL 3 (DITAMBAHKAN DI SINI)
-  // ==========================================
-  
-  // Fungsi Update Status Centang DPL & SPAB
-  function updateDPLPilihan() {
-    const chkDpl = document.querySelectorAll('.chk-dpl:checked');
-    const badgeStatus = document.getElementById('badge-status-8dimensi');
-    
-    if (badgeStatus) {
-      badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
-      if (chkDpl.length > 0) {
-        badgeStatus.className = 'badge badge-success';
-      } else {
-        badgeStatus.className = 'badge badge-warning';
-      }
-    }
-
-    autoSaveModul3();
-  }
-
-  // Generator AI Modul 3: Menyusun Visi & Misi BERDASARKAN DPL yang DICENTANG
-  function selaraskanVisiMisiAI() {
-    const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
-    const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
-
-    if (selectedDPL.length === 0) {
-      alert("Silakan centang minimal 1 atau 2 Dimensi Profil Lulusan yang menjadi fokus sekolah tahun ajaran ini!");
-      return;
-    }
-
-    let dplText = selectedDPL.join(', ');
-    let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
-
-    const namaSekolah = document.getElementById('namaSekolah')?.value || 'Satuan Pendidikan';
-
-    // Draf Visi Terfokus
-    const visiEl = document.getElementById('input-visi');
-    if (visiEl) {
-      visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
-    }
-
-    // Draf Misi Terfokus
-    let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
-    
-    if (selectedSPAB.length > 0) {
-      misiList += `\n${selectedDPL.length + 1}. Mengintegrasikan ${selectedSPAB.join(' serta ')} dalam seluruh aktivitas kurikuler dan lingkungan sekolah.`;
-    }
-
-    const misiEl = document.getElementById('input-misi');
-    if (misiEl) {
-      misiEl.value = misiList;
-    }
-
-    // Tampilkan kotak informasi
-    const recBox = document.getElementById('ai-recommendation-box');
-    const recText = document.getElementById('ai-recommendation-text');
-    if (recBox && recText) {
-      recBox.classList.remove('d-none');
-      recText.innerText = `Draf Visi & Misi berhasil disusun khusus untuk ${selectedDPL.length} Dimensi Profil Lulusan pilihan Anda tahun ini!`;
-    }
-
-    autoSaveModul3();
-  }
-
-  // Auto-save khusus Modul 3
-  function autoSaveModul3() {
-    const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.id);
-    const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.id);
-
-    const dataModul3 = {
-      checkedDPL: selectedDPL,
-      checkedSPAB: selectedSPAB,
-      visi: document.getElementById('input-visi')?.value || '',
-      misi: document.getElementById('input-misi')?.value || '',
-      tujuan: document.getElementById('input-tujuan')?.value || ''
-    };
-
-    localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
-  }
-// ==========================================
 // MODUL 3: LOGIKA CENTANG & GENERATOR AI
 // ==========================================
 
-// 1. Fungsi Update Badge Status Centang
 function updateDPLPilihan() {
   const chkDpl = document.querySelectorAll('.chk-dpl:checked');
   const badgeStatus = document.getElementById('badge-status-8dimensi');
@@ -1586,7 +1505,6 @@ function updateDPLPilihan() {
   autoSaveModul3();
 }
 
-// 2. Fungsi AI Generator Visi-Misi Berdasarkan Centangan
 function selaraskanVisiMisiAI() {
   const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
   const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
@@ -1599,16 +1517,14 @@ function selaraskanVisiMisiAI() {
   let dplText = selectedDPL.join(', ');
   let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
 
-  const namaSekolahInput = document.querySelector('input[placeholder*="Nama Satuan Pendidikan"]') || document.getElementById('namaSekolah');
+  const namaSekolahInput = document.getElementById('namaSekolah') || document.querySelector('input[placeholder*="Nama Satuan Pendidikan"]');
   const namaSekolah = namaSekolahInput?.value || 'Satuan Pendidikan';
 
-  // Susun Draf Visi
   const visiEl = document.getElementById('input-visi');
   if (visiEl) {
     visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
   }
 
-  // Susun Draf Misi
   let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
   
   if (selectedSPAB.length > 0) {
@@ -1620,7 +1536,6 @@ function selaraskanVisiMisiAI() {
     misiEl.value = misiList;
   }
 
-  // Tampilkan Notifikasi Rekomendasi
   const recBox = document.getElementById('ai-recommendation-box');
   const recText = document.getElementById('ai-recommendation-text');
   if (recBox && recText) {
@@ -1631,7 +1546,6 @@ function selaraskanVisiMisiAI() {
   autoSaveModul3();
 }
 
-// 3. Fungsi Auto-Save Modul 3
 function autoSaveModul3() {
   const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.id);
   const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.id);
@@ -1646,6 +1560,6 @@ function autoSaveModul3() {
 
   localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
 }
-  </script>
+</script>
 </body>
 </html>

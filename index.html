@@ -105,7 +105,7 @@
       opacity: 0.82;
     }
 
-    /* WARNA TIAP TOMBOL TAB (SEJATI AWAL SEBELUM DIKLIK) */
+    /* WARNA TIAP TOMBOL TAB */
     .nav-tab:nth-child(1) { background-color: #a89585; }
     .nav-tab:nth-child(2) { background-color: #789681; }
     .nav-tab:nth-child(3) { background-color: #7797b0; }
@@ -349,11 +349,6 @@
       margin-bottom: 20px;
     }
 
-    .cover-logo {
-      margin: 25px auto;
-      max-width: 140px;
-    }
-
     .cover-school {
       font-size: 20px;
       font-weight: bold;
@@ -414,23 +409,79 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Nama Satuan Pendidikan (Sekolah):</label>
-            <input type="text" id="namaSekolah" placeholder="SMP Negeri 3 Tarogong Kidul" oninput="olahDataSimpan()">
+            <input type="text" id="namaSekolah" placeholder="SMPN 2 Cigedug" oninput="olahDataSimpan()">
           </div>
 
           <div class="form-group">
             <label class="form-label">NPSN Sekolah:</label>
-            <input type="text" id="npsnSekolah" placeholder="20209988" oninput="olahDataSimpan()">
+            <input type="text" id="npsnSekolah" placeholder="69831577" oninput="olahDataSimpan()">
           </div>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Alamat Jalan & No.:</label>
-            <input type="text" id="alamatSekolah" placeholder="Jl. Pembangunan No. 123" oninput="olahDataSimpan()">
+            <input type="text" id="alamatSekolah" placeholder="Kp. Cicayur" oninput="olahDataSimpan()">
           </div>
 
+          <!-- DROPDOWN 42 KECAMATAN GARUT -->
           <div class="form-group">
-            <label class="form-label">Desa/Kecamatan & Kab/Kota:</label> <input type="text" id="wilayahSekolah" placeholder="Kec. Tarogong Kidul, Kab. Garut" oninput="olahDataSimpan()">
+            <label class="form-label">Kecamatan (Kabupaten Garut):</label>
+            <select id="selectKecamatanModul1" class="form-control" onchange="typeof olahDataSimpan === 'function' && olahDataSimpan();">
+              <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
+
+              <!-- GARUT UTARA & PERKOTAAN -->
+              <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
+                <option value="Garut Kota">Garut Kota</option>
+                <option value="Tarogong Kaler">Tarogong Kaler</option>
+                <option value="Tarogong Kidul">Tarogong Kidul</option>
+                <option value="Karangpawitan">Karangpawitan</option>
+                <option value="Banyuresmi">Banyuresmi</option>
+                <option value="Leles">Leles</option>
+                <option value="Kadungora">Kadungora</option>
+                <option value="BL. Limbangan">BL. Limbangan</option>
+                <option value="Selaawi">Selaawi</option>
+                <option value="Cibiuk">Cibiuk</option>
+                <option value="Leuwigoong">Leuwigoong</option>
+                <option value="Malambong">Malambong</option>
+                <option value="Kersamanah">Kersamanah</option>
+                <option value="Cibatu">Cibatu</option>
+              </optgroup>
+
+              <!-- GARUT TENGAH & PEGUNUNGAN -->
+              <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
+                <option value="Cisurupan">Cisurupan</option>
+                <option value="Cikajang">Cikajang</option>
+                <option value="Samarang">Samarang</option>
+                <option value="Pasirwangi">Pasirwangi</option>
+                <option value="Bayongbong">Bayongbong</option>
+                <option value="Cigedug">Cigedug</option>
+                <option value="Banjarwangi">Banjarwangi</option>
+                <option value="Singajaya">Singajaya</option>
+                <option value="Sucinaraja">Sucinaraja</option>
+                <option value="Wanaraja">Wanaraja</option>
+                <option value="Pangatikan">Pangatikan</option>
+                <option value="Sukawening">Sukawening</option>
+                <option value="Karangtengah">Karangtengah</option>
+                <option value="Cilawu">Cilawu</option>
+              </optgroup>
+
+              <!-- GARUT SELATAN & PESISIR -->
+              <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
+                <option value="Pameungpeuk">Pameungpeuk</option>
+                <option value="Cibalong">Cibalong</option>
+                <option value="Cikelet">Cikelet</option>
+                <option value="Bungbulang">Bungbulang</option>
+                <option value="Mekarmukti">Mekarmukti</option>
+                <option value="Pakenjeng">Pakenjeng</option>
+                <option value="Cisewu">Cisewu</option>
+                <option value="Caringin">Caringin</option>
+                <option value="Talegong">Talegong</option>
+                <option value="Pamulihan">Pamulihan</option>
+                <option value="Peundeuy">Peundeuy</option>
+                <option value="Cihurip">Cihurip</option>
+              </optgroup>
+            </select>
           </div>
         </div>
 
@@ -461,7 +512,7 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Ketua Komite Sekolah:</label>
-            <input type="text" id="namaKomite" placeholder="Drs. H. Maman Suryaman" oninput="olahDataSimpan()">
+            <input type="text" id="namaKomite" placeholder="H. Yaman Suryaman, S.Pd. M.Pd." oninput="olahDataSimpan()">
           </div>
 
           <div class="form-group">
@@ -936,11 +987,13 @@
     }
 
     function olahDataSimpan() {
+      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
       let data = {
         namaSekolah: document.getElementById('namaSekolah').value,
         npsnSekolah: document.getElementById('npsnSekolah').value,
         alamatSekolah: document.getElementById('alamatSekolah').value,
-        wilayahSekolah: document.getElementById('wilayahSekolah').value,
+        wilayahSekolah: kec ? "Kec. " + kec + ", Kab. Garut" : "",
+        selectKecamatan: kec,
         kepalaSekolah: document.getElementById('kepalaSekolah').value,
         nipKepala: document.getElementById('nipKepala').value,
         namaPengawas: document.getElementById('namaPengawas').value,
@@ -976,7 +1029,7 @@
     function perbaruiPratinjau(d) {
       document.getElementById('p_namaSekolahCover').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
       document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
-      document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || '');
+      document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || 'Kab. Garut');
       document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
       document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
 
@@ -1033,7 +1086,9 @@
       if (d.namaSekolah) document.getElementById('namaSekolah').value = d.namaSekolah;
       if (d.npsnSekolah) document.getElementById('npsnSekolah').value = d.npsnSekolah;
       if (d.alamatSekolah) document.getElementById('alamatSekolah').value = d.alamatSekolah;
-      if (d.wilayahSekolah) document.getElementById('wilayahSekolah').value = d.wilayahSekolah;
+      if (d.selectKecamatan && document.getElementById('selectKecamatanModul1')) {
+        document.getElementById('selectKecamatanModul1').value = d.selectKecamatan;
+      }
       if (d.kepalaSekolah) document.getElementById('kepalaSekolah').value = d.kepalaSekolah;
       if (d.nipKepala) document.getElementById('nipKepala').value = d.nipKepala;
       if (d.namaPengawas) document.getElementById('namaPengawas').value = d.namaPengawas;

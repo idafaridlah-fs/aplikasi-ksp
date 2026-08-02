@@ -576,58 +576,130 @@
     </div>
     <div style="display: flex; align-items: center; gap: 8px;">
       <!-- UBAH ID DAN EVENT ONCHANGE DI SINI -->
-      <select id="selectKecamatanModul2" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
-        <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
-        
-        <!-- GARUT UTARA & PERKOTAAN -->
-        <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
-          <option value="Garut Kota">Garut Kota</option>
-          <option value="Tarogong Kaler">Tarogong Kaler</option>
-          <option value="Tarogong Kidul">Tarogong Kidul</option>
-          <option value="Karangpawitan">Karangpawitan</option>
-          <option value="Banyuresmi">Banyuresmi</option>
-          <option value="Leles">Leles</option>
-          <option value="Kadungora">Kadungora</option>
-          <option value="BL. Limbangan">BL. Limbangan</option>
-          <option value="Selaawi">Selaawi</option>
-          <option value="Cibiuk">Cibiuk</option> <option value="Leuwigoong">Leuwigoong</option>
-          <option value="Malambong">Malambong</option>
-          <option value="Kersamanah">Kersamanah</option>
-          <option value="Cibatu">Cibatu</option>
-        </optgroup>
-        
-        <!-- GARUT TENGAH & PEGUNUNGAN -->
-        <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
-          <option value="Cisurupan">Cisurupan</option>
-          <option value="Cikajang">Cikajang</option>
-          <option value="Samarang">Samarang</option>
-          <option value="Pasirwangi">Pasirwangi</option>
-          <option value="Bayongbong">Bayongbong</option> <option value="Cigedug">Cigedug</option>
-          <option value="Banjarwangi">Banjarwangi</option>
-          <option value="Singajaya">Singajaya</option>
-          <option value="Sucinaraja">Sucinaraja</option>
-          <option value="Wanaraja">Wanaraja</option>
-          <option value="Pangatikan">Pangatikan</option>
-          <option value="Sukawening">Sukawening</option>
-          <option value="Karangtengah">Karangtengah</option>
-          <option value="Cilawu">Cilawu</option>
-        </optgroup>
-        
-        <!-- GARUT SELATAN & PESISIR -->
-        <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
-          <option value="Pameungpeuk">Pameungpeuk</option>
-          <option value="Cibalong">Cibalong</option>
-          <option value="Cikelet">Cikelet</option> <option value="Bungbulang">Bungbulang</option>
-          <option value="Mekarmukti">Mekarmukti</option>
-          <option value="Pakenjeng">Pakenjeng</option>
-          <option value="Cisewu">Cisewu</option>
-          <option value="Caringin">Caringin</option>
-          <option value="Talegong">Talegong</option>
-          <option value="Pamulihan">Pamulihan</option>
-          <option value="Peundeuy">Peundeuy</option>
-          <option value="Cihurip">Cihurip</option>
-        </optgroup>
-      </select>
+      <!-- MODUL 2: KARAKTERISTIK SEKOLAH & SPAB (DENGAN ASISTEN PANDUAN GARUT) -->
+<div id="modul2" class="tab-content no-print">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Modul 2: Karakteristik Sekolah & Kesiapsiagaan Bencana (SPAB)</h3>
+      <button class="btn btn-ai" type="button" onclick="generateDrafModul2()">✨ Generator Draf AI Modul 2</button>
+    </div>
+
+    <!-- PANEL PANDUAN PINTAR KECAMATAN -->
+    <div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
+          <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <select id="selectKecamatanModul2" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
+            <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
+            <!-- GARUT UTARA & PERKOTAAN -->
+            <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
+              <option value="Garut Kota">Garut Kota</option>
+              <option value="Tarogong Kaler">Tarogong Kaler</option>
+              <option value="Tarogong Kidul">Tarogong Kidul</option>
+              <option value="Karangpawitan">Karangpawitan</option>
+              <option value="Banyuresmi">Banyuresmi</option>
+              <option value="Leles">Leles</option>
+              <option value="Kadungora">Kadungora</option>
+              <option value="BL. Limbangan">BL. Limbangan</option>
+              <option value="Selaawi">Selaawi</option>
+              <option value="Cibiuk">Cibiuk</option>
+              <option value="Leuwigoong">Leuwigoong</option>
+              <option value="Malambong">Malambong</option>
+              <option value="Kersamanah">Kersamanah</option>
+              <option value="Cibatu">Cibatu</option>
+            </optgroup>
+            <!-- GARUT TENGAH & PEGUNUNGAN -->
+            <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
+              <option value="Cisurupan">Cisurupan</option>
+              <option value="Cikajang">Cikajang</option>
+              <option value="Samarang">Samarang</option>
+              <option value="Pasirwangi">Pasirwangi</option>
+              <option value="Bayongbong">Bayongbong</option>
+              <option value="Cigedug">Cigedug</option>
+              <option value="Banjarwangi">Banjarwangi</option>
+              <option value="Singajaya">Singajaya</option>
+              <option value="Sucinaraja">Sucinaraja</option>
+              <option value="Wanaraja">Wanaraja</option>
+              <option value="Pangatikan">Pangatikan</option>
+              <option value="Sukawening">Sukawening</option>
+              <option value="Karangtengah">Karangtengah</option>
+              <option value="Cilawu">Cilawu</option>
+            </optgroup>
+            <!-- GARUT SELATAN & PESISIR -->
+            <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
+              <option value="Pameungpeuk">Pameungpeuk</option>
+              <option value="Cibalong">Cibalong</option>
+              <option value="Cikelet">Cikelet</option>
+              <option value="Bungbulang">Bungbulang</option>
+              <option value="Mekarmukti">Mekarmukti</option>
+              <option value="Pakenjeng">Pakenjeng</option>
+              <option value="Cisewu">Cisewu</option>
+              <option value="Caringin">Caringin</option>
+              <option value="Talegong">Talegong</option>
+              <option value="Pamulihan">Pamulihan</option>
+              <option value="Peundeuy">Peundeuy</option>
+              <option value="Cihurip">Cihurip</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.1 KARAKTERISTIK PESERTA DIDIK -->
+    <div class="form-group">
+      <label class="form-label">2.1 Karakteristik Peserta Didik & Sosiokultural:</label>
+      <textarea id="karakteristikMurid" rows="3" placeholder="Gaya belajar siswa, latar belakang ekonomi/sosial orang tua, dan inklusivitas..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.2 KARAKTERISTIK PTK -->
+    <div class="form-group">
+      <label class="form-label">2.2 Pendidik & Tenaga Kependidikan (PTK):</label>
+      <textarea id="karakteristikPTK" rows="3" placeholder="Kualifikasi akademik guru, kompetensi digital, serta keterlibatan staf kependidikan..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.3 SARPRAS & CHECKLIST SPAB -->
+    <div class="form-group">
+      <label class="form-label">2.3 Pemanfaatan Sarana, Prasarana, & Kesiapsiagaan SPAB:</label>
+      <textarea id="sarprasSekolah" rows="3" placeholder="Fasilitas fisik laboratorium, ruang baca, serta kelengkapan sarana keamanan bencana..." oninput="simpanDataLokal()"></textarea>
+      
+      <!-- Checklist Sarpras SPAB -->
+      <div style="margin-top: 10px; padding: 10px; background: #fafafa; border: 1px dashed #c0d1c4; border-radius: 6px;">
+        <span style="font-size: 0.85rem; font-weight: 600; color: #5c7865;">📋 Checklist Sarana Kesiapsiagaan SPAB Sekolah:</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem;">
+          <label><input type="checkbox" id="chkJalurEvakuasi" checked onchange="simpanDataLokal()"> Rambu & Jalur Evakuasi</label>
+          <label><input type="checkbox" id="chkTitikKumpul" checked onchange="simpanDataLokal()"> Titik Kumpul Aman</label>
+          <label><input type="checkbox" id="chkAPAR" onchange="simpanDataLokal()"> APAR & Peralatan P3K</label>
+          <label><input type="checkbox" id="chkPetaBencana" checked onchange="simpanDataLokal()"> Peta Risiko Bencana Sekolah</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 KEMITRAAN, BENTANG ALAM & KEARIFAN LOKAL -->
+    <div class="form-group">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <label class="form-label" style="margin: 0;">2.4 Kemitraan, Potensi Bentang Alam, & Kearifan Lokal Garut (Diversifikasi):</label>
+        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanKearifanLokal()">💡 Gunakan Panduan Wilayah</button>
+      </div>
+      <textarea id="potensiDaerah" rows="3" placeholder="Memanfaatkan kearifan lokal Garut serta bentang alam sebagai media belajar terbuka..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.5 ANALISIS RISIKO BENCANA -->
+    <div class="form-group">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <label class="form-label" style="margin: 0;">2.5 Analisis Risiko Bencana & Kesiapsiagaan Sekolah (SPAB Pilar 1 & 2):</label>
+        <button class="btn btn-outline" type="button" style="font-size: 0.75rem; padding: 2px 8px;" onclick="terapkanPanduanMitigasi()">💡 Gunakan Panduan SPAB</button>
+      </div>
+      <p style="font-size: 0.78rem; color: #666; margin-bottom: 4px;">Kontekstualisasi kerawanan bencana wilayah Garut serta kelengkapan ketersediaan tim TSBS & peta keselamatan.</p>
+      <textarea id="analisisBencana" rows="3" placeholder="Deskripsi kerentanan bencana wilayah Garut dan langkah kesiapan mitigasi sekolah..." oninput="simpanDataLokal()"></textarea>
+    </div>
+
+    <!-- 2.6 EVALUASI DIRI RAPOR PENDIDIKAN -->
+    <div class="form-group">
+      <label class="form-label">2.6 Evaluasi Diri Berdasarkan Rapor Pendidikan:</label>
+      <textarea id="evaluasiRapor" rows="3" placeholder="Identifikasi, Refleksi, dan Benahi (IRB) berdasarkan Rapor Pendidikan sekolah..." oninput="simpanDataLokal()"></textarea>
     </div>
   </div>
 </div>

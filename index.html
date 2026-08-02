@@ -591,108 +591,110 @@
     </div>
 
     <!-- MODUL 3: VISI, MISI, DAN TUJUAN -->
-<div id="modul3-container" class="card p-4 my-3 shadow-sm">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="h5 font-weight-bold text-primary">
-      🎯 Modul 3: Visi, Misi, dan Tujuan Satuan Pendidikan
-    </h3>
-    <button id="btn-selaraskan-ai" class="btn btn-primary btn-sm" onclick="selaraskanVisiMisiAI()">
-      ✨ Selaraskan dengan AI
-    </button>
-  </div>
+<div id="modul3" class="tab-content no-print">
+  <div class="card p-4 my-3 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="h5 font-weight-bold text-primary">
+        🎯 Modul 3: Visi, Misi, dan Tujuan Satuan Pendidikan
+      </h3>
+      <button id="btn-selaraskan-ai" class="btn btn-primary btn-sm" onclick="selaraskanVisiMisiAI()">
+        ✨ Selaraskan dengan AI
+      </button>
+    </div>
 
-  <!-- Container Validasi 8 Dimensi & Diversifikasi Interaktif -->
-  <div class="row mb-3">
-    <!-- Standar Nasional: 8 Dimensi Profil Lulusan (Fase D / 3 Tahun) -->
-    <div class="col-md-7 mb-2">
-      <div class="p-3 border rounded bg-light">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <strong class="text-dark">8 Dimensi Profil Lulusan (Fase D / 3 Tahun)</strong>
-          <span id="badge-status-8dimensi" class="badge badge-info">0 / 8 Dipilih</span>
+    <!-- Container Validasi 8 Dimensi & Diversifikasi Interaktif -->
+    <div class="row mb-3">
+      <!-- Standar Nasional: 8 Dimensi Profil Lulusan (Fase D / 3 Tahun) -->
+      <div class="col-md-7 mb-2">
+        <div class="p-3 border rounded bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <strong class="text-dark">8 Dimensi Profil Lulusan (Fase D / 3 Tahun)</strong>
+            <span id="badge-status-8dimensi" class="badge badge-info">0 / 8 Dipilih</span>
+          </div>
+          <small class="text-muted d-block mb-2">
+            *Pilih DPL yang menjadi fokus prioritas pencapaian sekolah untuk TA ini:
+          </small>
+          <div id="grid-8dimensi-checkbox" class="d-flex flex-wrap gap-2">
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-1" value="Keimanan & Ketaqwaan" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-1">1. Keimanan & Ketaqwaan</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-2" value="Kewargaan & Kebinekaan" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-2">2. Kewargaan & Kebinekaan</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-3" value="Penalaran Kritis" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-3">3. Penalaran Kritis</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-4" value="Kreativitas" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-4">4. Kreativitas</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-5" value="Kolaborasi / Gotong Royong" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-5">5. Kolaborasi / Gotong Royong</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-6" value="Kemandirian" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-6">6. Kemandirian</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-7" value="Kesehatan Jasmani & Rohani" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-7">7. Kesehatan Jasmani & Rohani</label>
+            </div>
+            <div class="form-check me-3">
+              <input class="form-check-input chk-dpl" type="checkbox" id="dpl-8" value="Komunikasi" onchange="updateDPLPilihan()">
+              <label class="form-check-label" for="dpl-8">8. Komunikasi</label>
+            </div>
+          </div>
         </div>
-        <small class="text-muted d-block mb-2">
-          *Pilih DPL yang menjadi fokus prioritas pencapaian sekolah untuk TA ini:
-        </small>
-        <div id="grid-8dimensi-checkbox" class="d-flex flex-wrap gap-2">
-          <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-1" value="Keimanan & Ketaqwaan" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-1">1. Keimanan & Ketaqwaan</label>
+      </div>
+
+      <!-- Elemen Diversifikasi & SPAB -->
+      <div class="col-md-5 mb-2">
+        <div class="p-3 border rounded bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <strong class="text-dark">Konteks Diversifikasi & SPAB</strong>
           </div>
           <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-2" value="Kewargaan & Kebinekaan" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-2">2. Kewargaan & Kebinekaan</label>
+            <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-1" value="Potensi & Kearifan Lokal" onchange="updateDPLPilihan()">
+            <label class="form-check-label" for="spab-chk-1">🌿 Potensi / Kearifan Lokal</label>
           </div>
           <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-3" value="Penalaran Kritis" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-3">3. Penalaran Kritis</label>
+            <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-2" value="Kesiapsiagaan Bencana (SPAB)" onchange="updateDPLPilihan()">
+            <label class="form-check-label" for="spab-chk-2">🛡️ Kesiapsiagaan Bencana (SPAB)</label>
           </div>
           <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-4" value="Kreativitas" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-4">4. Kreativitas</label>
-          </div>
-          <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-5" value="Kolaborasi / Gotong Royong" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-5">5. Kolaborasi / Gotong Royong</label>
-          </div>
-          <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-6" value="Kemandirian" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-6">6. Kemandirian</label>
-          </div>
-          <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-7" value="Kesehatan Jasmani & Rohani" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-7">7. Kesehatan Jasmani & Rohani</label>
-          </div>
-          <div class="form-check me-3">
-            <input class="form-check-input chk-dpl" type="checkbox" id="dpl-8" value="Komunikasi" onchange="updateDPLPilihan()">
-            <label class="form-check-label" for="dpl-8">8. Komunikasi</label>
+            <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-3" value="Kelestarian Lingkungan" onchange="updateDPLPilihan()">
+            <label class="form-check-label" for="spab-chk-3">🌏 Kelestarian Lingkungan</label>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Elemen Diversifikasi & SPAB -->
-    <div class="col-md-5 mb-2">
-      <div class="p-3 border rounded bg-light">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <strong class="text-dark">Konteks Diversifikasi & SPAB</strong>
-        </div>
-        <div class="form-check me-3">
-          <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-1" value="Potensi & Kearifan Lokal" onchange="updateDPLPilihan()">
-          <label class="form-check-label" for="spab-chk-1">🌿 Potensi / Kearifan Lokal</label>
-        </div>
-        <div class="form-check me-3">
-          <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-2" value="Kesiapsiagaan Bencana (SPAB)" onchange="updateDPLPilihan()">
-          <label class="form-check-label" for="spab-chk-2">🛡️ Kesiapsiagaan Bencana (SPAB)</label>
-        </div>
-        <div class="form-check me-3">
-          <input class="form-check-input chk-spab" type="checkbox" id="spab-chk-3" value="Kelestarian Lingkungan" onchange="updateDPLPilihan()">
-          <label class="form-check-label" for="spab-chk-3">🌏 Kelestarian Lingkungan</label>
-        </div>
-      </div>
+    <!-- Rekomendasi / Catatan AI Assist -->
+    <div id="ai-recommendation-box" class="alert alert-info d-none" role="alert">
+      <strong>💡 Rekomendasi AI Assist:</strong> <span id="ai-recommendation-text"></span>
     </div>
-  </div>
 
-  <!-- Rekomendasi / Catatan AI Assist -->
-  <div id="ai-recommendation-box" class="alert alert-info d-none" role="alert">
-    <strong>💡 Rekomendasi AI Assist:</strong> <span id="ai-recommendation-text"></span>
-  </div>
+    <!-- Input Visi -->
+    <div class="form-group mb-3">
+      <label for="input-visi" class="font-weight-bold">Visi Satuan Pendidikan:</label>
+      <textarea id="input-visi" class="form-control" rows="3" placeholder="Tuliskan Visi Sekolah..." oninput="autoSaveModul3()"></textarea>
+    </div>
 
-  <!-- Input Visi -->
-  <div class="form-group mb-3">
-    <label for="input-visi" class="font-weight-bold">Visi Satuan Pendidikan:</label>
-    <textarea id="input-visi" class="form-control" rows="3" placeholder="Tuliskan Visi Sekolah..." oninput="autoSaveModul3()"></textarea>
-  </div>
+    <!-- Input Misi -->
+    <div class="form-group mb-3">
+      <label for="input-misi" class="font-weight-bold">Misi Satuan Pendidikan:</label>
+      <textarea id="input-misi" class="form-control" rows="5" placeholder="Tuliskan Misi Sekolah (gunakan penomoran/point)..." oninput="autoSaveModul3()"></textarea>
+    </div>
 
-  <!-- Input Misi -->
-  <div class="form-group mb-3">
-    <label for="input-misi" class="font-weight-bold">Misi Satuan Pendidikan:</label>
-    <textarea id="input-misi" class="form-control" rows="5" placeholder="Tuliskan Misi Sekolah (gunakan penomoran/point)..." oninput="autoSaveModul3()"></textarea>
-  </div>
-
-  <!-- Input Tujuan -->
-  <div class="form-group mb-3">
-    <label for="input-tujuan" class="font-weight-bold">Tujuan Satuan Pendidikan:</label>
-    <textarea id="input-tujuan" class="form-control" rows="5" placeholder="Tuliskan Tujuan Sekolah..." oninput="autoSaveModul3()"></textarea>
+    <!-- Input Tujuan -->
+    <div class="form-group mb-3">
+      <label for="input-tujuan" class="font-weight-bold">Tujuan Satuan Pendidikan:</label>
+      <textarea id="input-tujuan" class="form-control" rows="5" placeholder="Tuliskan Tujuan Sekolah..." oninput="autoSaveModul3()"></textarea>
+    </div>
   </div>
 </div>
     <!-- MODUL 4: PENGORGANISASIAN & KALKULATOR JP -->

@@ -1162,6 +1162,16 @@
       alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dicuat Otomatis!`);
     }
 
+    /* GENERATOR DRAF MODUL 3 (VISI, MISI, TUJUAN) */
+    function generateDrafModul3() {
+      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
+      document.getElementById('visiSekolah').value = `Terwujudnya Peserta Didik ${namaSek} yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana (SPAB), Berbudaya Lokal Garut, dan Berwawasan Global`;
+      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) yang berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB) ke dalam kegiatan intrakurikuler dan kokurikuler.\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut dan potensi bentang alam daerah.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
+      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi siswa berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah yang terlatih dalam simulasi tanggap darurat bencana (drill berkala).\n3. Menghasilkan karya projek kokurikuler (P5) berbasis kearifan lokal Garut.";
+      olahDataSimpan();
+      alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
+    }
+
     /* GENERATOR DRAF MODUL 4 (PENGORGANISASIAN DIVERSIFIKASI) */
     function generateDrafModul4() {
       let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
@@ -1194,21 +1204,27 @@
       alert(`✨ Draf Pengorganisasian Pembelajaran Diversifikasi untuk Kecamatan ${kec || 'Garut'} Berhasil Dicuat!`);
     }
 
-    function generateDrafModul3() {
-      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
-      document.getElementById('visiSekolah').value = `Terwujudnya Peserta Didik ${namaSek} yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana (SPAB), Berbudaya Lokal Garut, dan Berwawasan Global`;
-      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) yang berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB) ke dalam kegiatan intrakurikuler dan kokurikuler.\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut dan potensi bentang alam daerah.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
-      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi siswa berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah yang terlatih dalam simulasi tanggap darurat bencana (drill berkala).\n3. Menghasilkan karya projek kokurikuler (P5) berbasis kearifan lokal Garut.";
-      olahDataSimpan();
-      alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
-    }
-
+    /* GENERATOR DRAF MODUL 5 (PERENCANAAN, POS SPAB & EVALUASI) */
     function generateDrafModul5() {
-      document.getElementById('perencanaanBelajar').value = "Perencanaan pembelajaran disusun dalam bentuk Alur Tujuan Pembelajaran (ATP) dan Modul Ajar berorientasi Deep Learning (Mindful, Meaningful, dan Joyful Learning) yang mengintegrasikan aspek mitigasi bencana.";
-      document.getElementById('posKedaruratan').value = "Prosedur Operasional Standar (POS) Kedaruratan mengatur tata cara evakuasi mandiri saat terjadi gempa bumi/bencana, pemfungsian sirine peringatan dini, serta pengaktifan Tim Siaga Bencana Sekolah.";
-      document.getElementById('evaluasiPendampingan').value = "Evaluasi pembelajaran dan pelaksanaan KSP dilakukan secara berkala melalui Komunitas Belajar (Kombel) mingguan, supervisi akademik Kepala Sekolah, serta refleksi akhir semester.";
+      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
+
+      let teksPOS = "";
+
+      if (KEC_SELATAN.includes(kec)) {
+        teksPOS = `1. Prosedur Peringatan Dini: Pembunyian sirine/kentongan bergelombang panjang saat terjadi gempa berpotensi tsunami.\n2. Prosedur Evakuasi: Seluruh warga sekolah melakukan 'Drop, Cover, Hold On' kemudian bergerak cepat menuju TES (Tempat Evakuasi Sementara) di area tinggi sesuai jalur evakuasi pesisir.\n3. Pembagian Tugas TSBS: Tim Pertolongan Pertama (PMR), Tim Logistik & Komunikasi Darurat, serta Tim Pendataan Korban/Siswa.`;
+      } else if (KEC_UTARA.includes(kec)) {
+        teksPOS = `1. Prosedur Tanggap Darurat Gempa & Kebakaran: Pelaksanaan Lindungi Kepala, Bersembunyi di Bawah Meja, dan Evakuasi Tertib ke Lapangan Utama.\n2. Tim Siaga Bencana Sekolah (TSBS): Memastikan pengoperasian APAR (Alat Pemadam Api Ringan), pengamanan dokumen penting, dan koordinasi dengan Pemadam Kebakaran & BPBD Garut.`;
+      } else {
+        teksPOS = `1. Prosedur Kesiapsiagaan Gempa & Longsor: Peringatan sirine darurat, tindakan perlindungan mandiri, dan evakuasi menuju Titik Kumpul Aman (Assembly Point).\n2. Operasional TSBS: Pemantauan area rawan tebing/longsor sekitar sekolah, penyediaan P3K darurat, dan koordinasi cepat dengan Puskesmas serta BPBD Kecamatan ${kec || 'Garut'}.`;
+      }
+
+      document.getElementById('perencanaanBelajar').value = "1. Penyusunan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP) yang diturunkan ke dalam Modul Ajar/RPP.\n2. Penerapan Pendekatan Deep Learning yang mengutamakan 3 elemen utama: Mindful Learning (Keterlibatan Penuh & Kesadaran), Meaningful Learning (Pembelajaran Bermakna & Kontekstual Potensi Daerah), serta Joyful Learning (Pembelajaran Menyenangkan).\n3. Integrasi Asessment Diagnostik, Formatif, dan Sumatif berbasis Rubrik Kriteria Ketercapaian Tujuan Pembelajaran (KKTP).";
+      document.getElementById('posKedaruratan').value = teksPOS;
+      document.getElementById('evaluasiPendampingan').value = "1. Evaluasi Pembelajaran: Dilakukan secara berkala (mingguan/bulanan) melalui Komunitas Belajar (Kombel) internal sekolah dan supervisi akademik oleh Kepala Sekolah.\n2. Pendampingan PTK: Melalui coaching, mentoring rekan sejawat, dan analisis Rapor Pendidikan.\n3. Evaluasi KSP: Peninjauan ulang dokumen Kurikulum Satuan Pendidikan secara partisipatif bersama Komite Sekolah dan Pengawas Pembina setiap akhir tahun ajaran.";
+
       olahDataSimpan();
-      alert("✨ Draf POS SPAB & Perencanaan Berhasil Dimuat!");
+      alert("✨ Draf Modul 5 (Perencanaan, POS SPAB & Evaluasi) Berhasil Dicuat!");
     }
 
     /* EXPORT & IMPORT JSON */

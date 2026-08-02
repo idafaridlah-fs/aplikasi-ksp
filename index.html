@@ -567,66 +567,70 @@
           <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <select id="selectKecamatanModul1" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
-  <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
-
-  <!-- GARUT UTARA & PERKOTAAN -->
-  <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
-    <option value="Garut Kota">Garut Kota</option>
-    <option value="Tarogong Kaler">Tarogong Kaler</option>
-    <option value="Tarogong Kidul">Tarogong Kidul</option>
-    <option value="Karangpawitan">Karangpawitan</option>
-    <option value="Banyuresmi">Banyuresmi</option>
-    <option value="Leles">Leles</option>
-    <option value="Kadungora">Kadungora</option>
-    <option value="BL. Limbangan">BL. Limbangan</option>
-    <option value="Selaawi">Selaawi</option>
-    <option value="Cibiuk">Cibiuk</option>
-    <option value="Leuwigoong">Leuwigoong</option>
-    <option value="Malambong">Malambong</option>
-    <option value="Kersamanah">Kersamanah</option>
-    <option value="Cibatu">Cibatu</option>
-  </optgroup>
-
-  <!-- GARUT TENGAH & PEGUNUNGAN -->
-  <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
-    <option value="Cisurupan">Cisurupan</option>
-    <option value="Cikajang">Cikajang</option>
-    <option value="Samarang">Samarang</option>
-    <option value="Pasirwangi">Pasirwangi</option>
-    <option value="Bayongbong">Bayongbong</option>
-    <option value="Cigedug">Cigedug</option>
-    <option value="Banjarwangi">Banjarwangi</option>
-    <option value="Singajaya">Singajaya</option>
-    <option value="Sucinaraja">Sucinaraja</option>
-    <option value="Wanaraja">Wanaraja</option>
-    <option value="Pangatikan">Pangatikan</option>
-    <option value="Sukawening">Sukawening</option>
-    <option value="Karangtengah">Karangtengah</option>
-    <option value="Cilawu">Cilawu</option>
-  </optgroup>
-
-  <!-- GARUT SELATAN & PESISIR -->
-  <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
-    <option value="Pameungpeuk">Pameungpeuk</option>
-    <option value="Cibalong">Cibalong</option>
-    <option value="Cikelet">Cikelet</option>
-    <option value="Bungbulang">Bungbulang</option>
-    <option value="Mekarmukti">Mekarmukti</option>
-    <option value="Pakenjeng">Pakenjeng</option>
-    <option value="Cisewu">Cisewu</option>
-    <option value="Caringin">Caringin</option>
-    <option value="Talegong">Talegong</option>
-    <option value="Pamulihan">Pamulihan</option>
-    <option value="Peundeuy">Peundeuy</option>
-    <option value="Cihurip">Cihurip</option>
-    <option value="Singajaya">Singajaya</option>
-    <option value="Cibalong">Cibalong</option>
-  </optgroup>
-</select>
-        </div>
-      </div>
+          <!-- PANEL PANDUAN PINTAR KECAMATAN -->
+<div style="background: #eef4f0; border: 1px solid #b2d0bb; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+    <div>
+      <strong style="color: #2d4734;">💡 Pendamping Penyusunan Dokumen (Kabupaten Garut):</strong>
+      <p style="margin: 2px 0 0 0; font-size: 0.85rem; color: #4a6351;">Pilih Kecamatan sekolah Anda untuk memuat panduan bentang alam & mitigasi SPAB secara otomatis.</p>
     </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <!-- UBAH ID DAN EVENT ONCHANGE DI SINI -->
+      <select id="selectKecamatanModul2" class="form-control" onchange="sinkronKecamatan(this.value); olahDataSimpan();">
+        <option value="">-- Pilih Kecamatan di Kabupaten Garut (42 Kecamatan) --</option>
+        
+        <!-- GARUT UTARA & PERKOTAAN -->
+        <optgroup label="Garut Utara & Perkotaan (14 Kecamatan)">
+          <option value="Garut Kota">Garut Kota</option>
+          <option value="Tarogong Kaler">Tarogong Kaler</option>
+          <option value="Tarogong Kidul">Tarogong Kidul</option>
+          <option value="Karangpawitan">Karangpawitan</option>
+          <option value="Banyuresmi">Banyuresmi</option>
+          <option value="Leles">Leles</option>
+          <option value="Kadungora">Kadungora</option>
+          <option value="BL. Limbangan">BL. Limbangan</option>
+          <option value="Selaawi">Selaawi</option>
+          <option value="Cibiuk">Cibiuk</option> <option value="Leuwigoong">Leuwigoong</option>
+          <option value="Malambong">Malambong</option>
+          <option value="Kersamanah">Kersamanah</option>
+          <option value="Cibatu">Cibatu</option>
+        </optgroup>
+        
+        <!-- GARUT TENGAH & PEGUNUNGAN -->
+        <optgroup label="Garut Tengah & Pegunungan (14 Kecamatan)">
+          <option value="Cisurupan">Cisurupan</option>
+          <option value="Cikajang">Cikajang</option>
+          <option value="Samarang">Samarang</option>
+          <option value="Pasirwangi">Pasirwangi</option>
+          <option value="Bayongbong">Bayongbong</option> <option value="Cigedug">Cigedug</option>
+          <option value="Banjarwangi">Banjarwangi</option>
+          <option value="Singajaya">Singajaya</option>
+          <option value="Sucinaraja">Sucinaraja</option>
+          <option value="Wanaraja">Wanaraja</option>
+          <option value="Pangatikan">Pangatikan</option>
+          <option value="Sukawening">Sukawening</option>
+          <option value="Karangtengah">Karangtengah</option>
+          <option value="Cilawu">Cilawu</option>
+        </optgroup>
+        
+        <!-- GARUT SELATAN & PESISIR -->
+        <optgroup label="Garut Selatan & Pesisir (14 Kecamatan)">
+          <option value="Pameungpeuk">Pameungpeuk</option>
+          <option value="Cibalong">Cibalong</option>
+          <option value="Cikelet">Cikelet</option> <option value="Bungbulang">Bungbulang</option>
+          <option value="Mekarmukti">Mekarmukti</option>
+          <option value="Pakenjeng">Pakenjeng</option>
+          <option value="Cisewu">Cisewu</option>
+          <option value="Caringin">Caringin</option>
+          <option value="Talegong">Talegong</option>
+          <option value="Pamulihan">Pamulihan</option>
+          <option value="Peundeuy">Peundeuy</option>
+          <option value="Cihurip">Cihurip</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+</div>
 
     <!-- 2.1 KARAKTERISTIK PESERTA DIDIK -->
     <div class="form-group">

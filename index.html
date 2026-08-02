@@ -1417,18 +1417,23 @@
     // ==========================================
 
     function updateDPLPilihan() {
-      const chkDpl = document.querySelectorAll('.chk-dpl:checked');
-      const badgeStatus = document.getElementById('badge-status-8dimensi');
-      
-      if (badgeStatus) {
-        badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
-        if (chkDpl.length > 0) {
-          badgeStatus.className = 'badge badge-success';
-        } else {
-          badgeStatus.className = 'badge badge-info';
-        }
-      }
+  const chkDpl = document.querySelectorAll('.chk-dpl:checked');
+  const badgeStatus = document.getElementById('badge-status-8dimensi');
+  
+  if (badgeStatus) {
+    badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
+    if (chkDpl.length > 0) {
+      badgeStatus.className = 'badge badge-success';
+    } else {
+      badgeStatus.className = 'badge badge-info';
+    }
+  }
 
+  // TAMBAHAN: Simpan & kirim data terbaru ke Modul 6 setiap kali centang diubah
+  if (typeof olahDataSimpan === 'function') {
+    olahDataSimpan();
+  }
+}
       autoSaveModul3();
     }
 

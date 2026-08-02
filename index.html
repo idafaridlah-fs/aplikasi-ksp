@@ -1329,67 +1329,77 @@ function terapkanPanduanMitigasi() {
   if (typeof simpanDataLokal === 'function') simpanDataLokal();
 }
     // ==========================================================================
-// PANDUAN PINTAR DIVERSIFIKASI & SPAB KABUPATEN GARUT
+// PANDUAN PINTAR DIVERSIFIKASI & SPAB KABUPATEN GARUT (SAFE VERSION)
 // ==========================================================================
 
-// 1. Database Panduan Wilayah Garut (Kearifan Lokal & Mitigasi SPAB)
-const dbWilayahGarut = {
-  "Cisurupan": {
-    kearifan: "Mengoptimalkan kearifan lokal kawasan agrowisata dan perkebunan lereng Gunung Papandayan. Pembelajaran memanfaatkan bentang alam pegunungan untuk pendidikan lingkungan hidup, pertanian holtikultura, dan seni budaya Sunda lokal.",
-    mitigasi: "Sekolah berada pada wilayah kerawanan bencana erupsi vulkanik Gunung Papandayan dan risiko tanah longsor. Mitigasi SPAB memprioritaskan pemetaan simulasi evakuasi berkala, pembentukan Tim Siaga Bencana Sekolah (TSBS), serta koordinasi dengan Pos Pengamatan Gunung Api dan BPBD Garut."
-  },
-  "Tarogong Kaler": {
-    kearifan: "Memanfaatkan potensi wisata alam Cipanas dan kerajinan khas Garut sebagai sarana pembelajaran berbasis kewirausahaan dan ekowisata. Siswa diajak mengenali pengelolaan lingkungan berbasis kearifan lokal.",
-    mitigasi: "Sekolah berlokasi di kawasan rawan bencana gempa bumi tektonik (Sesar Garsela) dan genangan banjir musim hujan. Mitigasi SPAB difokuskan pada penguatan struktur jalur evakuasi menuju titik kumpul terbuka serta penyediaan sarana peringatan dini."
-  },
-  "Pameungpeuk": {
-    kearifan: "Mengangkat kearifan lokal bahari dan potensi maritim Garut Selatan. Pembelajaran diintegrasikan dengan pemanfaatan sumber daya laut, kewirausahaan olahan hasil perikanan, serta pelestarian ekosistem pesisir pantai.",
-    mitigasi: "Sekolah terletak di kawasan pesisir rawan bencana gempa bumi tektonik laut dan potensi tsunami. Mitigasi SPAB difokuskan pada edukasi rambu evakuasi vertikal, simulasi tanggap darurat tsunami, dan kemitraan dengan Pos AL/BPBD Garut."
-  },
-  "Garut Kota": {
-    kearifan: "Mengintegrasikan nilai-nilai sejarah kota, sentra industri kreatif Garut (kuliner dodol dan kerajinan kulit), serta pelestarian seni tradisional Sunda dalam penguatan karakter dan kewirausahaan siswa.",
-    mitigasi: "Sekolah berlokasi di pusat perkotaan dengan risiko tinggi gempa bumi tektonik dan potensi banjir luapan sungai. Mitigasi SPAB difokuskan pada penetapan titik kumpul lapangan sekolah serta simulasi evakuasi mandiri bagi seluruh warga sekolah."
-  },
-  "Default": {
-    kearifan: "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sekitar sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.",
-    mitigasi: "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus dan membentuk Tim Siaga Bencana Sekolah (TSBS)."
-  }
-};
+if (typeof dbWilayahGarut === 'undefined') {
+  var dbWilayahGarut = {
+    "Cisurupan": {
+      kearifan: "Mengoptimalkan kearifan lokal kawasan agrowisata dan perkebunan lereng Gunung Papandayan. Pembelajaran memanfaatkan bentang alam pegunungan untuk pendidikan lingkungan hidup, pertanian holtikultura, dan seni budaya Sunda lokal.",
+      mitigasi: "Sekolah berada pada wilayah kerawanan bencana erupsi vulkanik Gunung Papandayan dan risiko tanah longsor. Mitigasi SPAB memprioritaskan pemetaan simulasi evakuasi berkala, pembentukan Tim Siaga Bencana Sekolah (TSBS), serta koordinasi dengan Pos Pengamatan Gunung Api dan BPBD Garut."
+    },
+    "Tarogong Kaler": {
+      kearifan: "Memanfaatkan potensi wisata alam Cipanas dan kerajinan khas Garut sebagai sarana pembelajaran berbasis kewirausahaan dan ekowisata. Siswa diajak mengenali pengelolaan lingkungan berbasis kearifan lokal.",
+      mitigasi: "Sekolah berlokasi di kawasan rawan bencana gempa bumi tektonik (Sesar Garsela) dan genangan banjir musim hujan. Mitigasi SPAB difokuskan pada penguatan struktur jalur evakuasi menuju titik kumpul terbuka serta penyediaan sarana peringatan dini."
+    },
+    "Pameungpeuk": {
+      kearifan: "Mengangkat kearifan lokal bahari dan potensi maritim Garut Selatan. Pembelajaran diintegrasikan dengan pemanfaatan sumber daya laut, kewirausahaan olahan hasil perikanan, serta pelestarian ekosistem pesisir pantai.",
+      mitigasi: "Sekolah terletak di kawasan pesisir rawan bencana gempa bumi tektonik laut dan potensi tsunami. Mitigasi SPAB difokuskan pada edukasi rambu evakuasi vertikal, simulasi tanggap darurat tsunami, dan kemitraan dengan Pos AL/BPBD Garut."
+    },
+    "Garut Kota": {
+      kearifan: "Mengintegrasikan nilai-nilai sejarah kota, sentra industri kreatif Garut (kuliner dodol dan kerajinan kulit), serta pelestarian seni tradisional Sunda dalam penguatan karakter dan kewirausahaan siswa.",
+      mitigasi: "Sekolah berlokasi di pusat perkotaan dengan risiko tinggi gempa bumi tektonik dan potensi banjir luapan sungai. Mitigasi SPAB difokuskan pada penetapan titik kumpul lapangan sekolah serta simulasi evakuasi mandiri bagi seluruh warga sekolah."
+    },
+    "Default": {
+      kearifan: "Memanfaatkan kearifan lokal Garut (seperti kerajinan, pertanian, dan seni tradisi) serta bentang alam sekitar sebagai media belajar terbuka bagi pengembangan kompetensi ekologis dan jiwa kewirausahaan siswa.",
+      mitigasi: "Sekolah terletak pada wilayah bentang alam Kabupaten Garut yang memiliki kerawanan terhadap potensi bencana gempa bumi tektonik, gempa vulkanik, serta risiko tanah longsor dan banjir musiman. Berdasarkan mitigasi SPAB Pilar 1 & 2, sekolah telah melengkapi jalur evakuasi bertanda khusus dan membentuk Tim Siaga Bencana Sekolah (TSBS)."
+    }
+  };
+}
 
-// 2. Fungsi Sinkronisasi Pilihan Kecamatan dari Modul 1 ke Modul 2
 function sinkronKecamatan(nilaiKecamatan) {
-  const selectModul2 = document.getElementById('selectKecamatanModul2');
-  if (selectModul2) {
-    selectModul2.value = nilaiKecamatan;
+  try {
+    var selectModul2 = document.getElementById('selectKecamatanModul2');
+    if (selectModul2) {
+      selectModul2.value = nilaiKecamatan;
+    }
+  } catch (e) {
+    console.log('Sinkronisasi kecamatan error:', e);
   }
 }
 
-// 3. Tombol Terapkan Panduan Kearifan Lokal (Modul 2)
 function terapkanPanduanKearifanLokal() {
-  const kec1 = document.getElementById('selectKecamatanModul1')?.value || '';
-  const kec2 = document.getElementById('selectKecamatanModul2')?.value || '';
-  const kec = kec2 || kec1; // Menggunakan pilihan dari Modul 2 atau Modul 1
-  
-  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
-  const el = document.getElementById('potensiDaerah');
-  if (el) el.value = data.kearifan;
-  
-  if (typeof olahDataSimpan === 'function') olahDataSimpan();
-  if (typeof simpanDataLokal === 'function') simpanDataLokal();
+  try {
+    var kec1 = document.getElementById('selectKecamatanModul1')?.value || '';
+    var kec2 = document.getElementById('selectKecamatanModul2')?.value || '';
+    var kec = kec2 || kec1;
+    
+    var data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
+    var el = document.getElementById('potensiDaerah');
+    if (el) el.value = data.kearifan;
+    
+    if (typeof olahDataSimpan === 'function') olahDataSimpan();
+    if (typeof simpanDataLokal === 'function') simpanDataLokal();
+  } catch (e) {
+    console.log('Error panduan kearifan:', e);
+  }
 }
 
-// 4. Tombol Terapkan Panduan Mitigasi SPAB (Modul 2)
 function terapkanPanduanMitigasi() {
-  const kec1 = document.getElementById('selectKecamatanModul1')?.value || '';
-  const kec2 = document.getElementById('selectKecamatanModul2')?.value || '';
-  const kec = kec2 || kec1; // Menggunakan pilihan dari Modul 2 atau Modul 1
-  
-  const data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
-  const el = document.getElementById('analisisBencana');
-  if (el) el.value = data.mitigasi;
-  
-  if (typeof olahDataSimpan === 'function') olahDataSimpan();
-  if (typeof simpanDataLokal === 'function') simpanDataLokal();
+  try {
+    var kec1 = document.getElementById('selectKecamatanModul1')?.value || '';
+    var kec2 = document.getElementById('selectKecamatanModul2')?.value || '';
+    var kec = kec2 || kec1;
+    
+    var data = dbWilayahGarut[kec] || dbWilayahGarut["Default"];
+    var el = document.getElementById('analisisBencana');
+    if (el) el.value = data.mitigasi;
+    
+    if (typeof olahDataSimpan === 'function') olahDataSimpan();
+    if (typeof simpanDataLokal === 'function') simpanDataLokal();
+  } catch (e) {
+    console.log('Error panduan mitigasi:', e);
+  }
 }
   </script>
 </body>

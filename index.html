@@ -1433,35 +1433,44 @@
       localStorage.setItem('ksp_modul3_data', JSON.stringify(dataModul3));
     }
     // ==========================================
-// FUNGSI PEMBARUAN PRATINJAU DOKUMEN MODUL 6
 // ==========================================
+// FUNGSI PEMBARUAN & PENYAMBUNG MODUL 1 - 6
+// ==========================================
+
+// Fungsi untuk memaksa pratinjau Modul 6 membaca data terbaru
 function updatePreview() {
-  // Ambil data terbaru dari localStorage
+  // Ambil data dengan mengecek kedua nama kunci penyimpanan
   let saved = localStorage.getItem('ksp_garut_2026') || localStorage.getItem('ksp_data_2026');
   if (!saved) return;
   
   let d = JSON.parse(saved);
 
-  // Jika aplikasi Anda memiliki fungsi bawaan 'perbaruiPratinjau' / 'renderPreview'
+  // Samakan kunci penyimpanan agar tidak ada perbedaan
+  localStorage.setItem('ksp_garut_2026', JSON.stringify(d));
+  localStorage.setItem('ksp_data_2026', JSON.stringify(d));
+
+  // Panggil fungsi render bawaan aplikasi
   if (typeof perbaruiPratinjau === 'function') {
     perbaruiPratinjau(d);
-  } else if (typeof renderPreview === 'function') {
-    renderPreview();
   }
 }
 
-// Otomatis perbarui pratinjau saat pengguna membuka Modul 6 atau mengetik di form
+// Tambahkan pemicu otomatis saat dokumen dimuat & saat pengguna berpindah tab
 document.addEventListener('DOMContentLoaded', function() {
-  // Jalankan saat pertama kali halaman dimuat
-  if (typeof olahDataSimpan === 'function') olahDataSimpan();
-  
-  // Daftarkan pemicu pada tombol Modul 6
-  let tabModul6 = document.querySelector('button[onclick*="6"], [data-tab="6"]');
-  if (tabModul6) {
-    tabModul6.addEventListener('click', updatePreview);
-  }
+  // Jalankan render awal
+  updatePreview();
+
+  // Tambahkan event listener pada semua tombol navigasi modul
+  let navButtons = document.querySelectorAll('.nav-btn, button[onclick*="bukaModul"]');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (typeof olahDataSimpan === 'function') olahDataSimpan();
+      setTimeout(updatePreview, 100); // Beri jeda sebentar agarDOM berpindah lalu perbarui Modul 6
+    });
+  });
 });
 
+// Otomatis simpan & perbarui pratinjau setiap ada ketikan di form apa pun
 document.addEventListener('input', function() {
   if (typeof olahDataSimpan === 'function') {
     olahDataSimpan();

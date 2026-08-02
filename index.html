@@ -1436,29 +1436,37 @@
 // FUNGSI PEMBARUAN PRATINJAU DOKUMEN MODUL 6
 // ==========================================
 function updatePreview() {
-  // Ambil data terbaru dari localStorage atau dari objek form
-  let saved = localStorage.getItem('ksp_garut_2026');
+  // Ambil data terbaru dari localStorage
+  let saved = localStorage.getItem('ksp_garut_2026') || localStorage.getItem('ksp_data_2026');
   if (!saved) return;
   
   let d = JSON.parse(saved);
 
-  // Ambil elemen container tempat menampilkan pratinjau Modul 6
-  let container = document.getElementById('previewDokumen') || document.getElementById('areaCetakUtuh');
-  if (!container) return;
-
-  // Jika menggunakan areaCetakUtuh (elemen bawaan kode Anda), 
-  // fungsi olahDataSimpan() & perbaruiPratinjau() bawaan Anda sudah otomatis mengisinya.
-  // Panggil fungsi pembaru bawaan aplikasi Anda agar tidak ada fitur yang hilang:
+  // Jika aplikasi Anda memiliki fungsi bawaan 'perbaruiPratinjau' / 'renderPreview'
   if (typeof perbaruiPratinjau === 'function') {
     perbaruiPratinjau(d);
+  } else if (typeof renderPreview === 'function') {
+    renderPreview();
   }
 }
 
-// Jalankan auto-save dan update pratinjau saat input berubah
+// Otomatis perbarui pratinjau saat pengguna membuka Modul 6 atau mengetik di form
+document.addEventListener('DOMContentLoaded', function() {
+  // Jalankan saat pertama kali halaman dimuat
+  if (typeof olahDataSimpan === 'function') olahDataSimpan();
+  
+  // Daftarkan pemicu pada tombol Modul 6
+  let tabModul6 = document.querySelector('button[onclick*="6"], [data-tab="6"]');
+  if (tabModul6) {
+    tabModul6.addEventListener('click', updatePreview);
+  }
+});
+
 document.addEventListener('input', function() {
   if (typeof olahDataSimpan === 'function') {
     olahDataSimpan();
   }
+  updatePreview();
 });
   </script>
 </body>

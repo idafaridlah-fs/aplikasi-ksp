@@ -997,13 +997,17 @@
     };
 
     function bukaModul(idModul, elBtn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(idModul).classList.add('active');
-      if (elBtn) elBtn.classList.add('active');
-    }
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+  
+  document.getElementById(idModul).classList.add('active');
+  if (elBtn) elBtn.classList.add('active');
 
+  // OTOMATIS RENDER MODUL 6 SAAT TAB DIKLIK
+  if (idModul === 'modul6') {
+    if (typeof olahDataSimpan === 'function') olahDataSimpan();
+  }
+}
     function susunTabelTim() {
       let tbody = document.getElementById('bodyTabelTim');
       tbody.innerHTML = '';

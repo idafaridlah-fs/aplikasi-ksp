@@ -1361,15 +1361,15 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
   function loadPengantarByBab() {
     const selectElem = document.getElementById('select-bab-pengantar');
     if (!selectElem) return;
-    
+
     const selectedBab = selectElem.value;
     let teks = dataPengantar[selectedBab] || '';
 
-    // Ambil input nama sekolah dan kecamatan dari Modul 1
+    // Ambil input dari Modul 1
     const namaSekolah = document.getElementById('namaSekolah')?.value || '';
     const kecamatan = document.getElementById('selectKecamatanModul1')?.value || document.getElementById('kecamatan')?.value || '';
 
-    // Jika teks pengantar belum ada, sediakan draf otomatis
+    // Isi draf otomatis jika teks pengantar masih kosong
     if (!teks && namaSekolah) {
       if (selectedBab === 'bab2') {
         teks = `Puji syukur kehadirat Allah SWT, dokumen Pengantar BAB II KSP ini disusun sebagai pedoman operasional penyelenggaraan pendidikan di ${namaSekolah}, Kecamatan ${kecamatan}.`;
@@ -1379,7 +1379,6 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
     const textElem = document.getElementById('text-pengantar');
     if (textElem) textElem.value = teks;
   }
-
   function simpanPengantar() {
     const selectElem = document.getElementById('select-bab-pengantar');
     const textElem = document.getElementById('text-pengantar');

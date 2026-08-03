@@ -353,6 +353,36 @@
 
   <div class="container">
 
+  <!-- BLOK MENU INPUT PENGANTAR BAB (BARU) -->
+    <div class="card mb-4 border-success shadow-sm" style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <div class="card-header bg-success text-white" style="background-color: #198754; color: white; padding: 10px; border-radius: 5px 5px 0 0;">
+        <h6 class="m-0 fw-bold">Input Paparan Pengantar BAB & Kata Pengantar</h6>
+      </div>
+      <div class="card-body" style="padding: 15px;">
+        <div class="mb-3" style="margin-bottom: 15px;">
+          <label for="select-bab-pengantar" class="form-label"><b>Pilih Bagian / BAB:</b></label>
+          <select id="select-bab-pengantar" class="form-select" onchange="loadPengantarByBab()" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <option value="kata_pengantar">Kata Pengantar Utama</option>
+            <option value="bab1">Pengantar BAB 1</option>
+            <option value="bab2">Pengantar BAB 2</option>
+            <option value="bab3">Pengantar BAB 3</option>
+            <option value="bab4">Pengantar BAB 4</option>
+            <option value="bab5">Pengantar BAB 5</option>
+            <option value="bab6">Pengantar BAB 6</option>
+          </select>
+        </div>
+
+        <div class="mb-3" style="margin-bottom: 15px;">
+          <label for="text-pengantar" class="form-label"><b>Isi Paparan Narasi Pengantar:</b></label>
+          <textarea id="text-pengantar" class="form-control" rows="5" placeholder="Tuliskan paparan pengantar di sini..." style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+        </div>
+
+        <button type="button" class="btn btn-sm btn-success" onclick="simpanPengantar()" style="background-color: #198754; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+          Simpan Pengantar
+        </button>
+      </div>
+    </div>
+
     <!-- MODUL 1: ADMINISTRASI -->
     <div id="modul1" class="tab-content active no-print">
       <div class="card">
@@ -1135,6 +1165,17 @@
     const KEC_UTARA = ["Garut Kota", "Tarogong Kaler", "Tarogong Kidul", "Karangpawitan", "Banyuresmi", "Leles", "Kadungora", "BL. Limbangan", "Selaawi", "Cibiuk", "Leuwigoong", "Malambong", "Kersamanah", "Cibatu"];
 
     function generateDrafModul2() {
+    // === SISIPAN PENGANTAR BAB 2 ===
+    let teksPengantarBab2 = dataPengantar['bab2'] || '';
+    let htmlPengantarBab2 = '';
+    if (teksPengantarBab2) {
+      htmlPengantarBab2 = `
+        <div style="background-color: #e8f5e9; border-left: 5px solid #198754; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+          <h6 style="color: #198754; margin-bottom: 5px; font-weight: bold;">PENGANTAR BAB 2:</h6>
+          <p style="margin: 0; white-space: pre-line; text-align: justify;">${teksPengantarBab2}</p>
+        </div>
+      `;
+    }
       let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
       let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
       
@@ -1161,7 +1202,7 @@
       if (!document.getElementById('karakteristikPTK').value) {
         document.getElementById('karakteristikPTK').value = "Tenaga pendidik berkualifikasi S1/S2, mayoritas tersertifikasi profesional, dan aktif dalam Komunitas Belajar (Kombel).";
       }
-
+if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
       olahDataSimpan();
       alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dibuat!`);
     }
@@ -1312,6 +1353,37 @@
 
       olahDataSimpan();
     }
+// ==========================================
+  // LOGIKA PENGANTAR BAB (BARU)
+  // ==========================================
+  let dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
+
+  function loadPengantarByBab() {
+    const selectedBab = document.getElementById('select-bab-pengantar').value;
+    document.getElementById('text-pengantar').value = dataPengantar[selectedBab] || '';
+  }
+
+  function simpanPengantar() {
+    const selectedBab = document.getElementById('select-bab-pengantar').value;
+    const isiTeks = document.getElementById('text-pengantar').value;
+    
+    dataPengantar[selectedBab] = isiTeks;
+    localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
+    alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
+    
+    // Memperbarui pratinjau Modul 6 jika fungsi rendernya ada
+    if (typeof renderModul6 === 'function') {
+      renderModul6();
+    }
+  }
+
+  // Panggil saat halaman pertama kali dimuat
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('select-bab-pengantar')) {
+      loadPengantarByBab();
+    }
+  });
+    
   </script>
 </body>
 </html>

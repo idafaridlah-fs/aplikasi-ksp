@@ -1354,34 +1354,44 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
       olahDataSimpan();
     }
 // ==========================================
-  // LOGIKA PENGANTAR BAB (BARU)
+  // LOGIKA PENGANTAR BAB & INTEGRASI MODUL 1
   // ==========================================
   let dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
 
   function loadPengantarByBab() {
-    const selectedBab = document.getElementById('select-bab-pengantar').value;
+    const selectElem = document.getElementById('select-bab-pengantar');
+    if (!selectElem) return;
+    
+    const selectedBab = selectElem.value;
     let teks = dataPengantar[selectedBab] || '';
 
     // Ambil input nama sekolah dan kecamatan dari Modul 1
     const namaSekolah = document.getElementById('namaSekolah')?.value || '';
     const kecamatan = document.getElementById('selectKecamatanModul1')?.value || document.getElementById('kecamatan')?.value || '';
 
-    // Jika teks pengantar belum pernah diisi/disimpan, sediakan draf otomatis yang terintegrasi
+    // Jika teks pengantar belum ada, sediakan draf otomatis
     if (!teks && namaSekolah) {
       if (selectedBab === 'bab2') {
         teks = `Puji syukur kehadirat Allah SWT, dokumen Pengantar BAB II KSP ini disusun sebagai pedoman operasional penyelenggaraan pendidikan di ${namaSekolah}, Kecamatan ${kecamatan}.`;
       }
     }
 
-    document.getElementById('text-pengantar').value = teks;
+    const textElem = document.getElementById('text-pengantar');
+    if (textElem) textElem.value = teks;
   }
+
   function simpanPengantar() {
-    const selectedBab = document.getElementById('select-bab-pengantar').value;
-    const isiTeks = document.getElementById('text-pengantar').value;
+    const selectElem = document.getElementById('select-bab-pengantar');
+    const textElem = document.getElementById('text-pengantar');
+    if (!selectElem || !textElem) return;
+
+    const selectedBab = selectElem.value;
+    const isiTeks = textElem.value;
     
     dataPengantar[selectedBab] = isiTeks;
     localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
     alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
+  }
     
     // Memperbarui pratinjau Modul 6 jika fungsi rendernya ada
     if (typeof renderModul6 === 'function') {

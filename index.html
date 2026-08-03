@@ -353,37 +353,7 @@
 
   <div class="container">
 
-  <!-- BLOK MENU INPUT PENGANTAR BAB (BARU) -->
-    <div class="card mb-4 border-success shadow-sm" style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-      <div class="card-header bg-success text-white" style="background-color: #198754; color: white; padding: 10px; border-radius: 5px 5px 0 0;">
-        <h6 class="m-0 fw-bold">Input Paparan Pengantar BAB & Kata Pengantar</h6>
-      </div>
-      <div class="card-body" style="padding: 15px;">
-        <div class="mb-3" style="margin-bottom: 15px;">
-          <label for="select-bab-pengantar" class="form-label"><b>Pilih Bagian / BAB:</b></label>
-          <select id="select-bab-pengantar" class="form-select" onchange="loadPengantarByBab()" style="width: 100%; padding: 8px; margin-top: 5px;">
-            <option value="kata_pengantar">Kata Pengantar Utama</option>
-            <option value="bab1">Pengantar BAB 1</option>
-            <option value="bab2">Pengantar BAB 2</option>
-            <option value="bab3">Pengantar BAB 3</option>
-            <option value="bab4">Pengantar BAB 4</option>
-            <option value="bab5">Pengantar BAB 5</option>
-            <option value="bab6">Pengantar BAB 6</option>
-          </select>
-        </div>
-
-        <div class="mb-3" style="margin-bottom: 15px;">
-          <label for="text-pengantar" class="form-label"><b>Isi Paparan Narasi Pengantar:</b></label>
-          <textarea id="text-pengantar" class="form-control" rows="5" placeholder="Tuliskan paparan pengantar di sini..." style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
-        </div>
-
-        <button type="button" class="btn btn-sm btn-success" onclick="simpanPengantar()" style="background-color: #198754; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
-          Simpan Pengantar
-        </button>
-      </div>
-    </div>
-
-    <!-- MODUL 1: ADMINISTRASI -->
+     <!-- MODUL 1: ADMINISTRASI -->
     <div id="modul1" class="tab-content active no-print">
       <div class="card">
         <div class="card-title">
@@ -915,23 +885,7 @@
     muatDataLokal();
     susunTabelTim();
     susunTabelJP();
-    if (document.getElementById('select-bab-pengantar')) {
-      loadPengantarByBab();
-    }
-    olahDataSimpan();
-  };
-
-  function bukaModul(idModul, elBtn) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
-    
-    document.getElementById(idModul).classList.add('active');
-    if (elBtn) elBtn.classList.add('active');
-
-    if (idModul === 'modul6') {
-      olahDataSimpan();
-    }
-  }
+    if (document.getElementById('select-bab-pengantar')) }
 
   function susunTabelTim() {
     let tbody = document.getElementById('bodyTabelTim');

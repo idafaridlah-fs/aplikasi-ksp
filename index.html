@@ -1321,7 +1321,7 @@
     olahDataSimpan();
   }
 
-  function selaraskanVisiMisiAI() {
+  function selaraskanVisiMisiAI()
     const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
     const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
 
@@ -1404,7 +1404,15 @@
     localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
     alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
   }
-    
+   olahDataSimpan();
+
+    // Memperbarui pratinjau Modul 6 jika fungsi rendernya tersedia
+    if (typeof renderModul6 === 'function') {
+      renderModul6();
+    }
+
+    alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
+  } 
 </script>
 </body>
 </html>

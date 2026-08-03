@@ -875,487 +875,35 @@
 
   <!-- SCRIPT -->
   <script>
-    const mapelStandar = [
-      "Pendidikan Agama dan Budi Pekerti",
-      "Pendidikan Pancasila",
-      "Bahasa Indonesia",
-      "Matematika",
-      "Ilmu Pengetahuan Alam (IPA)",
-      "Ilmu Pengetahuan Sosial (IPS)",
-      "Bahasa Inggris",
-      "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)",
-      "Informatika",
-      "Seni dan Prakarya",
-      "Muatan Lokal: Bahasa Sunda",
-      "Muatan Lokal: Education SPAB / Kebencanaan Garut"
-    ];
+  const mapelStandar = [
+    "Pendidikan Agama dan Budi Pekerti",
+    "Pendidikan Pancasila",
+    "Bahasa Indonesia",
+    "Matematika",
+    "Ilmu Pengetahuan Alam (IPA)",
+    "Ilmu Pengetahuan Sosial (IPS)",
+    "Bahasa Inggris",
+    "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)",
+    "Informatika",
+    "Seni dan Prakarya",
+    "Muatan Lokal: Bahasa Sunda",
+    "Muatan Lokal: Education SPAB / Kebencanaan Garut"
+  ];
 
-    let dataTim = [
-      { nama: "H. Moch. Dudung Zami'at, M.Pd.", jabatan: "Ketua Tim / Kepala Sekolah" },
-      { nama: "Ida Faridlah, M.Ag.", jabatan: "Penelaah / Pengawas Pembina" },
-      { nama: "Asep Hidayat, S.Pd.", jabatan: "Sekretaris Tim / Wakasek Kurikulum" }
-    ];
+  let dataTim = [
+    { nama: "H. Moch. Dudung Zami'at, M.Pd.", jabatan: "Ketua Tim / Kepala Sekolah" },
+    { nama: "Ida Faridlah, M.Ag.", jabatan: "Penelaah / Pengawas Pembina" },
+    { nama: "Asep Hidayat, S.Pd.", jabatan: "Sekretaris Tim / Wakasek Kurikulum" }
+  ];
 
-    let dataJP = mapelStandar.map(m => ({
-      mapel: m,
-      c7Intra: 3, c7Koku: 1,
-      c8Intra: 3, c8Koku: 1,
-      c9Intra: 3, c9Koku: 1
-    }));
+  let dataJP = mapelStandar.map(m => ({
+    mapel: m,
+    c7Intra: 3, c7Koku: 1,
+    c8Intra: 3, c8Koku: 1,
+    c9Intra: 3, c9Koku: 1
+  }));
 
-    window.onload = function() {
-      muatDataLokal();
-      susunTabelTim();
-      susunTabelJP();
-      olahDataSimpan();
-    };
-
-    function bukaModul(idModul, elBtn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(idModul).classList.add('active');
-      if (elBtn) elBtn.classList.add('active');
-
-      if (idModul === 'modul6') {
-        olahDataSimpan();
-      }
-    }
-
-    function susunTabelTim() {
-      let tbody = document.getElementById('bodyTabelTim');
-      tbody.innerHTML = '';
-      dataTim.forEach((item, index) => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><input type="text" value="${item.nama}" oninput="updateTim(${index}, 'nama', this.value)"></td>
-          <td><input type="text" value="${item.jabatan}" oninput="updateTim(${index}, 'jabatan', this.value)"></td>
-          <td style="text-align:center;"><button class="btn btn-danger" style="padding: 3px 8px; font-size: 0.8rem;" onclick="hapusTim(${index})">Hapus</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function tambahBarisTim() {
-      dataTim.push({ nama: "", jabatan: "Anggota Tim Penyusun" });
-      susunTabelTim();
-      olahDataSimpan();
-    }
-
-    function updateTim(index, field, val) {
-      dataTim[index][field] = val;
-      olahDataSimpan();
-    }
-
-    function hapusTim(index) {
-      dataTim.splice(index, 1);
-      susunTabelTim();
-      olahDataSimpan();
-    }
-
-    function susunTabelJP() {
-      let tbody = document.getElementById('bodyTabelJP');
-      tbody.innerHTML = '';
-      dataJP.forEach((item, index) => {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${item.mapel}</strong></td>
-          <td><input type="number" value="${item.c7Intra}" oninput="updateJP(${index}, 'c7Intra', this.value)"></td>
-          <td><input type="number" value="${item.c7Koku}" oninput="updateJP(${index}, 'c7Koku', this.value)"></td>
-          <td><input type="number" value="${item.c8Intra}" oninput="updateJP(${index}, 'c8Intra', this.value)"></td>
-          <td><input type="number" value="${item.c8Koku}" oninput="updateJP(${index}, 'c8Koku', this.value)"></td>
-          <td><input type="number" value="${item.c9Intra}" oninput="updateJP(${index}, 'c9Intra', this.value)"></td>
-          <td><input type="number" value="${item.c9Koku}" oninput="updateJP(${index}, 'c9Koku', this.value)"></td>
-        `;
-        tbody.appendChild(tr);
-      });
-      hitungTotalJP();
-    }
-
-    function updateJP(index, field, val) {
-      dataJP[index][field] = parseInt(val) || 0;
-      hitungTotalJP();
-      olahDataSimpan();
-    }
-
-    function hitungTotalJP() {
-      let t7I = 0, t7K = 0, t8I = 0, t8K = 0, t9I = 0, t9K = 0;
-      dataJP.forEach(item => {
-        t7I += item.c7Intra; t7K += item.c7Koku;
-        t8I += item.c8Intra; t8K += item.c8Koku;
-        t9I += item.c9Intra; t9K += item.c9Koku;
-      });
-
-      document.getElementById('tot7Intra').innerText = t7I;
-      document.getElementById('tot7Koku').innerText = t7K;
-      document.getElementById('tot8Intra').innerText = t8I;
-      document.getElementById('tot8Koku').innerText = t8K;
-      document.getElementById('tot9Intra').innerText = t9I;
-      document.getElementById('tot9Koku').innerText = t9K;
-    }
-
-    function olahDataSimpan() {
-      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
-      
-      let dplTerpilih = [];
-      document.querySelectorAll('.chk-dpl:checked').forEach(chk => dplTerpilih.push(chk.value));
-
-      let spabTerpilih = [];
-      document.querySelectorAll('.chk-spab:checked').forEach(chk => spabTerpilih.push(chk.value));
-
-      let data = {
-        namaSekolah: document.getElementById('namaSekolah')?.value || '',
-        npsnSekolah: document.getElementById('npsnSekolah')?.value || '',
-        alamatSekolah: document.getElementById('alamatSekolah')?.value || '',
-        wilayahSekolah: kec ? "Kec. " + kec + ", Kab. Garut" : "",
-        selectKecamatan: kec,
-        kepalaSekolah: document.getElementById('kepalaSekolah')?.value || '',
-        nipKepala: document.getElementById('nipKepala')?.value || '',
-        namaPengawas: document.getElementById('namaPengawas')?.value || '',
-        nipPengawas: document.getElementById('nipPengawas')?.value || '',
-        namaKomite: document.getElementById('namaKomite')?.value || '',
-        tglPenetapan: document.getElementById('tglPenetapan')?.value || '',
-        kataPengantar: document.getElementById('kataPengantar')?.value || '',
-
-        karakteristikMurid: document.getElementById('karakteristikMurid')?.value || '',
-        karakteristikPTK: document.getElementById('karakteristikPTK')?.value || '',
-        karakteristikSarpras: document.getElementById('karakteristikSarpras')?.value || '',
-        potensiDaerah: document.getElementById('potensiDaerah')?.value || '',
-        analisisBencana: document.getElementById('analisisBencana')?.value || '',
-        raporPendidikan: document.getElementById('raporPendidikan')?.value || '',
-
-        visiSekolah: document.getElementById('visiSekolah')?.value || '',
-        misiSekolah: document.getElementById('misiSekolah')?.value || '',
-        tujuanSekolah: document.getElementById('tujuanSekolah')?.value || '',
-        dplPilihan: dplTerpilih,
-        spabPilihan: spabTerpilih,
-
-        pendekatan: document.getElementById('pendekatan')?.value || '',
-        intrakurikuler: document.getElementById('intrakurikuler')?.value || '',
-        mingguEfektif: document.getElementById('mingguEfektif')?.value || '',
-        kokurikuler: document.getElementById('kokurikuler')?.value || '',
-        ekstrakurikuler: document.getElementById('ekstrakurikuler')?.value || '',
-        perencanaanBelajar: document.getElementById('perencanaanBelajar')?.value || '',
-        posKedaruratan: document.getElementById('posKedaruratan')?.value || '',
-        evaluasiPendampingan: document.getElementById('evaluasiPendampingan')?.value || '',
-        dataTim: dataTim,
-        dataJP: dataJP
-      };
-
-      localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
-      localStorage.setItem('ksp_data_2026', JSON.stringify(data));
-
-      perbaruiPratinjau(data);
-    }
-
-    function perbaruiPratinjau(d) {
-      if (!d) return;
-
-      let nama = (d.namaSekolah || '').toUpperCase();
-      document.querySelectorAll('#p_namaSekolahCover, #p_namaSekolahPengesahan').forEach(el => {
-        el.textContent = nama || '[NAMA SATUAN PENDIDIKAN]';
-      });
-      if (document.getElementById('p_namaSekolahCoverSub')) document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
-      if (document.getElementById('p_npsnCover')) document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
-      if (document.getElementById('p_alamatCover')) document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || 'Kab. Garut');
-      if (document.getElementById('p_tglPenetapanCover')) document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
-
-      if (document.getElementById('p_namaSekolahPengesahan2')) document.getElementById('p_namaSekolahPengesahan2').innerText = d.namaSekolah || '[Nama Sekolah]';
-      if (document.getElementById('p_namaKomite')) document.getElementById('p_namaKomite').innerText = d.namaKomite || '[Nama Ketua Komite]';
-      if (document.getElementById('p_tglPenetapanSign')) document.getElementById('p_tglPenetapanSign').innerText = d.tglPenetapan || '14 Juli 2026';
-      if (document.getElementById('p_kepalaSekolah')) document.getElementById('p_kepalaSekolah').innerText = d.kepalaSekolah || '[Nama Kepala Sekolah]';
-      if (document.getElementById('p_nipKepala')) document.getElementById('p_nipKepala').innerText = d.nipKepala || '[NIP Kepala Sekolah]';
-      if (document.getElementById('p_namaPengawas')) document.getElementById('p_namaPengawas').innerText = d.namaPengawas || 'Ida Faridlah, M.Ag.';
-      if (document.getElementById('p_nipPengawas')) document.getElementById('p_nipPengawas').innerText = d.nipPengawas || '197211141998022002';
-      if (document.getElementById('p_kataPengantar')) document.getElementById('p_kataPengantar').innerText = d.kataPengantar || 'Puji syukur kami panjatkan...';
-
-      if (document.getElementById('p_karakteristikMurid')) document.getElementById('p_karakteristikMurid').innerText = d.karakteristikMurid || '-';
-      if (document.getElementById('p_karakteristikPTK')) document.getElementById('p_karakteristikPTK').innerText = d.karakteristikPTK || '-';
-      if (document.getElementById('p_karakteristikSarpras')) document.getElementById('p_karakteristikSarpras').innerText = d.karakteristikSarpras || '-';
-      if (document.getElementById('p_potensiDaerah')) document.getElementById('p_potensiDaerah').innerText = d.potensiDaerah || '-';
-      if (document.getElementById('p_analisisBencana')) document.getElementById('p_analisisBencana').innerText = d.analisisBencana || '-';
-      if (document.getElementById('p_raporPendidikan')) document.getElementById('p_raporPendidikan').innerText = d.raporPendidikan || '-';
-
-      let elemVisi = document.getElementById('p_visiSekolah');
-      if (elemVisi) elemVisi.innerText = (d.visiSekolah || '-').replace(/\|/g, '').trim();
-      if (document.getElementById('p_misiSekolah')) document.getElementById('p_misiSekolah').innerText = d.misiSekolah || '-';
-      if (document.getElementById('p_tujuanSekolah')) document.getElementById('p_tujuanSekolah').innerText = d.tujuanSekolah || '-';
-
-      if (document.getElementById('p_pendekatan')) document.getElementById('p_pendekatan').innerText = d.pendekatan || 'Mata Pelajaran (Reguler)';
-      if (document.getElementById('p_intrakurikuler')) document.getElementById('p_intrakurikuler').innerText = d.intrakurikuler || '-';
-      if (document.getElementById('p_kokurikuler')) document.getElementById('p_kokurikuler').innerText = d.kokurikuler || '-';
-      if (document.getElementById('p_ekstrakurikuler')) document.getElementById('p_ekstrakurikuler').innerText = d.ekstrakurikuler || '-';
-      if (document.getElementById('p_perencanaanBelajar')) document.getElementById('p_perencanaanBelajar').innerText = d.perencanaanBelajar || '-';
-      if (document.getElementById('p_posKedaruratan')) document.getElementById('p_posKedaruratan').innerText = d.posKedaruratan || '-';
-      if (document.getElementById('p_evaluasiPendampingan')) document.getElementById('p_evaluasiPendampingan').innerText = d.evaluasiPendampingan || '-';
-
-      let tbodyCetak = document.getElementById('p_bodyTabelJP');
-      if (tbodyCetak && d.dataJP) {
-        tbodyCetak.innerHTML = '';
-        d.dataJP.forEach(item => {
-          let tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${item.mapel}</td>
-            <td style="text-align:center;">${item.c7Intra}</td>
-            <td style="text-align:center;">${item.c7Koku}</td>
-            <td style="text-align:center;">${item.c8Intra}</td>
-            <td style="text-align:center;">${item.c8Koku}</td>
-            <td style="text-align:center;">${item.c9Intra}</td>
-            <td style="text-align:center;">${item.c9Koku}</td>
-          `;
-          tbodyCetak.appendChild(tr);
-        });
-      }
-    }
-
-    function muatDataLokal() {
-      let str = localStorage.getItem('ksp_garut_2026');
-      if (!str) return;
-      let d = JSON.parse(str);
-
-      if (d.namaSekolah) document.getElementById('namaSekolah').value = d.namaSekolah;
-      if (d.npsnSekolah) document.getElementById('npsnSekolah').value = d.npsnSekolah;
-      if (d.alamatSekolah) document.getElementById('alamatSekolah').value = d.alamatSekolah;
-      if (d.selectKecamatan && document.getElementById('selectKecamatanModul1')) {
-        document.getElementById('selectKecamatanModul1').value = d.selectKecamatan;
-      }
-      if (d.kepalaSekolah) document.getElementById('kepalaSekolah').value = d.kepalaSekolah;
-      if (d.nipKepala) document.getElementById('nipKepala').value = d.nipKepala;
-      if (d.namaPengawas) document.getElementById('namaPengawas').value = d.namaPengawas;
-      if (d.nipPengawas) document.getElementById('nipPengawas').value = d.nipPengawas;
-      if (d.namaKomite) document.getElementById('namaKomite').value = d.namaKomite;
-      if (d.tglPenetapan) document.getElementById('tglPenetapan').value = d.tglPenetapan;
-      if (d.kataPengantar) document.getElementById('kataPengantar').value = d.kataPengantar;
-      if (d.karakteristikMurid) document.getElementById('karakteristikMurid').value = d.karakteristikMurid;
-      if (d.karakteristikPTK) document.getElementById('karakteristikPTK').value = d.karakteristikPTK;
-      if (d.karakteristikSarpras) document.getElementById('karakteristikSarpras').value = d.karakteristikSarpras;
-      if (d.potensiDaerah) document.getElementById('potensiDaerah').value = d.potensiDaerah;
-      if (d.analisisBencana) document.getElementById('analisisBencana').value = d.analisisBencana;
-      if (d.raporPendidikan) document.getElementById('raporPendidikan').value = d.raporPendidikan;
-      if (d.visiSekolah) document.getElementById('visiSekolah').value = d.visiSekolah;
-      if (d.misiSekolah) document.getElementById('misiSekolah').value = d.misiSekolah;
-      if (d.tujuanSekolah) document.getElementById('tujuanSekolah').value = d.tujuanSekolah;
-      if (d.pendekatan) document.getElementById('pendekatan').value = d.pendekatan;
-      if (d.intrakurikuler) document.getElementById('intrakurikuler').value = d.intrakurikuler;
-      if (d.mingguEfektif) document.getElementById('mingguEfektif').value = d.mingguEfektif;
-      if (d.kokurikuler) document.getElementById('kokurikuler').value = d.kokurikuler;
-      if (d.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = d.ekstrakurikuler;
-      if (d.perencanaanBelajar) document.getElementById('perencanaanBelajar').value = d.perencanaanBelajar;
-      if (d.posKedaruratan) document.getElementById('posKedaruratan').value = d.posKedaruratan;
-      if (d.evaluasiPendampingan) document.getElementById('evaluasiPendampingan').value = d.evaluasiPendampingan;
-
-      if (d.dplPilihan && Array.isArray(d.dplPilihan)) {
-        document.querySelectorAll('.chk-dpl').forEach(chk => {
-          chk.checked = d.dplPilihan.includes(chk.value);
-        });
-      }
-
-      if (d.spabPilihan && Array.isArray(d.spabPilihan)) {
-        document.querySelectorAll('.chk-spab').forEach(chk => {
-          chk.checked = d.spabPilihan.includes(chk.value);
-        });
-      }
-
-      if (d.dataTim) dataTim = d.dataTim;
-      if (d.dataJP) dataJP = d.dataJP;
-      updateDPLPilihan();
-    }
-
-    const KEC_SELATAN = ["Pameungpeuk", "Cibalong", "Cikelet", "Bungbulang", "Mekarmukti", "Pakenjeng", "Cisewu", "Caringin", "Talegong", "Pamulihan", "Peundeuy", "Cihurip", "Kutamaneuh", "Cisompet"];
-    const KEC_UTARA = ["Garut Kota", "Tarogong Kaler", "Tarogong Kidul", "Karangpawitan", "Banyuresmi", "Leles", "Kadungora", "BL. Limbangan", "Selaawi", "Cibiuk", "Leuwigoong", "Malambong", "Kersamanah", "Cibatu"];
-
-    function generateDrafModul2() {
-    // === SISIPAN PENGANTAR BAB 2 ===
-    let teksPengantarBab2 = dataPengantar['bab2'] || '';
-    let htmlPengantarBab2 = '';
-    if (teksPengantarBab2) {
-      htmlPengantarBab2 = `
-        <div style="background-color: #e8f5e9; border-left: 5px solid #198754; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
-          <h6 style="color: #198754; margin-bottom: 5px; font-weight: bold;">PENGANTAR BAB 2:</h6>
-          <p style="margin: 0; white-space: pre-line; text-align: justify;">${teksPengantarBab2}</p>
-        </div>
-      `;
-    }
-      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
-      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
-      
-      let teksBencana = "";
-      let teksPotensi = "";
-
-      if (KEC_SELATAN.includes(kec)) {
-        teksBencana = `${namaSek} berada di wilayah pesisir Kecamatan ${kec} yang memiliki risiko bencana gempa bumi tektonik, potensi tsunami, dan banjir rob. SPAB difokuskan pada penguatan jalur evakuasi dan sirine peringatan dini.`;
-        teksPotensi = `Kecamatan ${kec} kaya potensi maritim, pariwisata bahari, dan perikanan. Kemitraan dikembangkan bersama TPI, Pos SAR Pesisir, dan BPBD.`;
-      } else if (KEC_UTARA.includes(kec)) {
-        teksBencana = `${namaSek} berlokasi di kawasan urban Kecamatan ${kec} dengan potensi risiko genangan banjir musiman dan kebakaran. SPAB mengutamakan kesiapan infrastruktur gedung dan jalur evakuasi.`;
-        teksPotensi = `Kecamatan ${kec} memiliki keunggulan industri kreatif, kuliner lokal, sentra UMKM, dan objek wisata budaya. Kemitraan terjalin dengan Dinas Perindustrian dan perguruan tinggi.`;
-      } else {
-        teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan dengan kerawanan tanah longsor dan guncangan gempa vulkanik/tektonik (Sesar Garsela). SPAB berfokus pada penetapan jalur evakuasi dan simulasi rutin.`;
-        teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, pertanian hortikultura, kebun teh/kopi, serta agrowisata. Kemitraan dikembangkan bersama Kelompok Tani lokal dan BPBD.`;
-      }
-
-      document.getElementById('analisisBencana').value = teksBencana;
-      document.getElementById('potensiDaerah').value = teksPotensi;
-      
-      if (!document.getElementById('karakteristikMurid').value) {
-        document.getElementById('karakteristikMurid').value = "Peserta didik memiliki latar belakang sosial ekonomi yang bervariasi, berbudaya Sunda yang kuat, serta minat tinggi dalam kearifan lokal.";
-      }
-      if (!document.getElementById('karakteristikPTK').value) {
-        document.getElementById('karakteristikPTK').value = "Tenaga pendidik berkualifikasi S1/S2, mayoritas tersertifikasi profesional, dan aktif dalam Komunitas Belajar (Kombel).";
-      }
-if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
-      olahDataSimpan();
-      alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dibuat!`);
-    }
-
-    function generateDrafModul3() {
-      let namaSek = document.getElementById('namaSekolah').value || 'Sekolah';
-      document.getElementById('visiSekolah').value = `Terwujudnya Peserta Didik ${namaSek} yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana (SPAB), Berbudaya Lokal Garut, dan Berwawasan Global`;
-      document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) yang berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB).\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
-      document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah terlatih simulasi tanggap darurat bencana.\n3. Menghasilkan karya projek P5 berbasis kearifan lokal Garut.";
-      olahDataSimpan();
-      alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
-    }
-
-    function generateDrafModul4() {
-      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
-
-      let teksIntra = "";
-      let teksKoku = "";
-      let teksEkstra = "";
-
-      if (KEC_SELATAN.includes(kec)) {
-        teksIntra = `Integrasi Kurikulum Diversifikasi pada IPA, IPS, PJOK, serta Mulok Bahasa Sunda berbasis potensi pesisir. PRB terintegrasi pada topik gempa & tsunami.`;
-        teksKoku = `P5 Tema: Gaya Hidup Berkelanjutan (Mitigasi Tsunami), Kewirausahaan (Pengolahan Hasil Laut), Kearifan Lokal (Seni Bahari).`;
-        teksEkstra = `1. Pramuka (Wajib)\n2. PMR / Tim Siaga Bencana Sekolah\n3. Kesenian Pesisir Garut`;
-      } else if (KEC_UTARA.includes(kec)) {
-        teksIntra = `Integrasi Kurikulum Diversifikasi pada IPS (UMKM Perkotaan), Informatika, PJOK, serta Mulok Bahasa Sunda. PRB difokuskan pada kesiapsiagaan kebakaran & banjir.`;
-        teksKoku = `P5 Tema: Kewirausahaan (Inovasi Produk Kerajinan), Rekayasa Teknologi (Pengelolaan Sampah Perkotaan), Kearifan Lokal.`;
-        teksEkstra = `1. Pramuka (Wajib)\n2. PMR & Komunitas Pelajar Tanggap Bencana\n3. Digital Marketing & Sanggar Seni`;
-      } else {
-        teksIntra = `Integrasi Kurikulum Diversifikasi pada IPA (Konservasi Tanah/Gunung Api), IPS (Agropolitan), PJOK, serta Mulok Bahasa Sunda. PRB difokuskan pada gempa & longsor.`;
-        teksKoku = `P5 Tema: Gaya Hidup Berkelanjutan (Konservasi Lahan Pegunungan), Kewirausahaan (Hasil Bumi/Agrowisata), Kearifan Lokal.`;
-        teksEkstra = `1. Pramuka (Wajib)\n2. PMR Tanggap Gunung & Longsor\n3. Pecinta Alam & Sanggar Seni Pegunungan`;
-      }
-
-      document.getElementById('intrakurikuler').value = teksIntra;
-      document.getElementById('kokurikuler').value = teksKoku;
-      document.getElementById('ekstrakurikuler').value = teksEkstra;
-
-      olahDataSimpan();
-      alert(`✨ Draf Pengorganisasian Pembelajaran untuk Kecamatan ${kec || 'Garut'} Berhasil Dibuat!`);
-    }
-
-    function generateDrafModul5() {
-      let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
-      let teksPOS = "";
-
-      if (KEC_SELATAN.includes(kec)) {
-        teksPOS = `1. Peringatan Dini: Pembunyian sirine/kentongan saat gempa berpotensi tsunami.\n2. Evakuasi: 'Drop, Cover, Hold On' kemudian menuju Tempat Evakuasi Sementara.\n3. Tugas TSBS: Tim Pertolongan Pertama (PMR) dan Tim Komunikasi Darurat.`;
-      } else if (KEC_UTARA.includes(kec)) {
-        teksPOS = `1. Tanggap Darurat Kebakaran & Gempa: Protection mandiri dan evakuasi tertib ke titik kumpul.\n2. Tim Siaga: Pengoperasian APAR dan koordinasi dengan Damkar & BPBD Garut.`;
-      } else {
-        teksPOS = `1. Kesiapsiagaan Gempa & Longsor: Peringatan darurat, perlindungan diri, dan evakuasi ke Titik Kumpul Aman.\n2. Operasional TSBS: Pemantauan area rawan tebing dan koordinasi dengan Puskesmas/BPBD Kecamatan.`;
-      }
-
-      document.getElementById('perencanaanBelajar').value = "1. Penyusunan CP dan ATP ke Modul Ajar.\n2. Penerapan Pendekatan Deep Learning (Mindful, Meaningful, Joyful Learning).\n3. Integrasi Asesmen Diagnostik, Formatif, dan Sumatif.";
-      document.getElementById('posKedaruratan').value = teksPOS;
-      document.getElementById('evaluasiPendampingan').value = "1. Evaluasi Pembelajaran melalui Kombel & supervisi.\n2. Pendampingan PTK melalui coaching dan mentoring.\n3. Evaluasi KSP secara partisipatif tahunan.";
-
-      olahDataSimpan();
-      alert("✨ Draf Modul 5 (Perencanaan, POS SPAB & Evaluasi) Berhasil Dibuat!");
-    }
-
-    function exportJSON() {
-      let str = localStorage.getItem('ksp_garut_2026');
-      if (!str) return alert("Belum ada data untuk diexport!");
-      let blob = new Blob([str], { type: "application/json" });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = url;
-      a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.json`;
-      a.click();
-    }
-
-    function importJSON(input) {
-      let file = input.files[0];
-      if (!file) return;
-      let reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          let data = JSON.parse(e.target.result);
-          localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
-          muatDataLokal();
-          susunTabelTim();
-          susunTabelJP();
-          olahDataSimpan();
-          alert("✓ Data KSP Berhasil Diimport!");
-        } catch (err) {
-          alert("File JSON tidak valid!");
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    function exportToWord() {
-      let html = document.getElementById('areaCetakUtuh').innerHTML;
-      let blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
-      let url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.href = url;
-      a.download = `Dokumen_KSP_${document.getElementById('namaSekolah').value || 'Sekolah'}_2026.doc`;
-      a.click();
-    }
-
-    function updateDPLPilihan() {
-      const chkDpl = document.querySelectorAll('.chk-dpl:checked');
-      const badgeStatus = document.getElementById('badge-status-8dimensi');
-      
-      if (badgeStatus) {
-        badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
-        badgeStatus.className = chkDpl.length > 0 ? 'badge badge-success' : 'badge badge-info';
-      }
-
-      olahDataSimpan();
-    }
-
-    function selaraskanVisiMisiAI() {
-      const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
-      const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
-
-      if (selectedDPL.length === 0) {
-        alert("Silakan centang minimal 1 atau 2 Dimensi Profil Lulusan yang menjadi fokus sekolah!");
-        return;
-      }
-
-      let dplText = selectedDPL.join(', ');
-      let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
-      const namaSekolah = document.getElementById('namaSekolah')?.value || 'Satuan Pendidikan';
-
-      const visiEl = document.getElementById('visiSekolah');
-      if (visiEl) {
-        visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
-      }
-
-      let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
-      if (selectedSPAB.length > 0) {
-        misiList += `\n${selectedDPL.length + 1}. Mengintegrasikan ${selectedSPAB.join(' serta ')} dalam seluruh aktivitas kurikuler dan lingkungan sekolah.`;
-      }
-
-      const misiEl = document.getElementById('misiSekolah');
-      if (misiEl) misiEl.value = misiList;
-
-      const recBox = document.getElementById('ai-recommendation-box');
-      const recText = document.getElementById('ai-recommendation-text');
-      if (recBox && recText) {
-        recBox.classList.remove('d-none');
-        recText.innerText = `Draf Visi & Misi berhasil disusun khusus untuk ${selectedDPL.length} Dimensi Profil Lulusan pilihan Anda tahun ini!`;
-      }
-
-      olahDataSimpan();
-    }
-// ==========================================
-  // LOGIKA PENGANTAR BAB & INTEGRASI MODUL 1
-  // ==========================================
+  // State Pengantar BAB & Kata Pengantar
   let dataPengantar = {};
   try {
     dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
@@ -1363,6 +911,455 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
     dataPengantar = {};
   }
 
+  window.onload = function() {
+    muatDataLokal();
+    susunTabelTim();
+    susunTabelJP();
+    if (document.getElementById('select-bab-pengantar')) {
+      loadPengantarByBab();
+    }
+    olahDataSimpan();
+  };
+
+  function bukaModul(idModul, elBtn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(idModul).classList.add('active');
+    if (elBtn) elBtn.classList.add('active');
+
+    if (idModul === 'modul6') {
+      olahDataSimpan();
+    }
+  }
+
+  function susunTabelTim() {
+    let tbody = document.getElementById('bodyTabelTim');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    dataTim.forEach((item, index) => {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" value="${item.nama}" oninput="updateTim(${index}, 'nama', this.value)"></td>
+        <td><input type="text" value="${item.jabatan}" oninput="updateTim(${index}, 'jabatan', this.value)"></td>
+        <td style="text-align:center;"><button class="btn btn-danger" style="padding: 3px 8px; font-size: 0.8rem;" onclick="hapusTim(${index})">Hapus</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function tambahBarisTim() {
+    dataTim.push({ nama: "", jabatan: "Anggota Tim Penyusun" });
+    susunTabelTim();
+    olahDataSimpan();
+  }
+
+  function updateTim(index, field, val) {
+    dataTim[index][field] = val;
+    olahDataSimpan();
+  }
+
+  function hapusTim(index) {
+    dataTim.splice(index, 1);
+    susunTabelTim();
+    olahDataSimpan();
+  }
+
+  function susunTabelJP() {
+    let tbody = document.getElementById('bodyTabelJP');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    dataJP.forEach((item, index) => {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${item.mapel}</strong></td>
+        <td><input type="number" value="${item.c7Intra}" oninput="updateJP(${index}, 'c7Intra', this.value)"></td>
+        <td><input type="number" value="${item.c7Koku}" oninput="updateJP(${index}, 'c7Koku', this.value)"></td>
+        <td><input type="number" value="${item.c8Intra}" oninput="updateJP(${index}, 'c8Intra', this.value)"></td>
+        <td><input type="number" value="${item.c8Koku}" oninput="updateJP(${index}, 'c8Koku', this.value)"></td>
+        <td><input type="number" value="${item.c9Intra}" oninput="updateJP(${index}, 'c9Intra', this.value)"></td>
+        <td><input type="number" value="${item.c9Koku}" oninput="updateJP(${index}, 'c9Koku', this.value)"></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    hitungTotalJP();
+  }
+
+  function updateJP(index, field, val) {
+    dataJP[index][field] = parseInt(val) || 0;
+    hitungTotalJP();
+    olahDataSimpan();
+  }
+
+  function hitungTotalJP() {
+    let t7I = 0, t7K = 0, t8I = 0, t8K = 0, t9I = 0, t9K = 0;
+    dataJP.forEach(item => {
+      t7I += item.c7Intra; t7K += item.c7Koku;
+      t8I += item.c8Intra; t8K += item.c8Koku;
+      t9I += item.c9Intra; t9K += item.c9Koku;
+    });
+
+    if (document.getElementById('tot7Intra')) document.getElementById('tot7Intra').innerText = t7I;
+    if (document.getElementById('tot7Koku')) document.getElementById('tot7Koku').innerText = t7K;
+    if (document.getElementById('tot8Intra')) document.getElementById('tot8Intra').innerText = t8I;
+    if (document.getElementById('tot8Koku')) document.getElementById('tot8Koku').innerText = t8K;
+    if (document.getElementById('tot9Intra')) document.getElementById('tot9Intra').innerText = t9I;
+    if (document.getElementById('tot9Koku')) document.getElementById('tot9Koku').innerText = t9K;
+  }
+
+  function olahDataSimpan() {
+    let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+    
+    let dplTerpilih = [];
+    document.querySelectorAll('.chk-dpl:checked').forEach(chk => dplTerpilih.push(chk.value));
+
+    let spabTerpilih = [];
+    document.querySelectorAll('.chk-spab:checked').forEach(chk => spabTerpilih.push(chk.value));
+
+    let data = {
+      namaSekolah: document.getElementById('namaSekolah')?.value || '',
+      npsnSekolah: document.getElementById('npsnSekolah')?.value || '',
+      alamatSekolah: document.getElementById('alamatSekolah')?.value || '',
+      wilayahSekolah: kec ? "Kec. " + kec + ", Kab. Garut" : "",
+      selectKecamatan: kec,
+      kepalaSekolah: document.getElementById('kepalaSekolah')?.value || '',
+      nipKepala: document.getElementById('nipKepala')?.value || '',
+      namaPengawas: document.getElementById('namaPengawas')?.value || '',
+      nipPengawas: document.getElementById('nipPengawas')?.value || '',
+      namaKomite: document.getElementById('namaKomite')?.value || '',
+      tglPenetapan: document.getElementById('tglPenetapan')?.value || '',
+      kataPengantar: document.getElementById('kataPengantar')?.value || '',
+
+      karakteristikMurid: document.getElementById('karakteristikMurid')?.value || '',
+      karakteristikPTK: document.getElementById('karakteristikPTK')?.value || '',
+      karakteristikSarpras: document.getElementById('karakteristikSarpras')?.value || '',
+      potensiDaerah: document.getElementById('potensiDaerah')?.value || '',
+      analisisBencana: document.getElementById('analisisBencana')?.value || '',
+      raporPendidikan: document.getElementById('raporPendidikan')?.value || '',
+
+      visiSekolah: document.getElementById('visiSekolah')?.value || '',
+      misiSekolah: document.getElementById('misiSekolah')?.value || '',
+      tujuanSekolah: document.getElementById('tujuanSekolah')?.value || '',
+      dplPilihan: dplTerpilih,
+      spabPilihan: spabTerpilih,
+
+      pendekatan: document.getElementById('pendekatan')?.value || '',
+      intrakurikuler: document.getElementById('intrakurikuler')?.value || '',
+      mingguEfektif: document.getElementById('mingguEfektif')?.value || '',
+      kokurikuler: document.getElementById('kokurikuler')?.value || '',
+      ekstrakurikuler: document.getElementById('ekstrakurikuler')?.value || '',
+      perencanaanBelajar: document.getElementById('perencanaanBelajar')?.value || '',
+      posKedaruratan: document.getElementById('posKedaruratan')?.value || '',
+      evaluasiPendampingan: document.getElementById('evaluasiPendampingan')?.value || '',
+      dataTim: dataTim,
+      dataJP: dataJP
+    };
+
+    localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
+    perbaruiPratinjau(data);
+  }
+
+  function perbaruiPratinjau(d) {
+    if (!d) return;
+
+    let nama = (d.namaSekolah || '').toUpperCase();
+    document.querySelectorAll('#p_namaSekolahCover, #p_namaSekolahPengesahan').forEach(el => {
+      el.textContent = nama || '[NAMA SATUAN PENDIDIKAN]';
+    });
+    if (document.getElementById('p_namaSekolahCoverSub')) document.getElementById('p_namaSekolahCoverSub').innerText = d.namaSekolah || '[NAMA SATUAN PENDIDIKAN]';
+    if (document.getElementById('p_npsnCover')) document.getElementById('p_npsnCover').innerText = d.npsnSekolah || '-';
+    if (document.getElementById('p_alamatCover')) document.getElementById('p_alamatCover').innerText = (d.alamatSekolah ? d.alamatSekolah + ', ' : '') + (d.wilayahSekolah || 'Kab. Garut');
+    if (document.getElementById('p_tglPenetapanCover')) document.getElementById('p_tglPenetapanCover').innerText = d.tglPenetapan || '14 Juli 2026';
+
+    if (document.getElementById('p_namaSekolahPengesahan2')) document.getElementById('p_namaSekolahPengesahan2').innerText = d.namaSekolah || '[Nama Sekolah]';
+    if (document.getElementById('p_namaKomite')) document.getElementById('p_namaKomite').innerText = d.namaKomite || '[Nama Ketua Komite]';
+    if (document.getElementById('p_tglPenetapanSign')) document.getElementById('p_tglPenetapanSign').innerText = d.tglPenetapan || '14 Juli 2026';
+    if (document.getElementById('p_kepalaSekolah')) document.getElementById('p_kepalaSekolah').innerText = d.kepalaSekolah || '[Nama Kepala Sekolah]';
+    if (document.getElementById('p_nipKepala')) document.getElementById('p_nipKepala').innerText = d.nipKepala || '[NIP Kepala Sekolah]';
+    if (document.getElementById('p_namaPengawas')) document.getElementById('p_namaPengawas').innerText = d.namaPengawas || 'Ida Faridlah, M.Ag.';
+    if (document.getElementById('p_nipPengawas')) document.getElementById('p_nipPengawas').innerText = d.nipPengawas || '197211141998022002';
+    
+    // Kata pengantar mengutamakan input khusus jika ada
+    let teksKataPengantar = dataPengantar['kata_pengantar'] || d.kataPengantar || 'Puji syukur kami panjatkan...';
+    if (document.getElementById('p_kataPengantar')) document.getElementById('p_kataPengantar').innerText = teksKataPengantar;
+
+    if (document.getElementById('p_karakteristikMurid')) document.getElementById('p_karakteristikMurid').innerText = d.karakteristikMurid || '-';
+    if (document.getElementById('p_karakteristikPTK')) document.getElementById('p_karakteristikPTK').innerText = d.karakteristikPTK || '-';
+    if (document.getElementById('p_karakteristikSarpras')) document.getElementById('p_karakteristikSarpras').innerText = d.karakteristikSarpras || '-';
+    if (document.getElementById('p_potensiDaerah')) document.getElementById('p_potensiDaerah').innerText = d.potensiDaerah || '-';
+    if (document.getElementById('p_analisisBencana')) document.getElementById('p_analisisBencana').innerText = d.analisisBencana || '-';
+    if (document.getElementById('p_raporPendidikan')) document.getElementById('p_raporPendidikan').innerText = d.raporPendidikan || '-';
+
+    let elemVisi = document.getElementById('p_visiSekolah');
+    if (elemVisi) elemVisi.innerText = (d.visiSekolah || '-').replace(/\|/g, '').trim();
+    if (document.getElementById('p_misiSekolah')) document.getElementById('p_misiSekolah').innerText = d.misiSekolah || '-';
+    if (document.getElementById('p_tujuanSekolah')) document.getElementById('p_tujuanSekolah').innerText = d.tujuanSekolah || '-';
+
+    if (document.getElementById('p_pendekatan')) document.getElementById('p_pendekatan').innerText = d.pendekatan || 'Mata Pelajaran (Reguler)';
+    if (document.getElementById('p_intrakurikuler')) document.getElementById('p_intrakurikuler').innerText = d.intrakurikuler || '-';
+    if (document.getElementById('p_kokurikuler')) document.getElementById('p_kokurikuler').innerText = d.kokurikuler || '-';
+    if (document.getElementById('p_ekstrakurikuler')) document.getElementById('p_ekstrakurikuler').innerText = d.ekstrakurikuler || '-';
+    if (document.getElementById('p_perencanaanBelajar')) document.getElementById('p_perencanaanBelajar').innerText = d.perencanaanBelajar || '-';
+    if (document.getElementById('p_posKedaruratan')) document.getElementById('p_posKedaruratan').innerText = d.posKedaruratan || '-';
+    if (document.getElementById('p_evaluasiPendampingan')) document.getElementById('p_evaluasiPendampingan').innerText = d.evaluasiPendampingan || '-';
+
+    let tbodyCetak = document.getElementById('p_bodyTabelJP');
+    if (tbodyCetak && d.dataJP) {
+      tbodyCetak.innerHTML = '';
+      d.dataJP.forEach(item => {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.mapel}</td>
+          <td style="text-align:center;">${item.c7Intra}</td>
+          <td style="text-align:center;">${item.c7Koku}</td>
+          <td style="text-align:center;">${item.c8Intra}</td>
+          <td style="text-align:center;">${item.c8Koku}</td>
+          <td style="text-align:center;">${item.c9Intra}</td>
+          <td style="text-align:center;">${item.c9Koku}</td>
+        `;
+        tbodyCetak.appendChild(tr);
+      });
+    }
+  }
+
+  function muatDataLokal() {
+    let str = localStorage.getItem('ksp_garut_2026');
+    if (!str) return;
+    let d = JSON.parse(str);
+
+    if (d.namaSekolah) document.getElementById('namaSekolah').value = d.namaSekolah;
+    if (d.npsnSekolah) document.getElementById('npsnSekolah').value = d.npsnSekolah;
+    if (d.alamatSekolah) document.getElementById('alamatSekolah').value = d.alamatSekolah;
+    if (d.selectKecamatan && document.getElementById('selectKecamatanModul1')) {
+      document.getElementById('selectKecamatanModul1').value = d.selectKecamatan;
+    }
+    if (d.kepalaSekolah) document.getElementById('kepalaSekolah').value = d.kepalaSekolah;
+    if (d.nipKepala) document.getElementById('nipKepala').value = d.nipKepala;
+    if (d.namaPengawas) document.getElementById('namaPengawas').value = d.namaPengawas;
+    if (d.nipPengawas) document.getElementById('nipPengawas').value = d.nipPengawas;
+    if (d.namaKomite) document.getElementById('namaKomite').value = d.namaKomite;
+    if (d.tglPenetapan) document.getElementById('tglPenetapan').value = d.tglPenetapan;
+    if (d.kataPengantar) document.getElementById('kataPengantar').value = d.kataPengantar;
+    if (d.karakteristikMurid) document.getElementById('karakteristikMurid').value = d.karakteristikMurid;
+    if (d.karakteristikPTK) document.getElementById('karakteristikPTK').value = d.karakteristikPTK;
+    if (d.karakteristikSarpras) document.getElementById('karakteristikSarpras').value = d.karakteristikSarpras;
+    if (d.potensiDaerah) document.getElementById('potensiDaerah').value = d.potensiDaerah;
+    if (d.analisisBencana) document.getElementById('analisisBencana').value = d.analisisBencana;
+    if (d.raporPendidikan) document.getElementById('raporPendidikan').value = d.raporPendidikan;
+    if (d.visiSekolah) document.getElementById('visiSekolah').value = d.visiSekolah;
+    if (d.misiSekolah) document.getElementById('misiSekolah').value = d.misiSekolah;
+    if (d.tujuanSekolah) document.getElementById('tujuanSekolah').value = d.tujuanSekolah;
+    if (d.pendekatan) document.getElementById('pendekatan').value = d.pendekatan;
+    if (d.intrakurikuler) document.getElementById('intrakurikuler').value = d.intrakurikuler;
+    if (d.mingguEfektif) document.getElementById('mingguEfektif').value = d.mingguEfektif;
+    if (d.kokurikuler) document.getElementById('kokurikuler').value = d.kokurikuler;
+    if (d.ekstrakurikuler) document.getElementById('ekstrakurikuler').value = d.ekstrakurikuler;
+    if (d.perencanaanBelajar) document.getElementById('perencanaanBelajar').value = d.perencanaanBelajar;
+    if (d.posKedaruratan) document.getElementById('posKedaruratan').value = d.posKedaruratan;
+    if (d.evaluasiPendampingan) document.getElementById('evaluasiPendampingan').value = d.evaluasiPendampingan;
+
+    if (d.dplPilihan && Array.isArray(d.dplPilihan)) {
+      document.querySelectorAll('.chk-dpl').forEach(chk => {
+        chk.checked = d.dplPilihan.includes(chk.value);
+      });
+    }
+
+    if (d.spabPilihan && Array.isArray(d.spabPilihan)) {
+      document.querySelectorAll('.chk-spab').forEach(chk => {
+        chk.checked = d.spabPilihan.includes(chk.value);
+      });
+    }
+
+    if (d.dataTim) dataTim = d.dataTim;
+    if (d.dataJP) dataJP = d.dataJP;
+    updateDPLPilihan();
+  }
+
+  const KEC_SELATAN = ["Pameungpeuk", "Cibalong", "Cikelet", "Bungbulang", "Mekarmukti", "Pakenjeng", "Cisewu", "Caringin", "Talegong", "Pamulihan", "Peundeuy", "Cihurip", "Kutamaneuh", "Cisompet"];
+  const KEC_UTARA = ["Garut Kota", "Tarogong Kaler", "Tarogong Kidul", "Karangpawitan", "Banyuresmi", "Leles", "Kadungora", "BL. Limbangan", "Selaawi", "Cibiuk", "Leuwigoong", "Malambong", "Kersamanah", "Cibatu"];
+
+  function generateDrafModul2() {
+    let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+    let namaSek = document.getElementById('namaSekolah')?.value || 'Sekolah';
+    
+    let teksBencana = "";
+    let teksPotensi = "";
+
+    if (KEC_SELATAN.includes(kec)) {
+      teksBencana = `${namaSek} berada di wilayah pesisir Kecamatan ${kec} yang memiliki risiko bencana gempa bumi tektonik, potensi tsunami, dan banjir rob. SPAB difokuskan pada penguatan jalur evakuasi dan sirine peringatan dini.`;
+      teksPotensi = `Kecamatan ${kec} kaya potensi maritim, pariwisata bahari, dan perikanan. Kemitraan dikembangkan bersama TPI, Pos SAR Pesisir, dan BPBD.`;
+    } else if (KEC_UTARA.includes(kec)) {
+      teksBencana = `${namaSek} berlokasi di kawasan urban Kecamatan ${kec} dengan potensi risiko genangan banjir musiman dan kebakaran. SPAB mengutamakan kesiapan infrastruktur gedung dan jalur evakuasi.`;
+      teksPotensi = `Kecamatan ${kec} memiliki keunggulan industri kreatif, kuliner lokal, sentra UMKM, dan objek wisata budaya. Kemitraan terjalin dengan Dinas Perindustrian dan perguruan tinggi.`;
+    } else {
+      teksBencana = `${namaSek} terletak di Kecamatan ${kec}, kawasan pegunungan dengan kerawanan tanah longsor dan guncangan gempa vulkanik/tektonik (Sesar Garsela). SPAB berfokus pada penetapan jalur evakuasi dan simulasi rutin.`;
+      teksPotensi = `Kecamatan ${kec} kaya akan bentang alam pegunungan, pertanian hortikultura, kebun teh/kopi, serta agrowisata. Kemitraan dikembangkan bersama Kelompok Tani lokal dan BPBD.`;
+    }
+
+    document.getElementById('analisisBencana').value = teksBencana;
+    document.getElementById('potensiDaerah').value = teksPotensi;
+    
+    if (!document.getElementById('karakteristikMurid').value) {
+      document.getElementById('karakteristikMurid').value = "Peserta didik memiliki latar belakang sosial ekonomi yang bervariasi, berbudaya Sunda yang kuat, serta minat tinggi dalam kearifan lokal.";
+    }
+    if (!document.getElementById('karakteristikPTK').value) {
+      document.getElementById('karakteristikPTK').value = "Tenaga pendidik berkualifikasi S1/S2, mayoritas tersertifikasi profesional, dan aktif dalam Komunitas Belajar (Kombel).";
+    }
+
+    olahDataSimpan();
+    alert(`✨ Draf Modul 2 untuk Kecamatan ${kec || 'Garut'} Berhasil Dibuat!`);
+  }
+
+  function generateDrafModul3() {
+    let namaSek = document.getElementById('namaSekolah')?.value || 'Sekolah';
+    document.getElementById('visiSekolah').value = `Terwujudnya Peserta Didik ${namaSek} yang Berkarakter Mulia, Unggul Akademik, Tanggap Bencana (SPAB), Berbudaya Lokal Garut, dan Berwawasan Global`;
+    document.getElementById('misiSekolah').value = "1. Menyelenggarakan pembelajaran mendalam (Deep Learning) yang berpusat pada peserta didik.\n2. Mengintegrasikan budaya kesiapsiagaan bencana (SPAB).\n3. Mengembangkan kurikulum diversifikasi berbasis kearifan lokal Garut.\n4. Mewujudkan lingkungan sekolah yang aman, sehat, inklusif, dan ramah anak.";
+    document.getElementById('tujuanSekolah').value = "1. Meningkatkan capaian Literasi dan Numerasi berdasarkan Rapor Pendidikan.\n2. Mewujudkan 100% warga sekolah terlatih simulasi tanggap darurat bencana.\n3. Menghasilkan karya projek P5 berbasis kearifan lokal Garut.";
+    olahDataSimpan();
+    alert("✨ Draf Visi, Misi & Tujuan Berhasil Dimuat!");
+  }
+
+  function generateDrafModul4() {
+    let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+
+    let teksIntra = "";
+    let teksKoku = "";
+    let teksEkstra = "";
+
+    if (KEC_SELATAN.includes(kec)) {
+      teksIntra = `Integrasi Kurikulum Diversifikasi pada IPA, IPS, PJOK, serta Mulok Bahasa Sunda berbasis potensi pesisir. PRB terintegrasi pada topik gempa & tsunami.`;
+      teksKoku = `P5 Tema: Gaya Hidup Berkelanjutan (Mitigasi Tsunami), Kewirausahaan (Pengolahan Hasil Laut), Kearifan Lokal (Seni Bahari).`;
+      teksEkstra = `1. Pramuka (Wajib)\n2. PMR / Tim Siaga Bencana Sekolah\n3. Kesenian Pesisir Garut`;
+    } else if (KEC_UTARA.includes(kec)) {
+      teksIntra = `Integrasi Kurikulum Diversifikasi pada IPS (UMKM Perkotaan), Informatika, PJOK, serta Mulok Bahasa Sunda. PRB difokuskan pada kesiapsiagaan kebakaran & banjir.`;
+      teksKoku = `P5 Tema: Kewirausahaan (Inovasi Produk Kerajinan), Rekayasa Teknologi (Pengelolaan Sampah Perkotaan), Kearifan Lokal.`;
+      teksEkstra = `1. Pramuka (Wajib)\n2. PMR & Komunitas Pelajar Tanggap Bencana\n3. Digital Marketing & Sanggar Seni`;
+    } else {
+      teksIntra = `Integrasi Kurikulum Diversifikasi pada IPA (Konservasi Tanah/Gunung Api), IPS (Agropolitan), PJOK, serta Mulok Bahasa Sunda. PRB difokuskan pada gempa & longsor.`;
+      teksKoku = `P5 Tema: Gaya Hidup Berkelanjutan (Konservasi Lahan Pegunungan), Kewirausahaan (Hasil Bumi/Agrowisata), Kearifan Lokal.`;
+      teksEkstra = `1. Pramuka (Wajib)\n2. PMR Tanggap Gunung & Longsor\n3. Pecinta Alam & Sanggar Seni Pegunungan`;
+    }
+
+    document.getElementById('intrakurikuler').value = teksIntra;
+    document.getElementById('kokurikuler').value = teksKoku;
+    document.getElementById('ekstrakurikuler').value = teksEkstra;
+
+    olahDataSimpan();
+    alert(`✨ Draf Pengorganisasian Pembelajaran untuk Kecamatan ${kec || 'Garut'} Berhasil Dibuat!`);
+  }
+
+  function generateDrafModul5() {
+    let kec = document.getElementById('selectKecamatanModul1') ? document.getElementById('selectKecamatanModul1').value : '';
+    let teksPOS = "";
+
+    if (KEC_SELATAN.includes(kec)) {
+      teksPOS = `1. Peringatan Dini: Pembunyian sirine/kentongan saat gempa berpotensi tsunami.\n2. Evakuasi: 'Drop, Cover, Hold On' kemudian menuju Tempat Evakuasi Sementara.\n3. Tugas TSBS: Tim Pertolongan Pertama (PMR) dan Tim Komunikasi Darurat.`;
+    } else if (KEC_UTARA.includes(kec)) {
+      teksPOS = `1. Tanggap Darurat Kebakaran & Gempa: Protection mandiri dan evakuasi tertib ke titik kumpul.\n2. Tim Siaga: Pengoperasian APAR dan koordinasi dengan Damkar & BPBD Garut.`;
+    } else {
+      teksPOS = `1. Kesiapsiagaan Gempa & Longsor: Peringatan darurat, perlindungan diri, dan evakuasi ke Titik Kumpul Aman.\n2. Operasional TSBS: Pemantauan area rawan tebing dan koordinasi dengan Puskesmas/BPBD Kecamatan.`;
+    }
+
+    document.getElementById('perencanaanBelajar').value = "1. Penyusunan CP dan ATP ke Modul Ajar.\n2. Penerapan Pendekatan Deep Learning (Mindful, Meaningful, Joyful Learning).\n3. Integrasi Asesmen Diagnostik, Formatif, dan Sumatif.";
+    document.getElementById('posKedaruratan').value = teksPOS;
+    document.getElementById('evaluasiPendampingan').value = "1. Evaluasi Pembelajaran melalui Kombel & supervisi.\n2. Pendampingan PTK melalui coaching dan mentoring.\n3. Evaluasi KSP secara partisipatif tahunan.";
+
+    olahDataSimpan();
+    alert("✨ Draf Modul 5 (Perencanaan, POS SPAB & Evaluasi) Berhasil Dibuat!");
+  }
+
+  function exportJSON() {
+    let str = localStorage.getItem('ksp_garut_2026');
+    if (!str) return alert("Belum ada data untuk diexport!");
+    let blob = new Blob([str], { type: "application/json" });
+    let url = URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = `Dokumen_KSP_${document.getElementById('namaSekolah')?.value || 'Sekolah'}_2026.json`;
+    a.click();
+  }
+
+  function importJSON(input) {
+    let file = input.files[0];
+    if (!file) return;
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        let data = JSON.parse(e.target.result);
+        localStorage.setItem('ksp_garut_2026', JSON.stringify(data));
+        muatDataLokal();
+        susunTabelTim();
+        susunTabelJP();
+        olahDataSimpan();
+        alert("✓ Data KSP Berhasil Diimport!");
+      } catch (err) {
+        alert("File JSON tidak valid!");
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function exportToWord() {
+    let html = document.getElementById('areaCetakUtuh').innerHTML;
+    let blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
+    let url = URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = `Dokumen_KSP_${document.getElementById('namaSekolah')?.value || 'Sekolah'}_2026.doc`;
+    a.click();
+  }
+
+  function updateDPLPilihan() {
+    const chkDpl = document.querySelectorAll('.chk-dpl:checked');
+    const badgeStatus = document.getElementById('badge-status-8dimensi');
+    
+    if (badgeStatus) {
+      badgeStatus.innerText = `${chkDpl.length} / 8 Dipilih untuk TA Ini`;
+      badgeStatus.className = chkDpl.length > 0 ? 'badge badge-success' : 'badge badge-info';
+    }
+
+    olahDataSimpan();
+  }
+
+  function selaraskanVisiMisiAI() {
+    const selectedDPL = Array.from(document.querySelectorAll('.chk-dpl:checked')).map(el => el.value);
+    const selectedSPAB = Array.from(document.querySelectorAll('.chk-spab:checked')).map(el => el.value);
+
+    if (selectedDPL.length === 0) {
+      alert("Silakan centang minimal 1 atau 2 Dimensi Profil Lulusan yang menjadi fokus sekolah!");
+      return;
+    }
+
+    let dplText = selectedDPL.join(', ');
+    let spabText = selectedSPAB.length > 0 ? ` berlandaskan ${selectedSPAB.join(' dan ')}` : '';
+    const namaSekolah = document.getElementById('namaSekolah')?.value || 'Satuan Pendidikan';
+
+    const visiEl = document.getElementById('visiSekolah');
+    if (visiEl) {
+      visiEl.value = `Terwujudnya peserta didik ${namaSekolah} yang unggul dan berkarakter (${dplText})${spabText} dalam kerangka pembelajaran yang berkelanjutan pada Fase D.`;
+    }
+
+    let misiList = selectedDPL.map((dpl, idx) => `${idx + 1}. Menyelenggarakan kegiatan pembelajaran dan pembiasaan yang menguatkan dimensi ${dpl}.`).join('\n');
+    if (selectedSPAB.length > 0) {
+      misiList += `\n${selectedDPL.length + 1}. Mengintegrasikan ${selectedSPAB.join(' serta ')} dalam seluruh aktivitas kurikuler dan lingkungan sekolah.`;
+    }
+
+    const misiEl = document.getElementById('misiSekolah');
+    if (misiEl) misiEl.value = misiList;
+
+    const recBox = document.getElementById('ai-recommendation-box');
+    const recText = document.getElementById('ai-recommendation-text');
+    if (recBox && recText) {
+      recBox.classList.remove('d-none');
+      recText.innerText = `Draf Visi & Misi berhasil disusun khusus untuk ${selectedDPL.length} Dimensi Profil Lulusan pilihan Anda tahun ini!`;
+    }
+
+    olahDataSimpan();
+  }
+
+  // ==========================================
+  // LOGIKA PENGANTAR BAB & INTEGRASI MENU INPUT
+  // ==========================================
   function loadPengantarByBab() {
     const selectElem = document.getElementById('select-bab-pengantar');
     if (!selectElem) return;
@@ -1370,12 +1367,10 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
     const selectedBab = selectElem.value;
     let teks = dataPengantar[selectedBab] || '';
 
-    // Ambil input dari Modul 1 secara aman
     const namaSekolah = document.getElementById('namaSekolah')?.value || '';
-    const kecElem = document.getElementById('selectKecamatanModul1') || document.getElementById('kecamatan');
+    const kecElem = document.getElementById('selectKecamatanModul1');
     const kecamatan = kecElem?.value || '';
 
-    // Draf otomatis jika masih kosong
     if (!teks && namaSekolah) {
       if (selectedBab === 'bab2') {
         teks = `Puji syukur kehadirat Allah SWT, dokumen Pengantar BAB II KSP ini disusun sebagai pedoman operasional penyelenggaraan pendidikan di ${namaSekolah}, Kecamatan ${kecamatan}.`;
@@ -1398,19 +1393,16 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
 
     dataPengantar[selectedBab] = isiTeks;
     localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
+    
+    olahDataSimpan();
+
+    // Memperbarui pratinjau Modul 6 jika fungsi rendernya tersedia
+    if (typeof renderModul6 === 'function') {
+      renderModul6();
+    }
+
     alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
   }
-// Memperbarui pratinjau Modul 6 jika fungsi rendernya ada
-if (typeof renderModul6 === 'function') {
-  renderModul6();
-}
-  // Panggil saat halaman pertama kali dimuat
-  document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('select-bab-pengantar')) {
-      loadPengantarByBab();
-    }
-  });
-    
-  </script>
+</script>
 </body>
 </html>

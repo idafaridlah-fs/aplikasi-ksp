@@ -1358,8 +1358,15 @@
   }
 
   // ==========================================
-  // LOGIKA PENGANTAR BAB & INTEGRASI MENU INPUT
+  // LOGIKA PENGANTAR BAB & INTEGRASI MODUL 1
   // ==========================================
+  let dataPengantar = {};
+  try {
+    dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
+  } catch (e) {
+    dataPengantar = {};
+  }
+
   function loadPengantarByBab() {
     const selectElem = document.getElementById('select-bab-pengantar');
     if (!selectElem) return;
@@ -1367,10 +1374,12 @@
     const selectedBab = selectElem.value;
     let teks = dataPengantar[selectedBab] || '';
 
+    // Ambil input dari Modul 1 secara aman
     const namaSekolah = document.getElementById('namaSekolah')?.value || '';
-    const kecElem = document.getElementById('selectKecamatanModul1');
+    const kecElem = document.getElementById('selectKecamatanModul1') || document.getElementById('kecamatan');
     const kecamatan = kecElem?.value || '';
 
+    // Draf otomatis jika masih kosong
     if (!teks && namaSekolah) {
       if (selectedBab === 'bab2') {
         teks = `Puji syukur kehadirat Allah SWT, dokumen Pengantar BAB II KSP ini disusun sebagai pedoman operasional penyelenggaraan pendidikan di ${namaSekolah}, Kecamatan ${kecamatan}.`;
@@ -1393,7 +1402,8 @@
 
     dataPengantar[selectedBab] = isiTeks;
     localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
-    
+    alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
+  }
     olahDataSimpan();
 
     // Memperbarui pratinjau Modul 6 jika fungsi rendernya tersedia

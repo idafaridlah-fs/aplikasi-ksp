@@ -1389,18 +1389,17 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
   }
 
   function simpanPengantar() {
-  const selectElem = document.getElementById('select-bab-pengantar');
-  const textElem = document.getElementById('text-pengantar');
-  if (!selectElem || !textElem) return;
+    const selectElem = document.getElementById('select-bab-pengantar');
+    const textElem = document.getElementById('text-pengantar');
+    if (!selectElem || !textElem) return;
 
-  const selectedBab = selectElem.value;
-  const isiTeks = textElem.value;
+    const selectedBab = selectElem.value;
+    const isiTeks = textElem.value;
 
-  dataPengantar[selectedBab] = isiTeks;
-  localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
-  alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
-}
-
+    dataPengantar[selectedBab] = isiTeks;
+    localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
+    alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
+  }
 // Memperbarui pratinjau Modul 6 jika fungsi rendernya ada
 if (typeof renderModul6 === 'function') {
   renderModul6();

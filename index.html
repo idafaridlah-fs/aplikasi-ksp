@@ -1356,7 +1356,12 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
 // ==========================================
   // LOGIKA PENGANTAR BAB & INTEGRASI MODUL 1
   // ==========================================
-  let dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
+  let dataPengantar = {};
+  try {
+    dataPengantar = JSON.parse(localStorage.getItem('dataPengantarKSP')) || {};
+  } catch (e) {
+    dataPengantar = {};
+  }
 
   function loadPengantarByBab() {
     const selectElem = document.getElementById('select-bab-pengantar');
@@ -1365,11 +1370,12 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
     const selectedBab = selectElem.value;
     let teks = dataPengantar[selectedBab] || '';
 
-    // Ambil input dari Modul 1
+    // Ambil input dari Modul 1 secara aman
     const namaSekolah = document.getElementById('namaSekolah')?.value || '';
-    const kecamatan = document.getElementById('selectKecamatanModul1')?.value || document.getElementById('kecamatan')?.value || '';
+    const kecElem = document.getElementById('selectKecamatanModul1') || document.getElementById('kecamatan');
+    const kecamatan = kecElem?.value || '';
 
-    // Isi draf otomatis jika teks pengantar masih kosong
+    // Draf otomatis jika masih kosong
     if (!teks && namaSekolah) {
       if (selectedBab === 'bab2') {
         teks = `Puji syukur kehadirat Allah SWT, dokumen Pengantar BAB II KSP ini disusun sebagai pedoman operasional penyelenggaraan pendidikan di ${namaSekolah}, Kecamatan ${kecamatan}.`;
@@ -1377,8 +1383,11 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
     }
 
     const textElem = document.getElementById('text-pengantar');
-    if (textElem) textElem.value = teks;
+    if (textElem) {
+      textElem.value = teks;
+    }
   }
+
   function simpanPengantar() {
     const selectElem = document.getElementById('select-bab-pengantar');
     const textElem = document.getElementById('text-pengantar');
@@ -1386,7 +1395,7 @@ if (typeof dataPengantar !== 'undefined') dataPengantar['bab2'] = teksBencana;
 
     const selectedBab = selectElem.value;
     const isiTeks = textElem.value;
-    
+
     dataPengantar[selectedBab] = isiTeks;
     localStorage.setItem('dataPengantarKSP', JSON.stringify(dataPengantar));
     alert('Teks pengantar untuk ' + selectedBab.toUpperCase() + ' berhasil disimpan!');
